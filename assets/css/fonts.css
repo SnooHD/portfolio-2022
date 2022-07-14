@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Palanquin';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/assets/fonts/palanquin/palanquin-300-regular.woff2') format('woff2'),
+    url('/assets/fonts/palanquin/palanquin-300-regular.woff') format('woff'),
+    url('/assets/fonts/palanquin/palanquin-300-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Palanquin';
+  font-weight: 500;
+  font-style: normal;
+  src: url('/assets/fonts/palanquin/palanquin-500-regular.woff2') format('woff2'),
+    url('/assets/fonts/palanquin/palanquin-500-regular.woff') format('woff'),
+    url('/assets/fonts/palanquin/palanquin-500-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Merriweather Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/fonts/merriweather-sans/merriweather-sans-400-regular.woff2') format('woff2'),
+    url('/assets/fonts/merriweather-sans/merriweather-sans-400-regular.woff') format('woff'),
+    url('/assets/fonts/merriweather-sans/merriweather-sans-400-regular.ttf') format('truetype');
+}
