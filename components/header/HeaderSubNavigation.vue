@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const { menuItems, activeMenuIndex } = useMenu()
+import { menuItems } from '~/composables/useMenu'
+const { scrollToPosition } = useScroller()
+const { activeMenuIndex } = useMenu()
 const menuWrapper = ref<HTMLUListElement>()
 const menuItemHeight = useState<number>('menuItemHeight', () => 0)
 
@@ -55,8 +57,8 @@ const currentMenuIndex = computed<number>(() => activeMenuIndex.value + 1)
             ${index === 0 ? 'pointer-events-none' : ''}
           `"
           :style="{
-            WebkitTextStrokeWidth: index !== currentMenuIndex ? '0px' : '1px',
-            WebkitTextStrokeColor: 'white'
+            '-webkit-text-stroke-width': index !== currentMenuIndex ? '0px' : '1px',
+            '-webkit-text-stroke-color': 'white'
           }"
         >
           <span class="inline-block translate-y-[-2px]">
@@ -64,7 +66,7 @@ const currentMenuIndex = computed<number>(() => activeMenuIndex.value + 1)
             <a
               v-if="menuItem && index !== currentMenuIndex"
               :href="`#${menuItem.replace(/ /g, '-')}`"
-              @click="() => (activeMenuIndex = index - 1)"
+              @click="() => (scrollToPosition = index - 1)"
             >
               {{ menuItem }}
             </a>

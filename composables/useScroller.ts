@@ -1,16 +1,17 @@
-export const useScroller = () => {
-  const { menuItems } = useMenu()
+import { menuItems } from '~/composables/useMenu'
 
+export const useScroller = () => {
   const scrollSectionHeight = 400
   const scrollContainerRef = ref<HTMLDivElement>()
   const scrollRef = ref<HTMLDivElement>()
 
-  const scrollPosition = useState('scrollSection', () => 0)
-  const handleScrollEvent = (e: WheelEvent) => {
-    const currentTarget = e.target as HTMLDivElement
-    const { scrollTop } = currentTarget
-    scrollPosition.value = scrollTop / scrollSectionHeight
-  }
+  const scrollPosition = useState('scroll-position', () => 0)
+  const handleScrollEvent = (e: WheelEvent) =>
+    requestAnimationFrame(() => {
+      const currentTarget = e.target as HTMLDivElement
+      const { scrollTop } = currentTarget
+      scrollPosition.value = scrollTop / scrollSectionHeight
+    })
 
   watch([scrollRef, scrollContainerRef], (value, _oldValue, onCleanUp) => {
     const [scrollElement, scrollContainerElement] = value
@@ -26,9 +27,20 @@ export const useScroller = () => {
     }
   })
 
+  const scrollToPosition = useState('scroll-to-position', () => 0)
+  watch(scrollToPosition, (scrollToPositionValue) => {
+    if (scrollRef.value) {
+      scrollRef.value.scroll({
+        top: scrollToPositionValue * scrollSectionHeight,
+        behavior: 'smooth'
+      })
+    }
+  })
+
   return {
     scrollRef,
     scrollContainerRef,
-    scrollPosition
+    scrollPosition,
+    scrollToPosition
   }
 }

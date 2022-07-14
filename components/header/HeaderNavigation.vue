@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const { menuItems, activeMenuIndex } = useMenu()
+import { menuItems } from '~/composables/useMenu'
+const { activeMenuIndex } = useMenu()
+const { scrollToPosition } = useScroller()
 
 const navRef = ref<HTMLMenuElement>()
 const { addBodyEvent, removeBodyEvent } = useBodyEvent('click', (e: PointerEvent) => {
@@ -39,7 +41,7 @@ const onTransitionEnd = () => {
 <template>
   <nav ref="navRef" class="relative select-none" role="navigation" aria-label="Main menu">
     <button
-      class="text-[30px] relative right-0 top-0 z-[1]"
+      class="text-[30px] relative right-0 top-0 z-[100]"
       :aria-expanded="menuOpen"
       aria-controls="main-menu"
       @click="() => toggleMenu(!menuOpen)"
@@ -48,7 +50,7 @@ const onTransitionEnd = () => {
     </button>
     <div
       :class="`
-        absolute top-0 right-0 w-[300px] h-[300px] z-[0] p-[4px]
+        absolute top-0 right-0 w-[300px] h-[300px] z-[99] p-[4px]
         transition-transform duration-400 backdrop-blur-[1.5px]
         bg-black/10 rounded-full origin-top-right translate-x-[30%] translate-y-[-25%]
         ${menuInvisible ? 'invisible' : 'visible'}
@@ -77,14 +79,14 @@ const onTransitionEnd = () => {
               ${menuOpen && index !== activeMenuIndex ? 'opacity-[.6] cursor-pointer' : ''}
             `"
             :style="{
-              WebkitTextStrokeWidth: menuOpen && index !== activeMenuIndex ? '0px' : '1px',
-              WebkitTextStrokeColor: 'white'
+              '-webkit-text-stroke-width': menuOpen && index !== activeMenuIndex ? '0px' : '1px',
+              '-webkit-text-stroke-color': 'white'
             }"
           >
             <a
               class="inline-block translate-y-[-2px]"
               :href="`#${menuItem.replace(/ /g, '-')}`"
-              @click="() => (activeMenuIndex = index)"
+              @click="() => (scrollToPosition = index)"
             >
               {{ menuItem }}
             </a>
