@@ -9,10 +9,10 @@ const moveToSection = () => {
 </script>
 
 <template>
-  <footer class="flex w-full flex-col py-[15px] space-y-[30px]">
+  <footer class="flex w-full flex-col py-[15px] justify-between">
     <div class="flex items-center justify-between">
-      <slot name="link" />
-      <slot name="button" />
+      <Link href="#next">Contact me</Link>
+      <Button>View my work</Button>
     </div>
     <div class="flex justify-center font-palanquin font-light text-gray text-[14px]">
       <span onclick="moveToSection">scroll {{ lastSection ? 'up' : 'down' }}</span>

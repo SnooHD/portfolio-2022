@@ -13,12 +13,18 @@ export const useScroller = () => {
       scrollPosition.value = scrollTop / scrollSectionHeight
     })
 
+  const scrollContainerHeight = useState<number>('scroll-container-height', () => null)
+  const scrollChildHeight = useState<number>('scroll-child-height', () => null)
   watch([scrollRef, scrollContainerRef], (value, _oldValue, onCleanUp) => {
     const [scrollElement, scrollContainerElement] = value
     if (scrollElement && scrollContainerElement) {
       const { height: scrollHeight } = scrollContainerElement.getBoundingClientRect()
-      const scrollContainerHeight = scrollHeight + menuItems.length * scrollSectionHeight
-      scrollContainerElement.style.height = `${scrollContainerHeight}px`
+      const calculatedScrollContainerHeight = scrollHeight + menuItems.length * scrollSectionHeight
+      scrollContainerHeight.value = calculatedScrollContainerHeight
+
+      // set the original container height to the child, this way we know it will always fill
+      // the complete screen correctly (also on mobile browsers with menu bars)
+      scrollChildHeight.value = scrollHeight
 
       scrollElement.addEventListener('scroll', handleScrollEvent)
       onCleanUp(() => {
@@ -41,6 +47,8 @@ export const useScroller = () => {
     scrollRef,
     scrollContainerRef,
     scrollPosition,
-    scrollToPosition
+    scrollToPosition,
+    scrollChildHeight,
+    scrollContainerHeight
   }
 }

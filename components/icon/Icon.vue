@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
-type IconType = 'Hamburger' | 'Arrow'
-
+import { IconType } from '~/types/icons.types'
 const icons = {
   Hamburger: resolveComponent('IconHamburger'),
-  Arrow: resolveComponent('IconArrow')
+  Arrow: resolveComponent('IconArrow'),
+  Linkedin: resolveComponent('IconLinkedin'),
+  Codepen: resolveComponent('IconCodepen'),
+  Codesandbox: resolveComponent('IconCodesandbox')
 }
 
 const props = defineProps({

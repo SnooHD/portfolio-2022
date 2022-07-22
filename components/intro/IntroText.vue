@@ -27,13 +27,20 @@ watchEffect(() => {
   animateText.value = isFontLoaded('Merriweather Sans') && isImageLoaded('Portrait')
 })
 
-const textLines = ['Hi there, i am Mike.', 'It is nice to meet you.']
+const textLines = ['Hi there, i am Mike.', 'It is nice to meet you anyway.']
 </script>
 
 <template>
+  <!--
+    Vertical align does not work correctly when it needs to collapse to multiple lines,
+    going with padding top using media queries based on height.
+  -->
   <div
     v-if="scrollPosition <= 0.5"
-    class="font-merriweather text-white text-[18px] leading-[21px] pt-[27vh]"
+    :class="`
+      font-merriweather text-white text-[18px] leading-[21px] h-[50%]
+      transition-[padding] duration-300
+    `"
   >
     <div
       v-for="(text, index) of textLines"
@@ -55,7 +62,6 @@ const textLines = ['Hi there, i am Mike.', 'It is nice to meet you.']
         <span>
           {{ text }}
         </span>
-        <br v-if="index === 0" />
       </div>
     </div>
   </div>

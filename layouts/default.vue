@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { fontWeightTypes } from '~/composables/useFonts'
 const { loadFont } = useFonts()
-const { scrollRef, scrollContainerRef } = useScroller()
+const { scrollRef, scrollContainerRef, scrollContainerHeight, scrollChildHeight } = useScroller()
 
 const { pending: isFontLoading } = useAsyncData(
   'preload-fonts',
@@ -30,6 +30,17 @@ const { pending: isFontLoading } = useAsyncData(
     server: false
   }
 )
+
+const setScrollChildHeight = () => {
+  const { height: scrollElementHeight } = scrollRef.value.getBoundingClientRect()
+  if (scrollElementHeight === scrollChildHeight.value) {
+    return
+  }
+
+  scrollChildHeight.value = scrollElementHeight
+}
+
+useWindowEvent(setScrollChildHeight, 'resize')
 </script>
 
 <template>
@@ -45,25 +56,25 @@ const { pending: isFontLoading } = useAsyncData(
         ref="scrollContainerRef"
         :class="`
           max-w-[1280px] flex flex-col transition-opacity duration-300
-          w-full h-full relative flex-shrink-0 flex-grow
+          w-full relative flex-shrink-0 flex-grow
           ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
         `"
+        :style="{
+          height: `${scrollContainerHeight}px` || '100%'
+        }"
       >
         <div
-          class="h-screen max-h-[stretch] flex flex-col sticky top-0 lg:px-14 md:px-12 sm:px-10 px-6"
+          class="flex flex-col sticky top-0 lg:px-14 md:px-12 sm:px-10 xs:px-6 px-2"
+          :style="{
+            height: `${scrollChildHeight}px` || '100%'
+          }"
         >
-          <Header />
-          <section class="flex-grow flex relative items-end w-full">
+          <Header class="h-[10%] max-h-[120px] min-h-[75px]" />
+          <!-- max height = 100% - (header + footer)  -->
+          <section class="flex-grow flex max-h-[calc(100%-190px)] items-center">
             <slot />
           </section>
-          <Footer>
-            <template #link>
-              <Link href="#next">Contact me</Link>
-            </template>
-            <template #button>
-              <Button>View my work</Button>
-            </template>
-          </Footer>
+          <Footer class="h-[15%] max-h-[180px] min-h-[115px]" />
         </div>
       </div>
     </div>

@@ -1,14 +1,17 @@
 export const useWindowEvent = (callback: (e?: PointerEvent) => void, event: Event['type']) => {
   const addWindowEvent = () => {
-    window.addEventListener(event, callback)
+    window.addEventListener(event, () => requestAnimationFrame(() => callback()))
   }
 
   const removeWindowEvent = () => {
-    window.removeEventListener(event, callback)
+    window.removeEventListener(event, () => requestAnimationFrame(() => callback()))
   }
 
-  return {
-    addWindowEvent,
-    removeWindowEvent
-  }
+  onMounted(() => {
+    addWindowEvent()
+  })
+
+  onUnmounted(() => {
+    removeWindowEvent()
+  })
 }

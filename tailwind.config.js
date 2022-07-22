@@ -5,7 +5,13 @@ module.exports = {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px'
+      xl: '1280px',
+      'h-xxs': { raw: '(min-height: 667px)' },
+      'h-xs': { raw: '(min-height: 750px)' },
+      'h-sm': { raw: '(min-height: 800px)' },
+      'h-md': { raw: '(min-height: 850px)' },
+      'h-lg': { raw: '(min-height: 900px)' },
+      'h-xl': { raw: '(min-height: 950px)' }
     },
     colors: {
       blue: {

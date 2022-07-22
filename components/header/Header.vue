@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full flex justify-between items-center py-4">
+  <header class="w-full flex justify-between items-center">
     <HeaderSubNavigation />
     <HeaderNavigation />
   </header>
