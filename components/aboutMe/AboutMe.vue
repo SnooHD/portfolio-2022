@@ -1,37 +1,44 @@
 <script lang="ts" setup>
+import Paragraph from '../Paragraph.vue'
 const { scrollPosition } = useScroller()
 const { animationState } = useAnimationScroller([
   {
-    property: 'opacity',
+    property: 'opacity-in',
     fromValue: 0,
     toValue: 1,
     scrollStart: 0.5,
-    scrollEnd: 1
+    scrollEnd: 0.9
+  },
+  {
+    property: 'opacity-out',
+    fromValue: 1,
+    toValue: 0,
+    scrollStart: 1.1,
+    scrollEnd: 1.5
   }
 ])
 </script>
 
 <template>
   <div
-    v-if="scrollPosition > 0.5"
-    class="font-palanquin font-light text-white leading-[28px] text-[16px]"
+    v-if="scrollPosition > 0.5 && scrollPosition <= 1.5"
+    class="pt-[0px] xs:pt-[50px] h-xs:pt-[150px] max-w-[460px]"
     :style="{
-      opacity: `${animationState.opacity}`
+      opacity:
+        animationState['opacity-in'] < 1
+          ? animationState['opacity-in']
+          : animationState['opacity-out']
     }"
   >
-    <p>
-      <Text size="md">
-        I am a Senior front-end developer from Holland. I'm unapologetically a web generalist, but I
-        particularly love diving deep into front-end development and UX design.
-      </Text>
-    </p>
+    <Paragraph>
+      I am a Senior front-end developer from Holland. I'm unapologetically a web generalist, but I
+      particularly love diving deep into front-end development and UX design.
+    </Paragraph>
     <br />
-    <p>
-      <Text size="md">
-        I develop from a strategic perspective of telling stories through visual and interactive
-        systems. I find great joy in pressing buttons, but I also take great responsibility for how
-        I press them.
-      </Text>
-    </p>
+    <Paragraph>
+      I develop from a strategic perspective of telling stories through visual and interactive
+      systems. I find great joy in pressing buttons, but I also take great responsibility for how I
+      press them.
+    </Paragraph>
   </div>
 </template>

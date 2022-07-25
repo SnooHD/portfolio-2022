@@ -1,11 +1,11 @@
 <template>
   <div class="w-full h-full bg-black-light">
     <svg
-      viewBox="-200 0 1920 1080"
+      viewBox="-100 0 1920 1080"
       height="100%"
       width="100%"
       preserveAspectRatio="xMidYMid slice"
-      class="overflow-visible min-w-[800px] min-h-[800px] max-w-[1920px] absolute left-1/2 translate-x-[-50%]"
+      class="overflow-visible scale-[1.25] min-w-[800px] min-h-[800px] max-w-[1400px] absolute left-1/2 translate-x-[-50%]"
     >
       <defs>
         <g id="overlay-gradients">
@@ -25,6 +25,12 @@
             <stop offset=".5" stop-color="#111" stop-opacity="1" />
             <stop offset="1" stop-color="#111" stop-opacity="1" />
           </linearGradient>
+        </g>
+
+        <g id="flare-blur">
+          <filter id="bg-flare-blur" x="0" y="0">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
+          </filter>
         </g>
 
         <g id="flare-gradients">
@@ -69,7 +75,7 @@
           </radialGradient>
         </g>
       </defs>
-      <g id="flares" opacity="1">
+      <g id="flares" opacity="1" filter="url(#bg-flare-blur)">
         <polygon
           id="bg-flare-0"
           fill="url(#bg-flare-0)"

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { menuItems } from '~/composables/useMenu'
-const { activeMenuIndex } = useMenu()
+const { activeMenuIndex, menuItems } = useMenu()
 const { scrollToPosition } = useScroller()
 
 const navRef = ref<HTMLMenuElement>()

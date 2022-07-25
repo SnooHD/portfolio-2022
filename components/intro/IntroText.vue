@@ -27,7 +27,7 @@ watchEffect(() => {
   animateText.value = isFontLoaded('Merriweather Sans') && isImageLoaded('Portrait')
 })
 
-const textLines = ['Hi there, i am Mike.', 'It is nice to meet you anyway.']
+const textLines = ['Hi there, i am Mike.', 'It is nice to meet you.']
 </script>
 
 <template>
@@ -38,8 +38,10 @@ const textLines = ['Hi there, i am Mike.', 'It is nice to meet you anyway.']
   <div
     v-if="scrollPosition <= 0.5"
     :class="`
-      font-merriweather text-white text-[18px] leading-[21px] h-[50%]
-      transition-[padding] duration-300
+      font-merriweather text-white h-[50%] pt-[130px]
+      text-[18px] leading-[21px]
+      md:text-[21px] md:leading-[24px]
+      lg:text-[24px] lg:leading-[36px]
     `"
   >
     <div
@@ -59,9 +61,13 @@ const textLines = ['Hi there, i am Mike.', 'It is nice to meet you anyway.']
           transitionDelay: `${300 + index * 50}ms`
         }"
       >
-        <span>
+        <div
+          :class="`
+            ${index === 0 ? 'md:translate-x-[-5px]' : ''}
+          `"
+        >
           {{ text }}
-        </span>
+        </div>
       </div>
     </div>
   </div>

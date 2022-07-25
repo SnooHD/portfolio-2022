@@ -10,10 +10,11 @@ definePageMeta({
       this css property only works with inline floated elements
       so we cant use flexbox here =/
     -->
-  <div class="w-full sm:px-[10%]">
+  <div class="w-full max-h-full">
     <IntroSelfPortrait />
-    <IntroText class="pt-[120px]" />
-    <IntroSocialMedia class="pt-[150px]" />
+    <IntroText />
+    <IntroSocialMedia />
     <AboutMe />
+    <MyWork />
   </div>
 </template>

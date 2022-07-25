@@ -40,8 +40,8 @@ const { animationState } = useAnimationScroller([
     property: 'opacity',
     fromValue: 1,
     toValue: 0,
-    scrollStart: 2,
-    scrollEnd: 2.1
+    scrollStart: 1.1,
+    scrollEnd: 1.5
   }
 ])
 
@@ -52,13 +52,13 @@ const onTransitionEnd = () => {
 </script>
 
 <template>
-  <picture v-if="scrollPosition <= 2.1">
+  <picture v-if="scrollPosition <= 1.5">
     <source srcset="/assets/images/self-portrait/portrait.webp" type="image/webp" />
     <img
       src="/assets/images/self-portrait/portrait.png"
       alt="Mike de Snoo, Senior developer portrait"
       :class="`
-            mb-[0px] mr-[-140px] min-w-[340px] w-[340px]
+            mb-[0px] mr-[-180px] xs:mr-[-140px] min-w-[340px] w-[340px]
             object-contain object-bottom float-right
             ${!introTransitionEnded ? 'translate-x-[10%] translation-[transform] duration-300' : ''}
           `"

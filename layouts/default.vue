@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { fontWeightTypes } from '~/composables/useFonts'
+
 const { loadFont } = useFonts()
-const { scrollRef, scrollContainerRef, scrollContainerHeight, scrollChildHeight } = useScroller()
+const { menuItems } = useMenu()
+const { scrollRef, scrollSectionHeight } = useScroller()
 
 const { pending: isFontLoading } = useAsyncData(
   'preload-fonts',
@@ -30,17 +32,6 @@ const { pending: isFontLoading } = useAsyncData(
     server: false
   }
 )
-
-const setScrollChildHeight = () => {
-  const { height: scrollElementHeight } = scrollRef.value.getBoundingClientRect()
-  if (scrollElementHeight === scrollChildHeight.value) {
-    return
-  }
-
-  scrollChildHeight.value = scrollElementHeight
-}
-
-useWindowEvent(setScrollChildHeight, 'resize')
 </script>
 
 <template>
@@ -50,33 +41,28 @@ useWindowEvent(setScrollChildHeight, 'resize')
     </div>
     <div
       ref="scrollRef"
-      class="overflow-y-auto overflow-x-hidden scroll-smooth z-[0] w-full h-full absolute flex flex-col items-center"
+      class="overflow-y-auto overflow-x-hidden scroll-smooth z-[0] w-full h-full flex flex-col items-center"
     >
       <div
-        ref="scrollContainerRef"
         :class="`
-          max-w-[1280px] flex flex-col transition-opacity duration-300
-          w-full relative flex-shrink-0 flex-grow
-          ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
-        `"
-        :style="{
-          height: `${scrollContainerHeight}px` || '100%'
-        }"
+              ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
+              transition-opacity duration-300 max-w-[1280px] sticky top-0 flex-shrink-0
+              flex flex-col w-full h-full lg:px-[30px] sm:px-[20px] px-[15px]
+            `"
       >
-        <div
-          class="flex flex-col sticky top-0 lg:px-14 md:px-12 sm:px-10 xs:px-6 px-2"
-          :style="{
-            height: `${scrollChildHeight}px` || '100%'
-          }"
-        >
-          <Header class="h-[10%] max-h-[120px] min-h-[75px]" />
-          <!-- max height = 100% - (header + footer)  -->
-          <section class="flex-grow flex max-h-[calc(100%-190px)] items-center">
-            <slot />
-          </section>
-          <Footer class="h-[15%] max-h-[180px] min-h-[115px]" />
-        </div>
+        <Header class="h-[10%] max-h-[120px] min-h-[75px]" />
+        <!-- max height = 100% - (header + footer)  -->
+        <section class="sm:px-[20%] flex-grow flex max-h-[calc(100%-190px)] items-center">
+          <slot />
+        </section>
+        <Footer class="sm:px-[15%] h-[15%] max-h-[180px] min-h-[115px]" />
       </div>
+      <div
+        class="flex-shrink-0"
+        :style="{
+          height: `${(menuItems.length - 1) * scrollSectionHeight}px`
+        }"
+      />
     </div>
   </div>
 </template>

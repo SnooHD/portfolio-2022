@@ -1,8 +1,5 @@
-import { menuItems } from '~/composables/useMenu'
-
 export const useScroller = () => {
   const scrollSectionHeight = 400
-  const scrollContainerRef = ref<HTMLDivElement>()
   const scrollRef = ref<HTMLDivElement>()
 
   const scrollPosition = useState('scroll-position', () => 0)
@@ -13,19 +10,9 @@ export const useScroller = () => {
       scrollPosition.value = scrollTop / scrollSectionHeight
     })
 
-  const scrollContainerHeight = useState<number>('scroll-container-height', () => null)
-  const scrollChildHeight = useState<number>('scroll-child-height', () => null)
-  watch([scrollRef, scrollContainerRef], (value, _oldValue, onCleanUp) => {
-    const [scrollElement, scrollContainerElement] = value
-    if (scrollElement && scrollContainerElement) {
-      const { height: scrollHeight } = scrollContainerElement.getBoundingClientRect()
-      const calculatedScrollContainerHeight = scrollHeight + menuItems.length * scrollSectionHeight
-      scrollContainerHeight.value = calculatedScrollContainerHeight
-
-      // set the original container height to the child, this way we know it will always fill
-      // the complete screen correctly (also on mobile browsers with menu bars)
-      scrollChildHeight.value = scrollHeight
-
+  watch([scrollRef], (value, _oldValue, onCleanUp) => {
+    const [scrollElement] = value
+    if (scrollElement) {
       scrollElement.addEventListener('scroll', handleScrollEvent)
       onCleanUp(() => {
         scrollElement.removeEventListener('scroll', handleScrollEvent)
@@ -45,10 +32,8 @@ export const useScroller = () => {
 
   return {
     scrollRef,
-    scrollContainerRef,
     scrollPosition,
     scrollToPosition,
-    scrollChildHeight,
-    scrollContainerHeight
+    scrollSectionHeight
   }
 }
