@@ -52,7 +52,7 @@ const { animationState } = useAnimationScroller([
       >
         <Link href="#next">Contact me</Link>
       </div>
-      <Button class="ml-auto w-[40%]">
+      <Button class="ml-auto w-[160px]">
         <span
           v-if="scrollPosition <= 1.5"
           class="inline-block"
