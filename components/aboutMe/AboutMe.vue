@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Paragraph from '../Paragraph.vue'
-const { scrollPosition } = useScroller()
+
+const { scrollPosition, isTouching } = useScroller()
 const { animationState } = useAnimationScroller([
   {
     property: 'opacity-in',
@@ -21,7 +22,8 @@ const { animationState } = useAnimationScroller([
 
 <template>
   <div
-    v-if="scrollPosition > 0.5 && scrollPosition <= 1.5"
+    v-show="scrollPosition > 0.5 && scrollPosition <= 1.5"
+    v-if="isTouching || (scrollPosition > 0.5 && scrollPosition <= 1.5)"
     class="pt-[0px] xs:pt-[50px] h-xs:pt-[150px] max-w-[460px]"
     :style="{
       opacity:

@@ -22,7 +22,7 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
       <ul
         :class="`
           text-white inline-flex flex-col select-none
-          ${navWrapperTransition ? 'transition-transform duration-300' : ''}
+          ${navWrapperTransition ? 'transition-transform duration-400' : ''}
         `"
         :style="{ transform: `translateY(${menuOffset}px)` }"
         @transitionend="() => (navWrapperTransition = false)"

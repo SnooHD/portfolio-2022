@@ -2,6 +2,8 @@
 definePageMeta({
   layout: 'default'
 })
+
+const { scrollPosition } = useScroller()
 </script>
 
 <template>
@@ -10,7 +12,12 @@ definePageMeta({
       this css property only works with inline floated elements
       so we cant use flexbox here =/
     -->
-  <div class="w-full max-h-full h-full">
+  <div
+    :class="`
+      w-full max-h-full
+      ${scrollPosition > 1.5 ? 'h-full' : ''}
+    `"
+  >
     <IntroSelfPortrait />
     <IntroText />
     <IntroSocialMedia />

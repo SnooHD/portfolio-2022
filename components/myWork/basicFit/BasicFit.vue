@@ -1,12 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div
-    :class="`
-      w-full h-full flex-shrink-0
-      duration-300 transition-all
-    `"
-  >
+  <div class="w-full">
     <LogoBasicFit class="w-[120px] h-[60px]" />
     <Text>
       For

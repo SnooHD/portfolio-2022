@@ -7,7 +7,7 @@ const moveToSection = () => {
   console.log('move')
 }
 
-const { scrollPosition } = useScroller()
+const { scrollPosition, isTouching } = useScroller()
 const { animationState } = useAnimationScroller([
   {
     property: 'opacity-out',
@@ -44,7 +44,8 @@ const { animationState } = useAnimationScroller([
   <footer class="flex w-full flex-col py-[15px] justify-between relative z-[99]">
     <div class="flex items-center justify-between">
       <div
-        v-if="scrollPosition <= 1.5"
+        v-show="scrollPosition <= 1.5"
+        v-if="isTouching || scrollPosition <= 1.5"
         :style="{
           opacity: animationState['opacity-out'],
           transform: `translateX(-${animationState.translate}%)`
@@ -54,7 +55,7 @@ const { animationState } = useAnimationScroller([
       </div>
       <Button class="ml-auto w-[160px]">
         <span
-          v-if="scrollPosition <= 1.5"
+          v-show="scrollPosition <= 1.5"
           class="inline-block"
           :style="{
             opacity: animationState['opacity-out'],
@@ -64,7 +65,7 @@ const { animationState } = useAnimationScroller([
           View my work
         </span>
         <span
-          v-if="scrollPosition > 1.5"
+          v-show="scrollPosition > 1.5"
           class="inline-block"
           :style="{
             opacity: animationState['opacity-in'],
