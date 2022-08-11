@@ -28,7 +28,6 @@ export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
 
   const handleTouchEndEvent = () =>
     requestAnimationFrame(() => {
-      console.log('end')
       const moved =
         direction === 'y'
           ? touchEndY.value - touchStartY.value
