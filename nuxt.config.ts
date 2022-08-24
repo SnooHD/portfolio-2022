@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
+  ssr: false,
   modules: ['@nuxtjs/tailwindcss'],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
