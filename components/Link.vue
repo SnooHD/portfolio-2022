@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
   href: {
     type: String,
     required: true
@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <a
-    :href="props.href"
+    :href="href"
     class="group font-medium text-[18px] font-palanquin text-blue-light translate-y-[-2px]"
   >
     <span

@@ -1,3 +1,7 @@
+/**
+ * This hook handles touch events and detects when a user swipes
+ */
+
 import { UseSwipeProps } from '~/types/swipe.types'
 
 export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
@@ -50,7 +54,7 @@ export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
   /**
    * We are using scroll and touch events, on touch events I want to use the touchend to detect when to scroll to the next section
    * However, this does not play well with v-if; Touch events always starts on the current touched element, when this element disappears the
-   * touchend will never trigger. To deal with this I am combining v-if and v-show.
+   * touchend will never trigger. To deal with this I am combining v-if and v-show inside the VisibilityWrapper component.
    */
   watch(element, (value, _oldValue, onCleanUp) => {
     const swipeElement = value

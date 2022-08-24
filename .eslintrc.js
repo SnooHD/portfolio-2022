@@ -15,8 +15,10 @@ module.exports = {
     'space-before-function-paren': 0,
     'vue/singleline-html-element-content-newline': 0,
     'vue/multi-word-component-names': 0,
+    'vue/no-v-for-template-key': 0,
     'prefer-promise-reject-errors': 0,
     '@typescript-eslint/no-unused-vars': 1,
+    'func-call-spacing': 0,
     'vue/max-attributes-per-line': [
       1,
       {

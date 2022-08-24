@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { IconType } from '~/types/icons.types'
 
-const { scrollPosition, isTouching } = useScroller()
 const { animationState } = useAnimationScroller([
   {
     property: 'opacity',
@@ -38,9 +37,8 @@ const socials: SocialMediaProps[] = [
 </script>
 
 <template>
-  <div
-    v-show="scrollPosition <= 0.5"
-    v-if="isTouching || scrollPosition <= 0.5"
+  <VisibilityWrapper
+    :hidden="0.5"
     class="font-merriweather text-white text-[18px] leading-[21px] h-[50%] pt-[150px] xs:pt-[120px]"
     :style="{
       opacity: animationState.opacity
@@ -76,5 +74,5 @@ const socials: SocialMediaProps[] = [
         </a>
       </li>
     </ul>
-  </div>
+  </VisibilityWrapper>
 </template>

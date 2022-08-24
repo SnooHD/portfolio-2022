@@ -1,3 +1,7 @@
+/**
+ * This hook detects webp support and preloads images so we can wait until they are ready
+ */
+
 import { useState } from 'nuxt/app'
 
 interface LoadImageProps {

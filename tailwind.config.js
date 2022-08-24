@@ -6,7 +6,6 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-
       'h-xs': { raw: '(min-height: 750px)' },
       'h-sm': { raw: '(min-height: 800px)' },
       'h-md': { raw: '(min-height: 850px)' },
@@ -46,10 +45,18 @@ module.exports = {
         'key-bottom': '1px -1px 0 #1a1a1a'
       },
       backgroundImage: {
-        speaker: 'radial-gradient(#4f5b66 33%, transparent 35%)',
-        'space-gray': 'linear-gradient(135deg, #69696c 0%, #a7adba 50%, #a7adba 51%, #69696c 100%)',
-        apple:
-          "url('https://9to5mac.com/wp-content/uploads/sites/6/2021/10/Monterey-Graphic-2-dragged.jpeg?quality=82&strip=all&w=1000')"
+        'basic-fit': `image-set(
+            url("/assets/images/basic-fit/work-at-basic-fit.webp") 1x,
+            url("/assets/images/basic-fit/work-at-basic-fit.png") 1x
+          )`,
+        stijlbreuk: `image-set(
+            url("/assets/images/stijlbreuk/stijlbreuk.webp") 1x,
+            url("/assets/images/stijlbreuk/stijlbreuk.png") 1x
+          )`,
+        freelance: `image-set(
+            url("/assets/images/freelance/freelance.webp") 1x,
+            url("/assets/images/freelance/freelance.png") 1x
+          )`
       }
     }
   },
@@ -61,6 +68,9 @@ module.exports = {
         }),
         'shape-margin': (value) => ({
           shapeMargin: value
+        }),
+        backface: (value) => ({
+          backfaceVisibility: value
         })
       })
     })

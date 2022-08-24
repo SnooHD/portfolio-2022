@@ -1,3 +1,7 @@
+/**
+ * This hook handles the current scroll position on the page
+ */
+
 export const useScroller = () => {
   const scrollSectionHeight = 400
   const scrollRef = ref<HTMLDivElement>()

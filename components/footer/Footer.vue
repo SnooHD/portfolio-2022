@@ -3,11 +3,20 @@ const lastSection = computed<boolean>(() => {
   return false
 })
 
+const { activeState: activeMenuState } = useMenuOverlay('work-item')
+console.log(activeMenuState.value)
+const workMenuIsOpen = () => activeMenuState.value === 'work-item'
+
 const moveToSection = () => {
   console.log('move')
 }
 
-const { scrollPosition, isTouching } = useScroller()
+const openShowCaseMenu = () => {
+  const { menuState } = useMenuOverlay('work-item')
+  console.log('sesam')
+  menuState.value = !menuState.value
+}
+
 const { animationState } = useAnimationScroller([
   {
     property: 'opacity-out',
@@ -38,46 +47,91 @@ const { animationState } = useAnimationScroller([
     scrollEnd: 1.9
   }
 ])
+
+/**
+ * Depending on the active state of the button, different actions need to be triggered
+ * To make sure the whole button is clickable, we will handle the cases from the buttons onclick event
+ * An `id` has been added to the text element to help us differentiate between them
+ */
+const onButtonClick = (e: MouseEvent) => {
+  const currentTarget = e.currentTarget as HTMLButtonElement
+  const actionTarget = currentTarget.querySelector('[id]')
+
+  switch (actionTarget.id) {
+    case 'show-case':
+      openShowCaseMenu()
+      break
+    case 'view-my-work':
+      // code block
+      break
+  }
+}
 </script>
 
 <template>
   <footer class="flex w-full flex-col py-[15px] justify-between relative z-[99]">
     <div class="flex items-center justify-between">
-      <div
-        v-show="scrollPosition <= 1.5"
-        v-if="isTouching || scrollPosition <= 1.5"
+      <VisibilityWrapper
+        :hidden="1.5"
         :style="{
           opacity: animationState['opacity-out'],
           transform: `translateX(-${animationState.translate}%)`
         }"
       >
         <Link href="#next">Contact me</Link>
-      </div>
-      <Button class="ml-auto w-[160px]">
-        <span
-          v-show="scrollPosition <= 1.5"
-          class="inline-block"
+      </VisibilityWrapper>
+      <Button class="ml-auto w-[160px] relative h-[40px] shrink-0" @click.stop="onButtonClick">
+        <VisibilityWrapper
+          id="view-my-work"
+          :hidden="1.5"
           :style="{
             opacity: animationState['opacity-out'],
             transform: `translateY(-${animationState.translate}px)`
           }"
         >
           View my work
-        </span>
-        <span
-          v-show="scrollPosition > 1.5"
-          class="inline-block"
+        </VisibilityWrapper>
+        <VisibilityWrapper
+          id="show-case"
+          :visible="1.5"
           :style="{
             opacity: animationState['opacity-in'],
             transform: `translateY(${animationState.translateY}px)`
           }"
         >
-          View showcase
-        </span>
+          <span
+            :class="`
+              flex flex-col transition-transform duration-400
+              ${workMenuIsOpen() ? 'translate-y-[0%]' : 'translate-y-[-50%]'}
+            `"
+            :aria-expanded="workMenuIsOpen()"
+            aria-controls="work-item"
+          >
+            <span
+              :class="`
+                transition-opacity duration-200
+                ${workMenuIsOpen() ? 'opacity-100 delay-100' : 'opacity-0'}
+              `"
+            >
+              Close showcase
+            </span>
+            <span
+              :class="`
+                transition-opacity duration-200
+                ${workMenuIsOpen() ? 'opacity-0' : 'opacity-100 delay-100'}
+              `"
+            >
+              View showcase
+            </span>
+          </span>
+        </VisibilityWrapper>
       </Button>
     </div>
-    <div class="flex justify-center font-palanquin font-light text-gray text-[14px]">
-      <span onclick="moveToSection">scroll {{ lastSection ? 'up' : 'down' }}</span>
+    <div
+      onclick="moveToSection"
+      class="flex justify-center font-palanquin font-light text-gray text-[14px]"
+    >
+      <span>scroll {{ lastSection ? 'up' : 'down' }}</span>
     </div>
   </footer>
 </template>

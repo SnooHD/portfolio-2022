@@ -1,3 +1,7 @@
+/**
+ * This hook preloads fonts
+ */
+
 import { useState } from 'nuxt/app'
 import FontFaceObserver from 'fontfaceobserver'
 

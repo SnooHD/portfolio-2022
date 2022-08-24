@@ -1,3 +1,7 @@
+/**
+ * This hook allows us to easily use global body events
+ */
+
 export const useBodyEvent = (event: Event['type'], callback: (e?: Event) => void) => {
   const addBodyEvent = () => {
     document.querySelector('body').addEventListener(event, callback)

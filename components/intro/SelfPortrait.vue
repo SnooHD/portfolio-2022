@@ -13,7 +13,6 @@ const { pending: isLoadingImage } = useAsyncData(
   }
 )
 
-const { scrollPosition, isTouching } = useScroller()
 const { animationState } = useAnimationScroller([
   {
     property: 'gradientMask',
@@ -52,29 +51,27 @@ const onTransitionEnd = () => {
 </script>
 
 <template>
-  <picture
-    v-show="scrollPosition <= 1.5"
-    v-if="isTouching || scrollPosition <= 1.5"
-    class="pointer-events-none"
-  >
-    <source srcset="/assets/images/self-portrait/self-portrait.webp" type="image/webp" />
-    <img
-      src="/assets/images/self-portrait/self-portrait.png"
-      alt="Mike de Snoo, Senior developer portrait"
-      :class="`
+  <VisibilityWrapper :hidden="1.5">
+    <picture class="pointer-events-none">
+      <source srcset="/assets/images/self-portrait/self-portrait.webp" type="image/webp" />
+      <img
+        src="/assets/images/self-portrait/self-portrait.png"
+        alt="Mike de Snoo, Senior developer portrait"
+        :class="`
             mb-0 pt-[50px] mr-[-100px] xs:mr-[-140px] w-[300px]
             object-contain object-bottom float-right brightness-[0.8] contrast-[1.05]
             ${!introTransitionEnded ? 'translate-x-[10%] translation-[transform] duration-400' : ''}
           `"
-      :style="{
-        shapeOutside: `url(${getImageSrc('self-portrait')})`,
-        opacity: `${animationState.opacity}`,
-        transform:
-          !isLoadingImage &&
-          `translateX(${animationState.translateX}px) translateY(${animationState.translateY}px)`,
-        maskImage: `linear-gradient(to bottom, black 50%, transparent ${animationState.gradientMask}%)`
-      }"
-      @transitionend="onTransitionEnd"
-    />
-  </picture>
+        :style="{
+          shapeOutside: `url(${getImageSrc('self-portrait')})`,
+          opacity: `${animationState.opacity}`,
+          transform:
+            !isLoadingImage &&
+            `translateX(${animationState.translateX}px) translateY(${animationState.translateY}px)`,
+          maskImage: `linear-gradient(to bottom, black 50%, transparent ${animationState.gradientMask}%)`
+        }"
+        @transitionend="onTransitionEnd"
+      />
+    </picture>
+  </VisibilityWrapper>
 </template>

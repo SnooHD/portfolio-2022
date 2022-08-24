@@ -1,3 +1,7 @@
+/**
+ * This hook is used to keep the state between the main navigation and sub navigation
+ */
+
 export const useMenu = () => {
   const menuItems = ['home', 'about me', 'my work', 'contact']
 

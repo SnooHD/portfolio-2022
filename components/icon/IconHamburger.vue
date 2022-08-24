@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
   animationState: {
     type: Boolean,
     required: false
@@ -23,7 +23,7 @@ const props = defineProps({
       height="2.5"
       :class="`
         transition-transform duration-400 origin-top-right stroke-gray fill-gray
-        ${props.animationState ? 'rotate-[-45deg] translate-x-[-2px]' : ''}
+        ${animationState ? 'rotate-[-45deg] translate-x-[-2px]' : ''}
       `"
       stroke-width="0.5"
     />
@@ -34,7 +34,7 @@ const props = defineProps({
       height="2.5"
       :class="`
         transition-all duration-400 origin-right stroke-gray fill-gray
-        ${props.animationState ? 'scale-x-[0] opacity-[0]' : ''}
+        ${animationState ? 'scale-x-[0] opacity-[0]' : ''}
       `"
       stroke-width="0.5"
     />
@@ -45,7 +45,7 @@ const props = defineProps({
       width="27"
       :class="`
         transition-transform duration-400 origin-bottom-right stroke-gray fill-gray
-        ${props.animationState ? 'scale-x-[1] rotate-[45deg] translate-x-[-3px]' : 'scale-x-[.45]'}
+        ${animationState ? 'scale-x-[1] rotate-[45deg] translate-x-[-3px]' : 'scale-x-[.45]'}
       `"
       stroke-width="0.5"
     />

@@ -9,7 +9,7 @@ const icons = {
   Codesandbox: resolveComponent('IconCodesandbox')
 }
 
-const props = defineProps({
+defineProps({
   animationState: {
     type: Boolean,
     required: false
@@ -23,6 +23,6 @@ const props = defineProps({
 
 <template>
   <span class="w-[1em] h-[1em] inline-block">
-    <Component :is="icons[props.icon]" :animation-state="props.animationState" />
+    <Component :is="icons[icon]" :animation-state="animationState" />
   </span>
 </template>

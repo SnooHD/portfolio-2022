@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-const { scrollPosition, isTouching } = useScroller()
 const { animationState } = useAnimationScroller(
   [...Array(2)].flatMap((_value, index) => [
     {
@@ -35,9 +34,8 @@ const textLines = ['Hi there, i am Mike.', 'It is nice to meet you.']
     Vertical align does not work correctly when it needs to collapse to multiple lines,
     going with padding top using media queries based on height.
   -->
-  <div
-    v-show="scrollPosition <= 0.5"
-    v-if="isTouching || scrollPosition <= 0.5"
+  <VisibilityWrapper
+    :hidden="0.5"
     :class="`
       font-merriweather text-white h-[50%] pt-[130px]
       text-[18px] leading-[21px]
@@ -71,5 +69,5 @@ const textLines = ['Hi there, i am Mike.', 'It is nice to meet you.']
         </div>
       </div>
     </div>
-  </div>
+  </VisibilityWrapper>
 </template>

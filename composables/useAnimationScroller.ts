@@ -1,3 +1,7 @@
+/**
+ * This hook gives us the current value of two numbers (from, to) based on the current scroll position
+ */
+
 interface AnimationConfigProps {
   property: string
   fromValue: number
