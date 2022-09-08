@@ -11,16 +11,22 @@ defineProps({
   <WorkItem id="basic-fit" :index="index">
     <template #item>
       <div class="w-full">
-        <LogoBasicFit class="w-[120px] h-[60px]" />
-        <Text>
-          For
-          <a href="#" target="_blank">Basic-Fit</a>
-          , I am actively working on numerous online platforms to improve upon customer journeys.
+        <LogoBasicFit class="w-[140px] h-[60px] text-white" />
+        <Text class="mt-[15px]">
+          <span>{{ 'For ' }}</span>
+          <a href="https://basic-fit.com/" target="_blank" class="text-blue-light underline">
+            {{ 'Basic-Fit' }}
+          </a>
+          <span>
+            {{
+              ', I am actively working on numerous online platforms to improve upon customer journeys.'
+            }}
+          </span>
         </Text>
       </div>
     </template>
     <template #background>
-      <WorkItemBackground class="bg-basic-fit" />
+      <WorkItemBackground src="/images/basic-fit/work-at-basic-fit.png" />
     </template>
   </WorkItem>
 </template>

@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 const props = defineProps({
+  showOnTouch: {
+    type: Boolean,
+    default: true
+  },
   visible: {
     type: Number,
     default: -1
@@ -19,7 +23,11 @@ const isVisible = computed(() =>
 </script>
 
 <template>
-  <span v-if="isTouching || isVisible" v-show="isVisible" class="block w-full h-full">
+  <span
+    v-if="(showOnTouch && isTouching) || isVisible"
+    v-show="isVisible"
+    class="block w-full h-full"
+  >
     <slot />
   </span>
 </template>

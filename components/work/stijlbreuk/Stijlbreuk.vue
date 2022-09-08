@@ -20,7 +20,7 @@ defineProps({
       </div>
     </template>
     <template #background>
-      <WorkItemBackground class="bg-stijlbreuk" />
+      <WorkItemBackground src="/images/stijlbreuk/stijlbreuk.png" />
     </template>
     <template #menu>
       <ul>

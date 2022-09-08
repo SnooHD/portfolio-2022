@@ -61,8 +61,8 @@ const onTransitionEnd = () => {
   >
     <div
       :class="`
-        absolute z-[-1] block bg-white/[.02]
-        rounded-full backdrop-blur-[2.5px] aspect-square p-[4px]
+        absolute z-[-1] block bg-white/[.04]
+        rounded-full backdrop-blur-[2.5px] aspect-square p-[2px]
         backface-[hidden]
         ${
           size === 'lg'
@@ -74,11 +74,11 @@ const onTransitionEnd = () => {
         }
       `"
     >
-      <div class="w-full h-full bg-white/[.02] rounded-full" />
+      <div class="w-full h-full bg-black/[.6] rounded-full" />
     </div>
     <div
       :class="`
-        flex absolute z-[1]
+        flex absolute z-[1] w-full
         text-white transition-opacity duration-200 top-0 left-0
         ${menuState ? 'opacity-[1] delay-100' : 'opacity-[0]'}
       `"

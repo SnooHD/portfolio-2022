@@ -1,31 +1,34 @@
 <script setup lang="ts">
+import { PropType } from 'vue'
+import { WorkMenuItemProps } from '~/types/menu.types'
+const { getImageFormat, getImageSrcSet, hasWebpSupport } = useImages()
+
 defineProps({
-  to: {
-    type: String,
-    required: true
-  },
-  title: {
-    type: String,
-    required: true
-  },
-  intro: {
-    type: String,
-    required: false,
-    default: null
-  },
-  image: {
-    type: String,
+  menuItems: {
+    type: Object as PropType<WorkMenuItemProps[]>,
     required: true
   }
 })
 </script>
 
 <template>
-  <li>
-    <NuxtLink :to="to">
-      <span>{{ title }}</span>
-      <span v-if="intro">{{ intro }}</span>
-      <img :src="image" />
-    </NuxtLink>
-  </li>
+  <ul class="space-y-[20px] md:space-y-[30px] w-full px-[40px]">
+    <li
+      v-for="({ to, title, description, image }, index) in menuItems"
+      :key="`work-menu-item-${index}-${to}`"
+    >
+      <NuxtLink :to="to">
+        <div class="font-merriweather text-[18px] sm:text-[21px]">{{ title }}</div>
+        <div v-if="description" class="font-palanquin font-light text-[18px] sm:text-[21px]">
+          {{ description }}
+        </div>
+        <NuxtImg
+          :src="getImageFormat(image)"
+          :srcset="getImageSrcSet(image, 400)"
+          preset="image"
+          class="w-full max-w-[400px] mt-[10px]"
+        />
+      </NuxtLink>
+    </li>
+  </ul>
 </template>

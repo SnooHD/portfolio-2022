@@ -20,7 +20,7 @@ const workItemMenus = {
       <!-- Counter the negative offset so the content is back at the original place -->
       <div
         :class="`
-        absolute left-[300px] top-[200px] transition-opacity duration-400
+        absolute left-[300px] top-[200px] transition-opacity duration-400 w-full
       `"
       >
         <template v-for="(item, _key, index) in workItemMenus" :key="`work-item-menu-${item}`">

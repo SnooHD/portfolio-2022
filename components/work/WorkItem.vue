@@ -10,7 +10,12 @@ defineProps({
 </script>
 
 <template>
-  <div class="h-full w-full shrink-0">
+  <div
+    :class="`
+      h-full w-full shrink-0 relative
+      ${state === index ? 'z-[1]' : 'z-[0]'}
+    `"
+  >
     <div
       :class="`
         h-full w-full relative
@@ -25,7 +30,7 @@ defineProps({
           ${state === index ? 'opacity-100' : 'opacity-0'}
         `"
       >
-        <div class="flex w-full h-full items-center">
+        <div class="flex w-full h-full items-center px-[50px]">
           <slot name="item" />
         </div>
         <div
