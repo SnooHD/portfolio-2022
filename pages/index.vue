@@ -23,5 +23,6 @@ const { scrollPosition } = useScroller()
     <IntroSocialMedia />
     <AboutMe />
     <Work />
+    <Contact />
   </div>
 </template>

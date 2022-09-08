@@ -1,4 +1,15 @@
+const formKitTailwind = require('@formkit/themes/tailwindcss')
+
 module.exports = {
+  content: [
+    './components/**/*.vue',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './app.vue',
+    './plugins/**/*.ts',
+    './nuxt.config.ts',
+    './formkit.config.ts'
+  ],
   theme: {
     screens: {
       xs: '460px',
@@ -44,23 +55,24 @@ module.exports = {
         'key-button': '1px -1px 0 #1a1a1a, 1px -1px 0 0 #595959 inset',
         'key-bottom': '1px -1px 0 #1a1a1a'
       },
-      backgroundImage: {
-        'basic-fit': `image-set(
-            url("/assets/images/basic-fit/work-at-basic-fit.webp") 1x,
-            url("/assets/images/basic-fit/work-at-basic-fit.png") 1x
-          )`,
-        stijlbreuk: `image-set(
-            url("/assets/images/stijlbreuk/stijlbreuk.webp") 1x,
-            url("/assets/images/stijlbreuk/stijlbreuk.png") 1x
-          )`,
-        freelance: `image-set(
-            url("/assets/images/freelance/freelance.webp") 1x,
-            url("/assets/images/freelance/freelance.png") 1x
-          )`
+      keyframes: {
+        'move-left': {
+          '0%, 100%': { transform: 'translateX(0px)' },
+          '50%': { transform: 'translateX(3px)' }
+        },
+        'move-right': {
+          '0%, 100%': { transform: 'translateX(0px)' },
+          '50%': { transform: 'translateX(-3px)' }
+        }
+      },
+      animation: {
+        'move-left': 'move-left 1200ms linear infinite',
+        'move-right': 'move-right 1200ms linear infinite'
       }
     }
   },
   plugins: [
+    formKitTailwind,
     require('tailwindcss/plugin')(function ({ matchUtilities }) {
       matchUtilities({
         mask: (value) => ({

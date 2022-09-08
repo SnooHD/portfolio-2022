@@ -5,7 +5,7 @@ module.exports = {
     requireConfigFile: false,
     sourceType: 'module'
   },
-  extends: ['@nuxtjs/eslint-config-typescript'],
+  extends: ['@nuxtjs/eslint-config-typescript', 'prettier'],
   rules: {
     indent: 0,
     'no-console': 0,
