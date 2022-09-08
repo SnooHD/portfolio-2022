@@ -83,6 +83,7 @@ const onButtonClick = (e: MouseEvent) => {
       <Button class="ml-auto w-[160px] relative h-[40px] shrink-0" @click.stop="onButtonClick">
         <VisibilityWrapper
           id="view-my-work"
+          :show-on-touch="false"
           :hidden="1.5"
           :style="{
             opacity: animationState['opacity-out'],
@@ -94,6 +95,7 @@ const onButtonClick = (e: MouseEvent) => {
         <VisibilityWrapper
           id="show-case"
           :visible="1.5"
+          :show-on-touch="false"
           :style="{
             opacity: animationState['opacity-in'],
             transform: `translateY(${animationState.translateY}px)`

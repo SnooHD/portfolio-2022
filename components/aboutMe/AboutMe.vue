@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import Paragraph from '../Paragraph.vue'
-
 const { animationState } = useAnimationScroller([
   {
     property: 'opacity-in',
