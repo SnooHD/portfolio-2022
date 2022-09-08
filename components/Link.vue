@@ -22,7 +22,7 @@ defineProps({
       <slot />
     </span>
     <Icon
-      icon="Arrow"
+      icon="ArrowBottomRight"
       :class="`
         text-[14px] scale-[.9] translate-y-[2px] translate-x-[7px] transition-transform duration-400
         group-hover:translate-y-[7px] group-hover:translate-x-[10px] group-hover:scale-[1]

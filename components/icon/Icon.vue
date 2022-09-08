@@ -3,7 +3,9 @@ import type { PropType } from 'vue'
 import { IconType } from '~/types/icons.types'
 const icons = {
   Hamburger: resolveComponent('IconHamburger'),
-  Arrow: resolveComponent('IconArrow'),
+  ArrowBottomRight: resolveComponent('IconArrowBottomRight'),
+  ArrowRight: resolveComponent('IconArrowRight'),
+  ArrowLeft: resolveComponent('IconArrowLeft'),
   Linkedin: resolveComponent('IconLinkedin'),
   Codepen: resolveComponent('IconCodepen'),
   Codesandbox: resolveComponent('IconCodesandbox')
