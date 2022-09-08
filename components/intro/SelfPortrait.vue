@@ -1,17 +1,5 @@
 <script lang="ts" setup>
-const { loadImage, getImageSrc } = useImages()
-const { pending: isLoadingImage } = useAsyncData(
-  'preload-self-portrait',
-  () => {
-    return loadImage({
-      src: '/assets/images/self-portrait/self-portrait.webp',
-      fallback: '/assets/images/self-portrait/self-portrait.png'
-    })
-  },
-  {
-    server: false
-  }
-)
+const { getImageFormat, getImageSrcSet, setImageLoaded, isImageLoaded } = useImages()
 
 const { animationState } = useAnimationScroller([
   {
@@ -48,30 +36,54 @@ const introTransitionEnded = useState('intro-transition-ended', () => false)
 const onTransitionEnd = () => {
   introTransitionEnded.value = true
 }
+
+const onImageLoad = () => {
+  setImageLoaded('self-portrait')
+}
+
+/**
+ * Using `url(#image)` for shapeOutside does not work.
+ * We want to make sure that the `shapeOutside` and the image `src` are using the same format
+ * else we are loading an extra image.
+ */
+const shapeOutsideSrc = useState<string>('shape-outside-src', () => null)
+const portraitImageWrapperRef = ref<HTMLDivElement>(null)
+watchEffect(() => {
+  const imageWrapperElement = portraitImageWrapperRef.value
+  if (imageWrapperElement && isImageLoaded('self-portrait')) {
+    const imageElement = imageWrapperElement.querySelector('img')
+    shapeOutsideSrc.value = imageElement.currentSrc
+  }
+})
 </script>
 
 <template>
   <VisibilityWrapper :hidden="1.5">
-    <picture class="pointer-events-none">
-      <source srcset="/assets/images/self-portrait/self-portrait.webp" type="image/webp" />
-      <img
-        src="/assets/images/self-portrait/self-portrait.png"
-        alt="Mike de Snoo, Senior developer portrait"
+    <div ref="portraitImageWrapperRef">
+      <NuxtImg
+        preset="image"
+        :src="getImageFormat('/images/self-portrait/self-portrait.png')"
+        width="300"
+        sizes="xs:300px"
+        preload
+        :srcset="getImageSrcSet('/images/self-portrait/self-portrait.png', 300)"
+        alt="Mike de Snoo, senior developer portrait"
         :class="`
-            mb-0 pt-[50px] mr-[-100px] xs:mr-[-140px] w-[300px]
-            object-contain object-bottom float-right brightness-[0.8] contrast-[1.05]
-            ${!introTransitionEnded ? 'translate-x-[10%] translation-[transform] duration-400' : ''}
-          `"
+          mb-0 pt-[50px] mr-[-100px] xs:mr-[-140px] object-contain object-bottom float-right brightness-[0.8] contrast-[1.05]
+          ${!introTransitionEnded ? 'translate-x-[10%] translation-[transform] duration-400' : ''}
+        `"
         :style="{
-          shapeOutside: `url(${getImageSrc('self-portrait')})`,
-          opacity: `${animationState.opacity}`,
-          transform:
-            !isLoadingImage &&
-            `translateX(${animationState.translateX}px) translateY(${animationState.translateY}px)`,
+          shapeOutside: shapeOutsideSrc && `url(${shapeOutsideSrc})`,
+          opacity: animationState.opacity,
+          transform: `${
+            isImageLoaded('self-portrait') &&
+            `translateX(${animationState.translateX}px) translateY(${animationState.translateY}px)`
+          }`,
           maskImage: `linear-gradient(to bottom, black 50%, transparent ${animationState.gradientMask}%)`
         }"
-        @transitionend="onTransitionEnd"
+        @load.native="onImageLoad"
+        @transitionend.native="onTransitionEnd"
       />
-    </picture>
+    </div>
   </VisibilityWrapper>
 </template>

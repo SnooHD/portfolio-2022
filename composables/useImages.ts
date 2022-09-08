@@ -2,21 +2,14 @@
  * This hook detects webp support and preloads images so we can wait until they are ready
  */
 
-import { useState } from 'nuxt/app'
-
-interface LoadImageProps {
-  name?: string
-  src: string
-  fallback?: string
-}
-
 export const useImages = () => {
-  const webp = useState<boolean | null>('webp', () => null)
+  const { $img } = useNuxtApp()
+  const hasWebpSupport = useState<boolean | null>('webp', () => null)
 
-  if (process.client && webp.value === null) {
+  if (process.client && hasWebpSupport.value === null) {
     ;(async () => {
       try {
-        webp.value = await new Promise<boolean>((resolve, reject) => {
+        hasWebpSupport.value = await new Promise<boolean>((resolve, reject) => {
           // some small (2x1 px) test images for each feature
           const base64 =
             'data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoCAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA=='
@@ -35,56 +28,40 @@ export const useImages = () => {
           image.src = base64
         })
       } catch (e) {
-        webp.value = false
+        hasWebpSupport.value = false
       }
     })()
   }
 
-  const fetchImage = (src: string): Promise<void> =>
-    new Promise((resolve, reject) => {
-      const image = document.createElement('img')
-      image.onerror = () => reject()
-      image.onload = () => resolve()
-      image.src = src
-    })
-
-  const isImageLoaded = (name: string) =>
-    images.value.some(({ name: imageName }) => imageName.toLowerCase() === name.toLowerCase())
-  const getImageSrc = (name: string) =>
-    images.value.find(({ name: imageName }) => imageName.toLowerCase() === name.toLowerCase())?.src
-
-  const images = useState<LoadImageProps[]>('images', () => [])
-  const loadImage = async ({ name, src, fallback }: LoadImageProps) => {
-    if (webp) {
-      await fetchImage(src)
-    } else if (fallback) {
-      src = fallback
-
-      try {
-        await fetchImage(src)
-      } catch (e) {
-        throw new Error('Both src and fallback can not be preloaded')
-      }
-    } else {
-      // unable to load fallback
-      throw new Error('No preload fallback was provided')
+  const getImageFormat = (src: string) => {
+    if (hasWebpSupport) {
+      const srcWithoutFormat = src.split('.')[0]
+      return srcWithoutFormat + '.webp'
     }
 
-    // add resource to loaded list
-    if (!name) {
-      const imagePath = src.split('.')[0]
-      name = imagePath.split('/').reverse()[0]
-    }
-
-    images.value = [...images.value, { name, src }]
-
-    // return the src and type
     return src
   }
 
+  const getImageSrc = (src: string, width: number) => $img(getImageFormat(src), { width })
+  const getImageSrcSet = (src: string, width: number) => {
+    const imageFormat = getImageFormat(src)
+    const x1 = getImageSrc(imageFormat, width)
+    const x2 = getImageSrc(imageFormat, width * 2)
+
+    return `${x1} 1x, ${x2} 2x`
+  }
+
+  const loadedImages = useState<string[]>('loaded-images', () => [])
+  const setImageLoaded = (name: string) => {
+    loadedImages.value = [...loadedImages.value, name.toLowerCase()]
+  }
+  const isImageLoaded = (name: string) => loadedImages.value.includes(name.toLowerCase())
+
   return {
-    loadImage,
     isImageLoaded,
-    getImageSrc
+    setImageLoaded,
+    getImageSrcSet,
+    getImageFormat,
+    hasWebpSupport
   }
 }

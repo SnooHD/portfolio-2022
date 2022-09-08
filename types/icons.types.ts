@@ -1,1 +1,8 @@
-export type IconType = 'Hamburger' | 'Arrow' | 'Linkedin' | 'Codepen' | 'Codesandbox'
+export type IconType =
+  | 'Hamburger'
+  | 'ArrowBottomRight'
+  | 'Linkedin'
+  | 'Codepen'
+  | 'Codesandbox'
+  | 'ArrowLeft'
+  | 'ArrowRight'
