@@ -24,6 +24,9 @@
     "@formkit/tailwindcss": "^1.0.0-beta.11-1c50a05",
     "@formkit/themes": "^1.0.0-beta.11-1c50a05",
     "@nuxtjs/tailwindcss": "5.3.3",
-    "fontfaceobserver": "^2.3.0"
+    "@types/nodemailer": "^6.4.5",
+    "fontfaceobserver": "^2.3.0",
+    "nodemailer": "^6.7.8",
+    "nuxt-mail": "^3.0.23"
   }
 }
