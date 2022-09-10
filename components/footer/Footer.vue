@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { submitForm } from '@formkit/core'
+
 const lastSection = computed<boolean>(() => {
   return false
 })
@@ -13,38 +15,69 @@ const moveToSection = () => {
 
 const openShowCaseMenu = () => {
   const { menuState } = useMenuOverlay('work-item')
-  console.log('sesam')
   menuState.value = !menuState.value
+}
+
+const onSubmitForm = () => {
+  submitForm('contact-form')
 }
 
 const { animationState } = useAnimationScroller([
   {
-    property: 'opacity-out',
+    property: 'opacity-out-work',
     fromValue: 1,
     toValue: 0,
     scrollStart: 1.1,
     scrollEnd: 1.5
   },
   {
-    property: 'opacity-in',
+    property: 'opacity-in-showcase',
     fromValue: 0,
     toValue: 1,
     scrollStart: 1.5,
     scrollEnd: 1.9
   },
   {
-    property: 'translate',
+    property: 'opacity-out-showcase',
+    fromValue: 1,
+    toValue: 0,
+    scrollStart: 2.1,
+    scrollEnd: 2.4
+  },
+  {
+    property: 'opacity-in-submit',
     fromValue: 0,
-    toValue: 10,
+    toValue: 1,
+    scrollStart: 2.4,
+    scrollEnd: 2.9
+  },
+  {
+    property: 'translate-y-work',
+    fromValue: 0,
+    toValue: -10,
     scrollStart: 1.1,
     scrollEnd: 1.5
   },
   {
-    property: 'translateY',
+    property: 'translate-y-in-showcase',
     fromValue: 10,
     toValue: 0,
     scrollStart: 1.5,
     scrollEnd: 1.9
+  },
+  {
+    property: 'translate-y-out-showcase',
+    fromValue: 0,
+    toValue: -10,
+    scrollStart: 2.1,
+    scrollEnd: 2.5
+  },
+  {
+    property: 'translate-y-submit',
+    fromValue: 10,
+    toValue: 0,
+    scrollStart: 2.5,
+    scrollEnd: 2.9
   }
 ])
 
@@ -61,6 +94,9 @@ const onButtonClick = (e: MouseEvent) => {
     case 'show-case':
       openShowCaseMenu()
       break
+    case 'submit-form':
+      onSubmitForm()
+      break
     case 'view-my-work':
       // code block
       break
@@ -74,8 +110,8 @@ const onButtonClick = (e: MouseEvent) => {
       <VisibilityWrapper
         :hidden="1.5"
         :style="{
-          opacity: animationState['opacity-out'],
-          transform: `translateX(-${animationState.translate}%)`
+          opacity: animationState['opacity-out-work'],
+          transform: `translateX(${animationState['translate-y-work']}%)`
         }"
       >
         <Link href="#next">Contact me</Link>
@@ -86,8 +122,8 @@ const onButtonClick = (e: MouseEvent) => {
           :show-on-touch="false"
           :hidden="1.5"
           :style="{
-            opacity: animationState['opacity-out'],
-            transform: `translateY(-${animationState.translate}px)`
+            opacity: animationState['opacity-out-work'],
+            transform: `translateY(${animationState['translate-y-work']}px)`
           }"
         >
           View my work
@@ -95,10 +131,18 @@ const onButtonClick = (e: MouseEvent) => {
         <VisibilityWrapper
           id="show-case"
           :visible="1.5"
+          :hidden="2.5"
           :show-on-touch="false"
           :style="{
-            opacity: animationState['opacity-in'],
-            transform: `translateY(${animationState.translateY}px)`
+            opacity:
+              animationState['opacity-in-showcase'] === 1
+                ? animationState['opacity-out-showcase']
+                : animationState['opacity-in-showcase'],
+            transform: `translateY(${
+              animationState['translate-y-in-showcase'] === 0
+                ? animationState['translate-y-out-showcase']
+                : animationState['translate-y-in-showcase']
+            }px)`
           }"
         >
           <span
@@ -126,6 +170,17 @@ const onButtonClick = (e: MouseEvent) => {
               View showcase
             </span>
           </span>
+        </VisibilityWrapper>
+        <VisibilityWrapper
+          id="submit-form"
+          :show-on-touch="false"
+          :visible="2.5"
+          :style="{
+            opacity: animationState['opacity-in-submit'],
+            transform: `translateY(${animationState['translate-y-submit']}px)`
+          }"
+        >
+          Submit
         </VisibilityWrapper>
       </Button>
     </div>

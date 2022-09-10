@@ -1,13 +1,14 @@
+import { Config } from 'tailwindcss'
+import tailwindPlugin from 'tailwindcss/plugin'
 const formKitTailwind = require('@formkit/themes/tailwindcss')
 
-module.exports = {
+export default <Config>{
   content: [
     './components/**/*.vue',
     './layouts/**/*.vue',
     './pages/**/*.vue',
     './app.vue',
     './plugins/**/*.ts',
-    './nuxt.config.ts',
     './formkit.config.ts'
   ],
   theme: {
@@ -23,29 +24,29 @@ module.exports = {
       'h-lg': { raw: '(min-height: 900px)' },
       'h-xl': { raw: '(min-height: 950px)' }
     },
-    colors: {
-      blue: {
-        light: '#79BFFF',
-        DEFAULT: '#3884CA',
-        dark: '#037D98'
-      },
-      gray: {
-        DEFAULT: '#CFCFCF'
-      },
-      black: {
-        DEFAULT: '#000',
-        light: '#111'
-      },
-      white: {
-        DEFAULT: '#fff',
-        opaque: 'rgba(255,255,255,.1)'
-      }
-    },
     fontFamily: {
       merriweather: ['Merriweather Sans', 'sans-serif'],
       palanquin: ['Palanquin', 'sans-serif']
     },
     extend: {
+      colors: {
+        blue: {
+          light: '#79BFFF',
+          DEFAULT: '#3884CA',
+          dark: '#037D98'
+        },
+        gray: {
+          DEFAULT: '#CFCFCF'
+        },
+        black: {
+          DEFAULT: '#000',
+          light: '#111'
+        },
+        white: {
+          DEFAULT: '#fff',
+          opaque: 'rgba(255,255,255,.1)'
+        }
+      },
       transitionDuration: {
         400: '400ms'
       },
@@ -73,16 +74,20 @@ module.exports = {
   },
   plugins: [
     formKitTailwind,
-    require('tailwindcss/plugin')(function ({ matchUtilities }) {
+    tailwindPlugin(({ matchUtilities }) => {
       matchUtilities({
-        mask: (value) => ({
+        mask: (value: string) => ({
           maskImage: value
         }),
-        'shape-margin': (value) => ({
+        'shape-margin': (value: string) => ({
           shapeMargin: value
         }),
-        backface: (value) => ({
+        backface: (value: string) => ({
           backfaceVisibility: value
+        }),
+        'text-fill-color': (value: string) => ({
+          textFillColor: value,
+          '-webkit-text-fill-color': value
         })
       })
     })

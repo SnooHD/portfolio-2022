@@ -1,59 +1,32 @@
-import { DefaultConfigOptions } from '@formkit/vue'
+import { generateClasses } from '@formkit/themes'
 
-const config: DefaultConfigOptions = {
+export default {
   config: {
-    rootClasses(sectionKey, node) {
-      const type = node.props.type
-      const classConfig = {
-        outer: 'mb-5',
-        legend: 'block mb-1 font-bold',
-        label() {
-          if (type === 'text') {
-            return 'block mb-1 font-bold'
-          }
-          if (type === 'radio') {
-            return 'text-sm text-gray-600 mt-0.5'
-          }
-        },
-        options() {
-          if (type === 'radio') {
-            return 'flex flex-col flex-grow mt-2'
-          }
-        },
-        input() {
-          if (type === 'text') {
-            return 'bg-pink'
-          }
-          if (type === 'radio') {
-            return 'mr-2'
-          }
-        },
-        wrapper() {
-          if (type === 'radio') {
-            return 'flex flex-row flex-grow'
-          }
-        },
-        message: 'text-red-500 text-xs',
-        help: 'text-xs text-gray-500'
+    validationVisibility: 'submit',
+    classes: generateClasses({
+      global: {
+        inner: `
+          border-b-[1px] border-white/[.15] transition-[border,_color] duration-400
+          focus-within:border-white/[.75] focus-within:text-white text-white/[.6]
+        `,
+        input: `
+          bg-transparent pb-[1px]
+          focus-visible:outline-none
+          !bg-clip-text autofill:!text-fill-color-[#fff] !caret-white
+          placeholder:text-white/[.4] placeholder:transition-[color] placeholder:duration-400 focus:placeholder:text-white/[.6]
+        `,
+        label: 'text-white',
+        wrapper: 'flex font-palanquin'
+      },
+      text: {
+        input: `
+          read-only:border-blue read-only:border-[1px] read-only:rounded-md read-only:pointer-events-none
+          read-only:w-[90px] read-only:text-[12px] read-only:text-center read-only:mb-[2px] read-only:text-white
+        `
+      },
+      textarea: {
+        inner: '!border-none'
       }
-
-      function createClassObject(classesArray) {
-        if (!classesArray) return ''
-        const classList = {}
-        classesArray.split(' ').forEach((className) => {
-          classList[className] = true
-        })
-        return classList
-      }
-
-      const target = classConfig[sectionKey]
-      if (typeof target === 'string') {
-        return createClassObject(target)
-      } else if (typeof target === 'function') {
-        return createClassObject(classConfig[sectionKey]())
-      }
-    }
+    })
   }
 }
-
-export default config
