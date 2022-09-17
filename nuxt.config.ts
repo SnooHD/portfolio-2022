@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  ssr: false,
   modules: ['@nuxt/image-edge', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
+  buildModules: ['@nuxt/image-edge'],
   mail: {
     message: {
       to: 'snoohd@gmail.com'

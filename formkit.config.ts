@@ -5,24 +5,19 @@ export default {
     validationVisibility: 'submit',
     classes: generateClasses({
       global: {
+        form: 'space-y-[10px]',
         inner: `
           border-b-[1px] border-white/[.15] transition-[border,_color] duration-400
-          focus-within:border-white/[.75] focus-within:text-white text-white/[.6]
+          focus-within:border-white/[.75] focus-within:text-white text-white/[.6] flex-grow
         `,
         input: `
           bg-transparent pb-[1px]
-          focus-visible:outline-none
+          focus-visible:outline-none w-full
           !bg-clip-text autofill:!text-fill-color-[#fff] !caret-white
           placeholder:text-white/[.4] placeholder:transition-[color] placeholder:duration-400 focus:placeholder:text-white/[.6]
         `,
-        label: 'text-white',
+        label: 'text-white/[.8] w-[65px]',
         wrapper: 'flex font-palanquin'
-      },
-      text: {
-        input: `
-          read-only:border-blue read-only:border-[1px] read-only:rounded-md read-only:pointer-events-none
-          read-only:w-[90px] read-only:text-[12px] read-only:text-center read-only:mb-[2px] read-only:text-white
-        `
       },
       textarea: {
         inner: '!border-none'

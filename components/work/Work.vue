@@ -18,7 +18,6 @@ const workItems = {
 
 const animateButton = useState<string>('animate-button-state', () => null)
 watch(state, (stateValue, previousStateValue) => {
-  console.log(stateValue < previousStateValue)
   stateValue < previousStateValue ? (animateButton.value = 'back') : (animateButton.value = 'next')
 })
 

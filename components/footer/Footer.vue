@@ -6,7 +6,6 @@ const lastSection = computed<boolean>(() => {
 })
 
 const { activeState: activeMenuState } = useMenuOverlay('work-item')
-console.log(activeMenuState.value)
 const workMenuIsOpen = () => activeMenuState.value === 'work-item'
 
 const moveToSection = () => {
