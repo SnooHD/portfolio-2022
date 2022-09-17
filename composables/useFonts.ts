@@ -2,7 +2,6 @@
  * This hook preloads fonts
  */
 
-import { useState } from 'nuxt/app'
 import FontFaceObserver from 'fontfaceobserver'
 
 export type fontWeightTypes = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
