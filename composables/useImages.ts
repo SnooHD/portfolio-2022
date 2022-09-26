@@ -44,9 +44,9 @@ export const useImages = () => {
 
   const getImageSrc = (src: string, width: number) => $img(getImageFormat(src), { width })
   const getImageSrcSet = (src: string, width: number) => {
-    const imageFormat = getImageFormat(src)
-    const x1 = getImageSrc(imageFormat, width)
-    const x2 = getImageSrc(imageFormat, width * 2)
+    // const imageFormat = getImageFormat(src)
+    const x1 = getImageSrc(src, width)
+    const x2 = getImageSrc(src, width * 2)
 
     return `${x1} 1x, ${x2} 2x`
   }
