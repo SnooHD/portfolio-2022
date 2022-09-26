@@ -2,47 +2,12 @@
  * This hook detects webp support and preloads images so we can wait until they are ready
  */
 
+import { NuxtPicture } from '~~/.nuxt/components'
+
 export const useImages = () => {
   const { $img } = useNuxtApp()
-  const hasWebpSupport = useState<boolean | null>('webp', () => null)
 
-  if (process.client && hasWebpSupport.value === null) {
-    ;(async () => {
-      try {
-        hasWebpSupport.value = await new Promise<boolean>((resolve, reject) => {
-          // some small (2x1 px) test images for each feature
-          const base64 =
-            'data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoCAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA=='
-
-          const image = document.createElement('img')
-          image.onload = () => {
-            if (image.width === 2 && image.height === 1) {
-              resolve(true)
-            } else {
-              reject('unable to load webp')
-            }
-          }
-          image.onerror = () => {
-            reject('unable to load webp')
-          }
-          image.src = base64
-        })
-      } catch (e) {
-        hasWebpSupport.value = false
-      }
-    })()
-  }
-
-  const getImageFormat = (src: string) => {
-    if (hasWebpSupport) {
-      const srcWithoutFormat = src.split('.')[0]
-      return srcWithoutFormat + '.webp'
-    }
-
-    return src
-  }
-
-  const getImageSrc = (src: string, width: number) => $img(getImageFormat(src), { width })
+  const getImageSrc = (src: string, width: number) => $img(src, { width })
   const getImageSrcSet = (src: string, width: number) => {
     // const imageFormat = getImageFormat(src)
     const x1 = getImageSrc(src, width)
@@ -56,12 +21,30 @@ export const useImages = () => {
     loadedImages.value = [...loadedImages.value, name.toLowerCase()]
   }
   const isImageLoaded = (name: string) => loadedImages.value.includes(name.toLowerCase())
+  const pictureRef = ref<typeof NuxtPicture>(null)
+
+  // Regex grouping used to return only what we need
+  // https://regex101.com/r/fNXstO/2
+  const getImageName = (src) => src.replace(/.*\/(.*)\..*$/, '$1')
+
+  const onLoad = () => {
+    const { src } = pictureRef.value
+    const name = getImageName(src)
+    setImageLoaded(name)
+  }
+
+  watch(pictureRef, (imageRefValue) => {
+    const image = imageRefValue.$el.querySelector('img')
+    if (image && image.complete) {
+      onLoad()
+    }
+  })
 
   return {
     isImageLoaded,
     setImageLoaded,
     getImageSrcSet,
-    getImageFormat,
-    hasWebpSupport
+    pictureRef,
+    onLoad
   }
 }

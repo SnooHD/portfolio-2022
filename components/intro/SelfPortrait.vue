@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { getImageFormat, getImageSrcSet, setImageLoaded, isImageLoaded } = useImages()
+const { pictureRef, onLoad, getImageSrcSet, isImageLoaded } = useImages()
 
 const { animationState } = useAnimationScroller([
   {
@@ -45,17 +45,9 @@ const onTransitionEnd = () => {
 const shapeOutsideSrc = useState<string>('shape-outside-src', () => null)
 const portraitImageWrapperRef = ref<HTMLDivElement>(null)
 
-const onImageLoad = (image: HTMLImageElement) => {
-  setImageLoaded('self-portrait')
+watch(pictureRef, (imageRefValue) => {
+  const image = imageRefValue.$el.querySelector('img')
   shapeOutsideSrc.value = image.currentSrc
-}
-
-onMounted(() => {
-  const imageWrapper = portraitImageWrapperRef.value
-  const image = imageWrapper.querySelector('img')
-  if (image && image.complete) {
-    onImageLoad(image)
-  }
 })
 </script>
 
@@ -63,13 +55,13 @@ onMounted(() => {
   <VisibilityWrapper :hidden="1.5">
     <div ref="portraitImageWrapperRef">
       <NuxtPicture
+        ref="pictureRef"
         preset="image"
         src="/images/self-portrait/self-portrait.png"
         sizes="xs:300px"
         preload
         :srcset="getImageSrcSet('/images/self-portrait/self-portrait.png', 300)"
         :img-attrs="{
-          width: 300,
           alt: 'Mike de Snoo, senior developer portrait',
           class: `
             mb-0 pt-[50px] mr-[-100px] xs:mr-[-140px] object-contain object-bottom float-right brightness-[0.8] contrast-[1.05]
@@ -78,14 +70,15 @@ onMounted(() => {
           style: {
             shapeOutside: shapeOutsideSrc && `url(${shapeOutsideSrc})`,
             opacity: animationState.opacity,
-            transform: `${
+            transform:
               isImageLoaded('self-portrait') &&
-              `translateX(${animationState.translateX}px) translateY(${animationState.translateY}px)`
-            }`,
-            maskImage: `linear-gradient(to bottom, black 50%, transparent ${animationState.gradientMask}%)`
+              `translateX(${animationState.translateX}px) translateY(${animationState.translateY}px)`,
+            maskImage:
+              isImageLoaded('self-portrait') &&
+              `linear-gradient(to bottom, black 50%, transparent ${animationState.gradientMask}%)`
           }
         }"
-        @load="(e) => onImageLoad(e.target)"
+        @load="onLoad"
         @transitionend="onTransitionEnd"
       />
     </div>
