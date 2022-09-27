@@ -22,11 +22,13 @@ defineProps({
         <div v-if="description" class="font-palanquin font-light text-[18px] sm:text-[21px]">
           {{ description }}
         </div>
-        <NuxtImg
-          :src="getImageFormat(image)"
+        <NuxtPicture
+          :src="image"
           :srcset="getImageSrcSet(image, 400)"
           preset="image"
-          class="w-full max-w-[400px] mt-[10px]"
+          :img-attrs="{
+            class: 'w-full max-w-[400px] mt-[10px]'
+          }"
         />
       </NuxtLink>
     </li>

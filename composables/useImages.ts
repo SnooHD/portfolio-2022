@@ -1,15 +1,12 @@
 /**
- * This hook detects webp support and preloads images so we can wait until they are ready
+ * Image helpers functions, we can use this to read the loaded state of images between components
  */
-
-import { NuxtPicture } from '~~/.nuxt/components'
 
 export const useImages = () => {
   const { $img } = useNuxtApp()
 
   const getImageSrc = (src: string, width: number) => $img(src, { width })
   const getImageSrcSet = (src: string, width: number) => {
-    // const imageFormat = getImageFormat(src)
     const x1 = getImageSrc(src, width)
     const x2 = getImageSrc(src, width * 2)
 
@@ -21,30 +18,15 @@ export const useImages = () => {
     loadedImages.value = [...loadedImages.value, name.toLowerCase()]
   }
   const isImageLoaded = (name: string) => loadedImages.value.includes(name.toLowerCase())
-  const pictureRef = ref<typeof NuxtPicture>(null)
 
-  // Regex grouping used to return only what we need
+  // Regex grouping used to parse the image name
   // https://regex101.com/r/fNXstO/2
   const getImageName = (src) => src.replace(/.*\/(.*)\..*$/, '$1')
-
-  const onLoad = () => {
-    const { src } = pictureRef.value
-    const name = getImageName(src)
-    setImageLoaded(name)
-  }
-
-  watch(pictureRef, (imageRefValue) => {
-    const image = imageRefValue.$el.querySelector('img')
-    if (image && image.complete) {
-      onLoad()
-    }
-  })
 
   return {
     isImageLoaded,
     setImageLoaded,
     getImageSrcSet,
-    pictureRef,
-    onLoad
+    getImageName
   }
 }

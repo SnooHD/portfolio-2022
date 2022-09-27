@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { pictureRef, onLoad, getImageSrcSet, isImageLoaded } = useImages()
+const { getImageSrcSet, isImageLoaded, getImageName, setImageLoaded } = useImages()
 
 const { animationState } = useAnimationScroller([
   {
@@ -42,12 +42,30 @@ const onTransitionEnd = () => {
  * We want to make sure that the `shapeOutside` and the image `src` are using the same format
  * else we are loading an extra image.
  */
+interface PictureRefProps {
+  $el: HTMLPictureElement
+  src: string
+}
+
+const pictureRef = ref<PictureRefProps>(null)
 const shapeOutsideSrc = useState<string>('shape-outside-src', () => null)
 const portraitImageWrapperRef = ref<HTMLDivElement>(null)
 
-watch(pictureRef, (imageRefValue) => {
-  const image = imageRefValue.$el.querySelector('img')
+const onImageLoad = () => {
+  const { src, $el } = pictureRef.value
+  const image = $el.querySelector('img')
+  if (!image || !image.complete) {
+    return
+  }
+
   shapeOutsideSrc.value = image.currentSrc
+
+  const name = getImageName(src)
+  setImageLoaded(name)
+}
+
+onMounted(() => {
+  onImageLoad()
 })
 </script>
 
@@ -78,7 +96,7 @@ watch(pictureRef, (imageRefValue) => {
               `linear-gradient(to bottom, black 50%, transparent ${animationState.gradientMask}%)`
           }
         }"
-        @load="onLoad"
+        @load="onImageLoad"
         @transitionend="onTransitionEnd"
       />
     </div>
