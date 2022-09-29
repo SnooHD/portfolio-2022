@@ -9,8 +9,9 @@ const { pending: isFontLoading } = useAsyncData(
   'preload-fonts',
   () => {
     const fonts: Record<string, fontWeightTypes[]> = {
-      Palanquin: [300, 500],
-      'Merriweather Sans': [400]
+      'Public Sans': [300, 400, 500],
+      'Atyp Display': [700],
+      'Atyp Text': [400]
     }
 
     const fontPromises = []

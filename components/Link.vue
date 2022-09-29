@@ -10,7 +10,7 @@ defineProps({
 <template>
   <a
     :href="href"
-    class="group font-medium text-[18px] font-palanquin text-blue-light translate-y-[-2px]"
+    class="group font-medium text-[18px] font-public-sans text-blue-light translate-y-[-2px]"
   >
     <span
       :class="`

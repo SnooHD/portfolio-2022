@@ -18,8 +18,8 @@ defineProps({
       :key="`work-menu-item-${index}-${to}`"
     >
       <NuxtLink :to="to">
-        <div class="font-merriweather text-[18px] sm:text-[21px]">{{ title }}</div>
-        <div v-if="description" class="font-palanquin font-light text-[18px] sm:text-[21px]">
+        <div class="font-atyp-text text-[18px] sm:text-[21px]">{{ title }}</div>
+        <div v-if="description" class="font-public-sans font-light text-[18px] sm:text-[21px]">
           {{ description }}
         </div>
         <NuxtPicture

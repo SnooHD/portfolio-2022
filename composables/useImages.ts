@@ -21,7 +21,7 @@ export const useImages = () => {
 
   // Regex grouping used to parse the image name
   // https://regex101.com/r/fNXstO/2
-  const getImageName = (src) => src.replace(/.*\/(.*)\..*$/, '$1')
+  const getImageName = (src: string) => src.replace(/.*\/(.*)\..*$/, '$1')
 
   return {
     isImageLoaded,

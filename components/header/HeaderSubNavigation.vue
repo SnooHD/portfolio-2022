@@ -31,7 +31,7 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
           v-for="(menuItem, index) in ['', ...menuItems]"
           :key="`header-sub-navigation-item-${index}`"
           :class="`
-            relative pl-3 transition-all duration-400 h-[1.5em] font-palanquin
+            relative pl-3 transition-all duration-400 h-[1.5em] font-public-sans
             before:absolute before:bg-blue before:w-[.4em] before:h-[.4em] before:rounded-full font-light
             before:top-1/2 before:translate-y-[-50%] before:left-0 before:transition-all before:duration-400 before:ease-linear
             ${index === activeMenuIndex ? 'before:opacity-[1]' : 'before:opacity-[0]'}

@@ -13,10 +13,17 @@ interface FontTypeProps {
 
 export const useFonts = () => {
   const fonts = useState<string[]>('fonts', () => [])
-  const isFontLoaded = (name, options = { weight: 400, style: 'normal' }) =>
-    fonts.value.includes(
-      `${name.toLowerCase().replace(' ', '-')}-${options.weight}-${options.style}`
-    )
+
+  const getFontName = ({ name, weight, style }: FontTypeProps) =>
+    `${name.toLowerCase().replace(/ /g, '-')}-${weight}-${style}`
+
+  const isFontLoaded = (name: string, options: Omit<FontTypeProps, 'name'> = {}) => {
+    const { weight = 400, style = 'normal' } = options
+    const fontName = getFontName({ name, weight, style })
+    console.log(fontName)
+    return fonts.value.includes(fontName)
+  }
+
   const loadFont = async ({ name, weight = 400, style = 'normal' }: FontTypeProps) => {
     const font = new FontFaceObserver(name, {
       weight,
@@ -29,7 +36,9 @@ export const useFonts = () => {
       throw new Error(`Font ${name} ${weight} ${style} can not be preloaded`)
     }
 
-    fonts.value = [...fonts.value, `${name.toLowerCase().replace(' ', '-')}-${weight}-${style}`]
+    const fontName = getFontName({ name, weight, style })
+    console.log(fontName)
+    fonts.value = [...fonts.value, fontName]
   }
 
   return { loadFont, isFontLoaded }

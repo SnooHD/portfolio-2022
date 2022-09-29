@@ -185,7 +185,7 @@ const onButtonClick = (e: MouseEvent) => {
     </div>
     <div
       onclick="moveToSection"
-      class="flex justify-center font-palanquin font-light text-gray text-[14px]"
+      class="flex justify-center font-public-sans font-light text-gray text-[14px]"
     >
       <span>scroll {{ lastSection ? 'up' : 'down' }}</span>
     </div>

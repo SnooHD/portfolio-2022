@@ -25,8 +25,9 @@ export default <Config>{
       'h-xl': { raw: '(min-height: 950px)' }
     },
     fontFamily: {
-      merriweather: ['Merriweather Sans', 'sans-serif'],
-      palanquin: ['Palanquin', 'sans-serif']
+      'public-sans': ['Public Sans', 'sans-serif'],
+      'atyp-display': ['Atyp Display', 'sans-serif'],
+      'atyp-text': ['Atyp Text', 'sans-serif']
     },
     extend: {
       colors: {

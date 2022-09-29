@@ -29,7 +29,7 @@ const { menuState, activeState } = useMenuOverlay('main-menu')
           v-for="(menuItem, index) in menuItems"
           :key="`header-navigation-item-${index}`"
           :class="`
-            relative pl-3 transition-all duration-400 h-[1.5em] font-palanquin text-[16px] font-light
+            relative pl-3 transition-all duration-400 h-[1.5em] font-public-sans text-[16px] font-light
             before:absolute before:bg-blue before:w-[.4em] before:h-[.4em] before:rounded-full
             before:top-1/2 before:translate-y-[-50%] before:left-0 before:transition-all before:duration-400 before:ease-linear
             ${

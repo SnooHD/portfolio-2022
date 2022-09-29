@@ -23,7 +23,10 @@ const { isFontLoaded } = useFonts()
 
 const animateText = useState('animate-text', () => false)
 watchEffect(() => {
-  animateText.value = isFontLoaded('Merriweather Sans') && isImageLoaded('self-portrait')
+  animateText.value =
+    isFontLoaded('atyp-display', { weight: 700 }) &&
+    isFontLoaded('atyp-text') &&
+    isImageLoaded('self-portrait')
 })
 
 const textLines = ['Hi there, i am Mike.', 'It is nice to meet you.']
@@ -37,7 +40,7 @@ const textLines = ['Hi there, i am Mike.', 'It is nice to meet you.']
   <VisibilityWrapper
     :hidden="0.5"
     :class="`
-      font-merriweather text-white h-[50%] pt-[130px]
+      font-atyp-text text-white h-[50%] pt-[130px]
       text-[18px] leading-[21px]
       md:text-[21px] md:leading-[24px]
       lg:text-[24px] lg:leading-[36px]

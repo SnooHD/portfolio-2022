@@ -39,7 +39,7 @@ const socials: SocialMediaProps[] = [
 <template>
   <VisibilityWrapper
     :hidden="0.5"
-    class="font-merriweather text-white text-[18px] leading-[21px] h-[50%] pt-[150px] xs:pt-[120px]"
+    class="font-atyp-text text-white text-[18px] leading-[21px] h-[50%] pt-[150px] xs:pt-[120px]"
     :style="{
       opacity: animationState.opacity
     }"

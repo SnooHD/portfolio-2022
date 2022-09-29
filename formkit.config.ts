@@ -17,7 +17,7 @@ export default {
           placeholder:text-white/[.4] placeholder:transition-[color] placeholder:duration-400 focus:placeholder:text-white/[.6]
         `,
         label: 'text-white/[.8] w-[65px]',
-        wrapper: 'flex font-palanquin'
+        wrapper: 'flex font-public-sans'
       },
       textarea: {
         inner: '!border-none'

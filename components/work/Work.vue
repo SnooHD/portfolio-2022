@@ -83,7 +83,7 @@ const onTransitionEnd = () => {
             :icon="direction === 'left' ? 'ArrowLeft' : 'ArrowRight'"
             @transitionend.native="() => (animateButton = null)"
           />
-          <span class="text-gray font-light font-palanquin">
+          <span class="text-gray font-light font-public-sans">
             {{ direction === 'left' ? 'back' : 'next' }}
           </span>
         </div>
