@@ -320,103 +320,103 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@formkit/core@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/core/-/core-1.0.0-beta.9-f64c966.tgz#170ebbe7f88eed30934b957d8adccdebb303ac62"
-  integrity sha512-EOUlP129AhGR6CgUIHlc1L9zkBfuHf3GGr/6s3m2r2CFlfgFEu3/cVeIUQtc75MpfLtfnLOk1cNW+z1vKfcOJQ==
+"@formkit/core@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/core/-/core-1.0.0-beta.12-d017323.tgz#88a58629ad98c8a47cbd06ea428657b77d92fd10"
+  integrity sha512-2WAw6m9fEs5f3U4251RofzcFMblw6iK7Lh4DRxG44ckEUw3srsx5lmPxDSyku8IWEBoyczkTYSjJXz1acVponA==
   dependencies:
-    "@formkit/utils" "1.0.0-beta.9-f64c966"
+    "@formkit/utils" "1.0.0-beta.12-d017323"
 
-"@formkit/dev@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/dev/-/dev-1.0.0-beta.9-f64c966.tgz#9acc6fd89521791b132ead0a9e9bf6a74deb0021"
-  integrity sha512-Vpt6M7/xv4jo3grZpjTCk/Z8y27NEXgcmJZFm9Jwtt5rGaHefnY6GqQbj3JxN7q03PpRDYLPpivNQPgnNSkeKA==
+"@formkit/dev@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/dev/-/dev-1.0.0-beta.12-d017323.tgz#7f90183fa9c987bab9a30ea4055284360d8a5962"
+  integrity sha512-UOoEwkc1Yphix1KFZC8l5RXFgU3G94NPC13iqOaTNtdMpz2geQLaoNa8Xpb3T8GgUPjDeoQLnW7B2QAlSAbLIQ==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
-    "@formkit/utils" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
+    "@formkit/utils" "1.0.0-beta.12-d017323"
 
-"@formkit/i18n@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/i18n/-/i18n-1.0.0-beta.9-f64c966.tgz#63613726f34b8f021a644ff53c158280bd160ccc"
-  integrity sha512-K5QcKN9VCNVOk3WNhv9GsQzA3QKn/nu8/637qWOc6kvkxFVRpFsg9q9CX714Ctw+4B8emRo/+Wy00hQ3HBtj3w==
+"@formkit/i18n@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/i18n/-/i18n-1.0.0-beta.12-d017323.tgz#1a76fcbab225512024cf54557c3dd2b13be37ded"
+  integrity sha512-saB5am9MHb+XkNYFuxZ3PsiCOiXvsjJWo+0eTtztFCzqSPe3FpSPISSKKBhdfsjQ5FhYcRj5s5LKwXw/x6pUjA==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
-    "@formkit/utils" "1.0.0-beta.9-f64c966"
-    "@formkit/validation" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
+    "@formkit/utils" "1.0.0-beta.12-d017323"
+    "@formkit/validation" "1.0.0-beta.12-d017323"
 
-"@formkit/inputs@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/inputs/-/inputs-1.0.0-beta.9-f64c966.tgz#bdd868bff269745b16e1b4c42ac4c94be5e795a3"
-  integrity sha512-SK+dg6NHUPZ18hGHowxR8dzi4WiXye8byoqe5KP7bLZS/2BrJTzod69kDD/xzu5zeXWWJ/+ZU3XpDR/EsD45uw==
+"@formkit/inputs@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/inputs/-/inputs-1.0.0-beta.12-d017323.tgz#61a511979e724c67191011d2e5196e6262717e3f"
+  integrity sha512-Qbg/zpT/KMAx2af8kLij2PT8n6HvqyTtyvGfwbJCTat+/YRz9l6TIIcwDWIpXEHYYsm6cmF3wmERn3/6Z2ZLmA==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
 
-"@formkit/nuxt@^1.0.0-beta.11-db38c2b":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/nuxt/-/nuxt-1.0.0-beta.9-f64c966.tgz#9d1ee52b23be552496d26f04cec6f25023ea9ab2"
-  integrity sha512-v77IsFCsmL5vWYH9d2y7QVf/FoXmsxvXCP0y+duaaDlkEK+P7xV0ErD5V9hRz5wZGMc9bF7q+/Tqm9U/bpwPTg==
+"@formkit/nuxt@^1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/nuxt/-/nuxt-1.0.0-beta.12-d017323.tgz#82e5e9f7f4fa52476725dba4a55779e0c36cafb2"
+  integrity sha512-Ujpsj3cskUcLHoMEGlaWfRMA3qG0EY46IYRYm9BVz7P4fMUfDmyTqQnSa8CGoBrjx27EBg26Of5CL63J5dnuxw==
   dependencies:
-    "@formkit/vue" "1.0.0-beta.9-f64c966"
-    "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
+    "@formkit/vue" "1.0.0-beta.12-d017323"
+    "@nuxt/kit" latest
 
-"@formkit/observer@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/observer/-/observer-1.0.0-beta.9-f64c966.tgz#00ec05b81eedc5ca28323c58a3ef9253ddc309e6"
-  integrity sha512-XUFXPUiW35j63P0f6lDSLc5d07DIcqwQo+xhVdlKpR8Yyri5W8l6+rvKPpLyMJS3WJx/Gyr3QPSYawduXzfycw==
+"@formkit/observer@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/observer/-/observer-1.0.0-beta.12-d017323.tgz#16b12aaa5187a3c8151cbd27330f19e4b2a7cace"
+  integrity sha512-3IlQsLaXCcszt00CrDVjsptP/l+ckKebssmM2Jwzl1ypSfQKYJ25wdS7Y3zYckvNDAC8ueInW5+dR2kwkrJZLw==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
-    "@formkit/utils" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
+    "@formkit/utils" "1.0.0-beta.12-d017323"
 
-"@formkit/rules@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/rules/-/rules-1.0.0-beta.9-f64c966.tgz#b6b4c49111b7d4edfa1a1927112d33f04139e602"
-  integrity sha512-UqLh6495obsuGe714QrzU+XDBaZiVQg1axHmw7Lh29CM1/zY0CTDS5h37NnLbpxW0cPwkvkdaCh0wrdDoBRLew==
+"@formkit/rules@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/rules/-/rules-1.0.0-beta.12-d017323.tgz#5c8abc36069fcaa39f8fa191bdbebe510aeecf1e"
+  integrity sha512-tqMJ/8Z3164j9KK1gTP79C1dvaAOsUzK4CB8Dsx9Y1KeAbDs+L4+66Jt/BeaTZjjprFxGhHTDUlwTnlQbCOc9A==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
-    "@formkit/utils" "1.0.0-beta.9-f64c966"
-    "@formkit/validation" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
+    "@formkit/utils" "1.0.0-beta.12-d017323"
+    "@formkit/validation" "1.0.0-beta.12-d017323"
 
-"@formkit/tailwindcss@^1.0.0-beta.11-db38c2b":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/tailwindcss/-/tailwindcss-1.0.0-beta.9-f64c966.tgz#6aee01eb94b5d1e6f6680288294fa11711d37136"
-  integrity sha512-U4uLNPmdkbX3xQZiDmYaSgtImyNNgqEccfgbH85eoCeHkJD7r6BhjPCTdYnSh/8NoGGLX0rp0rcyO42aB+uNwQ==
+"@formkit/tailwindcss@^1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/tailwindcss/-/tailwindcss-1.0.0-beta.12-d017323.tgz#d50cc5dabfbebd06fce9e9e0d2d87d817ff8465f"
+  integrity sha512-tA/9rDPVCUpK13memDeCXWJJDzzyBd7NRtGpWf8TUrkeaNyg3RCiM6GPoVD2KY3EGZl/Nytey3XSp8yBCOA54Q==
   dependencies:
-    "@formkit/themes" "1.0.0-beta.9-f64c966"
+    "@formkit/themes" "1.0.0-beta.12-d017323"
 
-"@formkit/themes@1.0.0-beta.9-f64c966", "@formkit/themes@^1.0.0-beta.11-db38c2b":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/themes/-/themes-1.0.0-beta.9-f64c966.tgz#e1c872291458f4aedb36b91b8279ad9a1856efbe"
-  integrity sha512-Iy/9KoNAZfB/MI6HUfsuxSg8+Ys2veuXoyJNr5AaNDRfzihrv3wIIv1nZuonXgQm3X7+mnfrSybBcXPtqnKU7Q==
+"@formkit/themes@1.0.0-beta.12-d017323", "@formkit/themes@^1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/themes/-/themes-1.0.0-beta.12-d017323.tgz#46b7f867e05e8d5cf2f072f965a671759d20dbeb"
+  integrity sha512-a2Qwl3YmLWWpcAmCVBmMBYvb6Lfht9U2gckL0YqoLQlFawqwnBb1uK23YXZZX4+AGoOAAA0P2qjLRguJxposYA==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
 
-"@formkit/utils@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/utils/-/utils-1.0.0-beta.9-f64c966.tgz#a0541ecbc14529c00ff16c00dc03dec004085b6f"
-  integrity sha512-MPldWKsqmabj7LzMOlha0G6Fn+a6hShc7jyiF1j0P9rJdj9lYyk7t286co4CxqhQNgOpU0XOv7FZroq8k6clzQ==
+"@formkit/utils@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/utils/-/utils-1.0.0-beta.12-d017323.tgz#63185e5670963ff2e7ffbc239b3e84e3d4c5c63a"
+  integrity sha512-mZubXaChe+DfqY9cJ7QcXYMI1NZgx5c7av2h4GgIeRkqQxXlzvSjPoc7FmhqQLBdEt90/LUV8evjdCEFZfrVlw==
 
-"@formkit/validation@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/validation/-/validation-1.0.0-beta.9-f64c966.tgz#5214e527860675a683020d330c59e8040703ad15"
-  integrity sha512-3B85PcwZ8zyeINn25CkppOizqfY2jrqDicD/aoG7Ox/Q4tMojTZZHE26Xxwvwuzbzw5qLdpqZTKPyML12p6Rgg==
+"@formkit/validation@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/validation/-/validation-1.0.0-beta.12-d017323.tgz#6112b6f4bb704b10e1ab689a10c0f87c67f42d7b"
+  integrity sha512-Pl9pGzj4mXKGrq3H6V3oJgX20GCl197Hvqm2cDGMRTlOUFykvGYmxRMK/upbXm17QVe1cfxQu9geX8Y3P5OjBQ==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
-    "@formkit/observer" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
+    "@formkit/observer" "1.0.0-beta.12-d017323"
 
-"@formkit/vue@1.0.0-beta.9-f64c966":
-  version "1.0.0-beta.9-f64c966"
-  resolved "https://registry.yarnpkg.com/@formkit/vue/-/vue-1.0.0-beta.9-f64c966.tgz#0e66abbf77c588331fc3b9318dbd0a05b0f89af7"
-  integrity sha512-q3EJURxZ8vfbuoHOMetluVxDlVEMKfh6KlnlX7HxkSCA/LY8IyXdDv0POG0co6u+6RjiShdTW3uorX31FqZheg==
+"@formkit/vue@1.0.0-beta.12-d017323":
+  version "1.0.0-beta.12-d017323"
+  resolved "https://registry.yarnpkg.com/@formkit/vue/-/vue-1.0.0-beta.12-d017323.tgz#7df03dc0e6a5621dd663cfa12c5cdcd94190d017"
+  integrity sha512-GhN47Wmdfg78MYLUIoQ5q6E7D1MGEpLW2cKtcbxA1zQZ7Ffo9hOraevKTWC0ctE5Rpr3b6Hz/uKkPKbHAJ1bVg==
   dependencies:
-    "@formkit/core" "1.0.0-beta.9-f64c966"
-    "@formkit/dev" "1.0.0-beta.9-f64c966"
-    "@formkit/i18n" "1.0.0-beta.9-f64c966"
-    "@formkit/inputs" "1.0.0-beta.9-f64c966"
-    "@formkit/observer" "1.0.0-beta.9-f64c966"
-    "@formkit/rules" "1.0.0-beta.9-f64c966"
-    "@formkit/themes" "1.0.0-beta.9-f64c966"
-    "@formkit/utils" "1.0.0-beta.9-f64c966"
-    "@formkit/validation" "1.0.0-beta.9-f64c966"
+    "@formkit/core" "1.0.0-beta.12-d017323"
+    "@formkit/dev" "1.0.0-beta.12-d017323"
+    "@formkit/i18n" "1.0.0-beta.12-d017323"
+    "@formkit/inputs" "1.0.0-beta.12-d017323"
+    "@formkit/observer" "1.0.0-beta.12-d017323"
+    "@formkit/rules" "1.0.0-beta.12-d017323"
+    "@formkit/themes" "1.0.0-beta.12-d017323"
+    "@formkit/utils" "1.0.0-beta.12-d017323"
+    "@formkit/validation" "1.0.0-beta.12-d017323"
 
 "@humanwhocodes/config-array@^0.10.5":
   version "0.10.5"
@@ -578,36 +578,12 @@
   optionalDependencies:
     ipx "^0.9.11"
 
-"@nuxt/kit@3.0.0-rc.11", "@nuxt/kit@^3.0.0-rc.10", "@nuxt/kit@^3.0.0-rc.9":
+"@nuxt/kit@3.0.0-rc.11", "@nuxt/kit@^3.0.0-rc.10", "@nuxt/kit@^3.0.0-rc.9", "@nuxt/kit@latest":
   version "3.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.0.0-rc.11.tgz#d147ef65509c073f1101fa1a19071e309bcf634f"
   integrity sha512-o0E/k635Lzcxp4K5t0ToHC6WwQ1wyN0EIqMAQEzgiUexoAhzdURr21QI0D6e6U461u4KP7x92wYM87VxhMFXmQ==
   dependencies:
     "@nuxt/schema" "3.0.0-rc.11"
-    c12 "^0.2.13"
-    consola "^2.15.3"
-    defu "^6.1.0"
-    globby "^13.1.2"
-    hash-sum "^2.0.0"
-    ignore "^5.2.0"
-    jiti "^1.16.0"
-    knitwork "^0.1.2"
-    lodash.template "^4.5.0"
-    mlly "^0.5.16"
-    pathe "^0.3.8"
-    pkg-types "^0.3.5"
-    scule "^0.3.2"
-    semver "^7.3.7"
-    unctx "^2.0.2"
-    unimport "^0.6.7"
-    untyped "^0.5.0"
-
-"@nuxt/kit@npm:@nuxt/kit-edge@latest":
-  version "3.0.0-rc.12-27736489.2e080c2"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.12-27736489.2e080c2.tgz#4b408bbbfc42e6dd9c1c4bd799c921e499461c87"
-  integrity sha512-6l/3DzPdPEJ86Po9V5wa/N+xnoK8JK2MqzdS1KCEOTIoGyr3wEqUk6/GiVucRrpLg9WPnw4VChlRPSekpk+rzA==
-  dependencies:
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27736489.2e080c2"
     c12 "^0.2.13"
     consola "^2.15.3"
     defu "^6.1.0"
@@ -644,23 +620,6 @@
   version "3.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.0.0-rc.11.tgz#5600d9be3e54d933c0669755919bf2750c0fc6d0"
   integrity sha512-EIBYQeBxJ+JZ8RjPRGaXM9+vtWMHQ4HsqZIw5a+p6hqRLGf53fHANT4vjMQZA4fAYBnJZJI7dB/OXkfyb/kikA==
-  dependencies:
-    c12 "^0.2.13"
-    create-require "^1.1.1"
-    defu "^6.1.0"
-    jiti "^1.16.0"
-    pathe "^0.3.8"
-    pkg-types "^0.3.5"
-    postcss-import-resolver "^2.0.0"
-    scule "^0.3.2"
-    std-env "^3.2.1"
-    ufo "^0.8.5"
-    unimport "^0.6.7"
-
-"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-rc.12-27736489.2e080c2":
-  version "3.0.0-rc.12-27736489.2e080c2"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-rc.12-27736489.2e080c2.tgz#440c5dcecf809944b3e4d077b1421073960439d7"
-  integrity sha512-iWoEs1pZtAZfPHCA53BVByTcwx0FC8yCdBtLSXRQUDmp64XBITHPBeZ9j8uyRgV5Mx7vgAYgHhFvMTkc8whQHw==
   dependencies:
     c12 "^0.2.13"
     create-require "^1.1.1"
