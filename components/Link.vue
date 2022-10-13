@@ -10,7 +10,7 @@ defineProps({
 <template>
   <a
     :href="href"
-    class="group font-medium text-[18px] font-public-sans text-blue-light translate-y-[-2px]"
+    class="group font-medium text-[18px] lg:text-[21px] font-public-sans text-blue-light translate-y-[-2px]"
   >
     <span
       :class="`
@@ -24,8 +24,8 @@ defineProps({
     <Icon
       icon="ArrowBottomRight"
       :class="`
-        text-[14px] scale-[.9] translate-y-[2px] translate-x-[7px] transition-transform duration-400
-        group-hover:translate-y-[7px] group-hover:translate-x-[10px] group-hover:scale-[1]
+        scale-[.6] translate-y-[22%] translate-x-[7px] transition-transform duration-400
+        group-hover:translate-y-[60%] group-hover:translate-x-[12px] group-hover:scale-[.7]
       `"
     />
   </a>

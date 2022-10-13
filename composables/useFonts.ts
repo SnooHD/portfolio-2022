@@ -20,7 +20,6 @@ export const useFonts = () => {
   const isFontLoaded = (name: string, options: Omit<FontTypeProps, 'name'> = {}) => {
     const { weight = 400, style = 'normal' } = options
     const fontName = getFontName({ name, weight, style })
-    console.log(fontName)
     return fonts.value.includes(fontName)
   }
 
@@ -37,7 +36,6 @@ export const useFonts = () => {
     }
 
     const fontName = getFontName({ name, weight, style })
-    console.log(fontName)
     fonts.value = [...fonts.value, fontName]
   }
 

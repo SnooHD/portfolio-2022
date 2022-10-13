@@ -113,79 +113,81 @@ const onButtonClick = (e: MouseEvent) => {
           transform: `translateX(${animationState['translate-y-work']}%)`
         }"
       >
-        <Link href="#next">Contact me</Link>
+        <Link href="#next" class="lg:text-[32px]">View my work</Link>
       </VisibilityWrapper>
-      <Button class="ml-auto w-[160px] relative h-[40px] shrink-0" @click.stop="onButtonClick">
-        <VisibilityWrapper
-          id="view-my-work"
-          :show-on-touch="false"
-          :hidden="1.5"
-          :style="{
-            opacity: animationState['opacity-out-work'],
-            transform: `translateY(${animationState['translate-y-work']}px)`
-          }"
-        >
-          View my work
-        </VisibilityWrapper>
-        <VisibilityWrapper
-          id="show-case"
-          :visible="1.5"
-          :hidden="2.5"
-          :show-on-touch="false"
-          :style="{
-            opacity:
-              animationState['opacity-in-showcase'] === 1
-                ? animationState['opacity-out-showcase']
-                : animationState['opacity-in-showcase'],
-            transform: `translateY(${
-              animationState['translate-y-in-showcase'] === 0
-                ? animationState['translate-y-out-showcase']
-                : animationState['translate-y-in-showcase']
-            }px)`
-          }"
-        >
-          <span
-            :class="`
-              flex flex-col transition-transform duration-400
-              ${workMenuIsOpen() ? 'translate-y-[0%]' : 'translate-y-[-50%]'}
-            `"
-            :aria-expanded="workMenuIsOpen()"
-            aria-controls="work-item"
+      <VisibilityWrapper id="view-my-work" :show-on-touch="false" :visible="0.5">
+        <Button class="ml-auto w-[160px] relative h-[40px] shrink-0" @click.stop="onButtonClick">
+          <VisibilityWrapper
+            id="view-my-work"
+            :show-on-touch="false"
+            :hidden="2.5"
+            :style="{
+              opacity: animationState['opacity-out-work'],
+              transform: `translateY(${animationState['translate-y-work']}px)`
+            }"
+          >
+            View my work
+          </VisibilityWrapper>
+          <VisibilityWrapper
+            id="show-case"
+            :visible="1.5"
+            :hidden="2.5"
+            :show-on-touch="false"
+            :style="{
+              opacity:
+                animationState['opacity-in-showcase'] === 1
+                  ? animationState['opacity-out-showcase']
+                  : animationState['opacity-in-showcase'],
+              transform: `translateY(${
+                animationState['translate-y-in-showcase'] === 0
+                  ? animationState['translate-y-out-showcase']
+                  : animationState['translate-y-in-showcase']
+              }px)`
+            }"
           >
             <span
               :class="`
+              flex flex-col transition-transform duration-400
+              ${workMenuIsOpen() ? 'translate-y-[0%]' : 'translate-y-[-50%]'}
+            `"
+              :aria-expanded="workMenuIsOpen()"
+              aria-controls="work-item"
+            >
+              <span
+                :class="`
                 transition-opacity duration-200
                 ${workMenuIsOpen() ? 'opacity-100 delay-100' : 'opacity-0'}
               `"
-            >
-              Close showcase
-            </span>
-            <span
-              :class="`
+              >
+                Close showcase
+              </span>
+              <span
+                :class="`
                 transition-opacity duration-200
                 ${workMenuIsOpen() ? 'opacity-0' : 'opacity-100 delay-100'}
               `"
-            >
-              View showcase
+              >
+                View showcase
+              </span>
             </span>
-          </span>
-        </VisibilityWrapper>
-        <VisibilityWrapper
-          id="submit-form"
-          :show-on-touch="false"
-          :visible="2.5"
-          :style="{
-            opacity: animationState['opacity-in-submit'],
-            transform: `translateY(${animationState['translate-y-submit']}px)`
-          }"
-        >
-          Submit
-        </VisibilityWrapper>
-      </Button>
+          </VisibilityWrapper>
+          <VisibilityWrapper
+            id="submit-form"
+            :show-on-touch="false"
+            :visible="2.5"
+            :style="{
+              opacity: animationState['opacity-in-submit'],
+              transform: `translateY(${animationState['translate-y-submit']}px)`
+            }"
+          >
+            Submit
+          </VisibilityWrapper>
+        </Button>
+      </VisibilityWrapper>
     </div>
     <div
       onclick="moveToSection"
-      class="flex justify-center font-public-sans font-light text-gray text-[14px]"
+      class="flex justify-center font-public-sans font-light text-gray text-[14px] sm:text-[16px] md:text-[18px] lg:text-[21px]"
     >
       <span>scroll {{ lastSection ? 'up' : 'down' }}</span>
     </div>

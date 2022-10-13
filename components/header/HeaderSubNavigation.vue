@@ -14,7 +14,7 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
 </script>
 
 <template>
-  <nav role="navigation" aria-label="Sub menu">
+  <nav role="navigation" aria-label="Sub menu" class="text-[18px] md:text-[21px] lg:text-[24px]">
     <div
       ref="menuWrapper"
       class="overflow-hidden relative h-[4.5em] mask-[linear-gradient(to_top,_transparent_0%,_black_20%,_black_80%,_transparent_100%)]"
@@ -31,7 +31,7 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
           v-for="(menuItem, index) in ['', ...menuItems]"
           :key="`header-sub-navigation-item-${index}`"
           :class="`
-            relative pl-3 transition-all duration-400 h-[1.5em] font-public-sans
+            relative pl-[.8em] transition-all duration-400 h-[1.5em] font-public-sans
             before:absolute before:bg-blue before:w-[.4em] before:h-[.4em] before:rounded-full font-light
             before:top-1/2 before:translate-y-[-50%] before:left-0 before:transition-all before:duration-400 before:ease-linear
             ${index === activeMenuIndex ? 'before:opacity-[1]' : 'before:opacity-[0]'}
@@ -47,8 +47,8 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
             }
             ${
               index !== activeMenuIndex
-                ? 'opacity-[.6] ml-[.4em] cursor-pointer text-[14px]'
-                : 'text-[16px]'
+                ? 'opacity-[.6] ml-[.4em] cursor-pointer text-[15px] md:text-[18px] lg:text-[21px]'
+                : ''
             }
             ${index < activeMenuIndex - 1 || index > activeMenuIndex + 1 ? 'opacity-[0]' : ''}
             ${index === 0 ? 'pointer-events-none' : ''}

@@ -51,12 +51,12 @@ const { pending: isFontLoading } = useAsyncData(
               flex flex-col w-full h-full lg:px-[30px] sm:px-[20px] px-[15px]
             `"
       >
-        <Header class="h-[10%] max-h-[120px] min-h-[75px]" />
+        <Header class="h-[10%] max-h-[100px] min-h-[80px]" />
         <!-- max height = 100% - (header + footer)  -->
-        <section class="sm:px-[20%] flex-grow flex max-h-[calc(100%-190px)] items-center">
+        <section class="sm:px-[10%] flex-grow flex max-h-[calc(100%-180px)] items-center">
           <slot />
         </section>
-        <Footer class="sm:px-[15%] h-[15%] max-h-[180px] min-h-[115px]" />
+        <Footer class="relative z-[2] sm:px-[10%] h-[20%] max-h-[180px] min-h-[100px]" />
       </div>
       <div
         class="flex-shrink-0"

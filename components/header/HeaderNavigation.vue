@@ -8,7 +8,7 @@ const { menuState, activeState } = useMenuOverlay('main-menu')
 <template>
   <nav class="relative select-none" role="navigation" aria-label="Main menu">
     <button
-      class="text-[30px] relative right-0 top-0 z-[110]"
+      class="text-[30px] md:text-[35px] lg:text-[40px] relative right-0 top-0 z-[110]"
       :aria-expanded="!!activeState"
       :aria-controls="activeState === 'work-item' ? 'work-item' : 'main-menu'"
       @click.stop="() => (menuState = !menuState)"

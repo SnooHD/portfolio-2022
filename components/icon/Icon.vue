@@ -2,6 +2,7 @@
 import type { PropType } from 'vue'
 import { IconType } from '~/types/icons.types'
 const icons = {
+  Email: resolveComponent('IconEmail'),
   Hamburger: resolveComponent('IconHamburger'),
   ArrowBottomRight: resolveComponent('IconArrowBottomRight'),
   ArrowRight: resolveComponent('IconArrowRight'),

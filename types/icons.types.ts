@@ -1,4 +1,5 @@
 export type IconType =
+  | 'Email'
   | 'Hamburger'
   | 'ArrowBottomRight'
   | 'Linkedin'

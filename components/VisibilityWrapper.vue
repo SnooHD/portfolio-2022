@@ -23,11 +23,7 @@ const isVisible = computed(() =>
 </script>
 
 <template>
-  <span
-    v-if="(showOnTouch && isTouching) || isVisible"
-    v-show="isVisible"
-    class="block w-full h-full"
-  >
+  <div v-if="(showOnTouch && isTouching) || isVisible" v-show="isVisible" class="w-full">
     <slot />
-  </span>
+  </div>
 </template>

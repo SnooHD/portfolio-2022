@@ -14,13 +14,12 @@ const { scrollPosition } = useScroller()
     -->
   <div
     :class="`
-      w-full max-h-full
+      w-full h-full
       ${scrollPosition > 1.5 ? 'h-full' : ''}
     `"
   >
     <IntroSelfPortrait />
-    <IntroText />
-    <IntroSocialMedia />
+    <Intro />
     <AboutMe />
     <Work />
     <Contact />
