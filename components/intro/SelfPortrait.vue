@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-const { getImageSrcSet, isImageLoaded, getImageName, setImageLoaded } = useImages()
+const { isImageLoaded, getImageName, setImageLoaded } = useImages()
 
+const { scrollPosition } = useScroller()
 const { animationState } = useAnimationScroller([
   {
-    property: 'translateX',
-    fromValue: 0,
-    toValue: 30,
+    property: 'maxWidth',
+    fromValue: 820,
+    toValue: 580,
     scrollStart: 0.1,
     scrollEnd: 0.9
   },
   {
-    property: 'translateY',
-    fromValue: 0,
-    toValue: 30,
+    property: 'scale',
+    fromValue: 1.4,
+    toValue: 1,
     scrollStart: 0.1,
     scrollEnd: 0.9
   },
@@ -24,11 +25,6 @@ const { animationState } = useAnimationScroller([
     scrollEnd: 1.5
   }
 ])
-
-const introTransitionEnded = useState('intro-transition-ended', () => false)
-const onTransitionEnd = () => {
-  introTransitionEnded.value = true
-}
 
 /**
  * Using `url(#image)` for shapeOutside does not work.
@@ -42,7 +38,6 @@ interface PictureRefProps {
 
 const pictureRef = ref<PictureRefProps>(null)
 const shapeOutsideSrc = useState<string>('shape-outside-src', () => null)
-const portraitImageWrapperRef = ref<HTMLDivElement>(null)
 
 const onImageLoad = () => {
   const { src, $el } = pictureRef.value
@@ -52,7 +47,6 @@ const onImageLoad = () => {
   }
 
   shapeOutsideSrc.value = image.currentSrc
-
   const name = getImageName(src)
   setImageLoaded(name)
 }
@@ -60,35 +54,38 @@ const onImageLoad = () => {
 onMounted(() => {
   onImageLoad()
 })
+
+const getCssMatchMedia = (value: number): number | false => {
+  const query = window.matchMedia('(min-width: 1280px)')
+  return query.matches ? value : false
+}
 </script>
 
 <template>
   <VisibilityWrapper :hidden="1.5">
-    <div ref="portraitImageWrapperRef">
-      <NuxtPicture
-        ref="pictureRef"
-        preset="image"
-        src="/images/self-portrait/self-portrait.png"
-        sizes="xs:800px"
-        preload
-        :srcset="getImageSrcSet('/images/self-portrait/self-portrait.png', 800)"
-        :img-attrs="{
-          alt: 'Mike de Snoo, senior developer portrait',
-          class: `
-            mb-0 w-full float-right object-contain object-bottom brightness-[0.8] contrast-[1.05] mt-[20px] md:mt-[40px] mr-[-45%]
-            ${!introTransitionEnded ? 'translate-x-[10%] translation-[transform] duration-400' : ''}
-          `,
-          style: {
-            shapeOutside: shapeOutsideSrc && `url(${shapeOutsideSrc})`,
-            opacity: animationState.opacity,
-            transform:
-              isImageLoaded('self-portrait') &&
-              `translateX(${animationState.translateX}px) translateY(${animationState.translateY}px)`
-          }
-        }"
-        @load="onImageLoad"
-        @transitionend="onTransitionEnd"
-      />
-    </div>
+    <NuxtPicture
+      ref="pictureRef"
+      preset="image"
+      src="/images/self-portrait/portrait.png"
+      preload
+      sizes="lg:100vw xl:820px"
+      :img-attrs="{
+        alt: 'Mike de Snoo, senior developer portrait',
+        class: `
+          mb-0 w-full h-full float-right object-contain object-bottom translation-[transform] duration-400
+          mt-[20px] lg:mt-[40px] max-w-[840px] xl:max-w-[580px] xl:scale-[1.4] origin-top
+          mr-[-55%] xs:mr-[-45%] lg:mr-[-20%] xl:mr-[-5%]
+          ${!isImageLoaded('portrait') ? 'translate-x-[10%]' : ''}
+        `,
+        style: {
+          shapeMargin: '15px',
+          shapeOutside: shapeOutsideSrc && `url(${shapeOutsideSrc})`,
+          opacity: animationState.opacity,
+          '--tw-scale-x': animationState.scale,
+          '--tw-scale-y': animationState.scale
+        }
+      }"
+      @load="onImageLoad"
+    />
   </VisibilityWrapper>
 </template>

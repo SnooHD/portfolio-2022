@@ -21,7 +21,10 @@ const { animationState } = useAnimationScroller([
   <VisibilityWrapper
     :visible="0.5"
     :hidden="1.5"
-    class="pt-[0px] xs:pt-[50px] h-xs:pt-[150px] max-w-[460px]"
+    :class="`
+      pt-[60px] h-xs:pt-[150px] max-w-[600px]
+      text-[16px] sm:text-[18px] lg:text-[21px]
+    `"
     :style="{
       opacity:
         animationState['opacity-in'] < 1

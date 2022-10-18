@@ -23,37 +23,42 @@ const { isImageLoaded } = useImages()
 const { isFontLoaded } = useFonts()
 
 const animateText = useState('animate-text', () => false)
-const preloadTimeout = ref()
 watchEffect(() => {
   const preLoaded =
     isFontLoaded('atyp-display', { weight: 700 }) &&
     isFontLoaded('atyp-text') &&
-    isImageLoaded('self-portrait')
+    isImageLoaded('portrait')
 
   if (!preLoaded) {
     return
   }
 
-  clearTimeout(preloadTimeout.value)
-  preloadTimeout.value = setTimeout(() => {
-    animateText.value = preLoaded
-  }, 400)
+  animateText.value = preLoaded
 })
 
-const getAnimationStateStyles = (index) => ({
-  opacity: `${animationState[`opacity-${index}`]}`,
-  transform: `translateX(${animationState[`translateX-${index}`]}%)`
-})
+const { introTextDone } = useTransitionDone()
+const timeoutRef = ref<NodeJS.Timeout>()
+const setTransitionDone = () => {
+  clearTimeout(timeoutRef.value)
+  timeoutRef.value = setTimeout(() => {
+    introTextDone.value = true
+  }, 300)
+}
 </script>
 
 <template>
   <div
-    class="text-white text-[24px] sm:text-[41px] md:text-[49px] md:leading-[61px] lg:text-[58px] lg:leading-[72px]"
+    class="text-white text-[28px] xs:text-[32px] sm:text-[36px] md:text-[40px] lg:text-[44px] xl:text-[48px] lg:leading-[1.25em]"
   >
-    <div :style="getAnimationStateStyles(0)">
+    <div
+      :style="{
+        opacity: `${animationState['opacity-0']}`,
+        transform: `translateX(${animationState['translateX-0']}%)`
+      }"
+    >
       <span
         :class="`
-          font-atyp-text text-[.75em] transition-[transform,_opacity] inline-block duration-400
+          font-atyp-text text-[.75em] leading-[1.4em] transition-[transform,_opacity] inline-block duration-400
           ${animateText ? 'translate-x-[0] opacity-[1]' : 'translate-x-[-50px] opacity-[0]'}  
         `"
       >
@@ -62,10 +67,15 @@ const getAnimationStateStyles = (index) => ({
     </div>
 
     <div class="font-atyp-display font-bold t">
-      <div :style="getAnimationStateStyles(1)">
+      <div
+        :style="{
+          opacity: `${animationState['opacity-1']}`,
+          transform: `translateX(${animationState['translateX-1']}%)`
+        }"
+      >
         <span
           :class="`
-            delay-[300ms] transition-[transform,_opacity] duration-[500ms] inline-block
+            delay-[600ms] transition-[transform,_opacity] duration-400 inline-block
             ${animateText ? 'translate-x-[0] opacity-[1]' : 'translate-x-[-50px] opacity-[0]'}
           `"
         >
@@ -81,10 +91,15 @@ const getAnimationStateStyles = (index) => ({
         </span>
       </div>
 
-      <div :style="getAnimationStateStyles(2)">
+      <div
+        :style="{
+          opacity: `${animationState['opacity-2']}`,
+          transform: `translateX(${animationState['translateX-2']}%)`
+        }"
+      >
         <span
           :class="`
-            delay-[1100ms] transition-[transform,_opacity] duration-400 inline-block
+            delay-[900ms] transition-[transform,_opacity] duration-400 inline-block
             ${animateText ? 'skew-x-[0] opacity-[1]' : 'skew-x-[-15deg] opacity-[0]'}  
           `"
         >
@@ -92,9 +107,10 @@ const getAnimationStateStyles = (index) => ({
         </span>
         <span
           :class="`
-            delay-[1100ms] transition-[opacity] duration-400 inline-block
+            delay-[900ms] transition-[opacity] duration-400 inline-block
             ${animateText ? 'opacity-[1]' : 'opacity-[0]'}  
           `"
+          @transitionend="setTransitionDone"
         >
           &nbsp;designer
         </span>

@@ -14,7 +14,11 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
 </script>
 
 <template>
-  <nav role="navigation" aria-label="Sub menu" class="text-[18px] md:text-[21px] lg:text-[24px]">
+  <nav
+    role="navigation"
+    aria-label="Sub menu"
+    class="text-[14px] xs:text-[16px] md:text-[18px] ml-[-.8em]"
+  >
     <div
       ref="menuWrapper"
       class="overflow-hidden relative h-[4.5em] mask-[linear-gradient(to_top,_transparent_0%,_black_20%,_black_80%,_transparent_100%)]"
@@ -46,9 +50,7 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
                 : ''
             }
             ${
-              index !== activeMenuIndex
-                ? 'opacity-[.6] ml-[.4em] cursor-pointer text-[15px] md:text-[18px] lg:text-[21px]'
-                : ''
+              index !== activeMenuIndex ? 'opacity-[.6] ml-[.4em] cursor-pointer text-[.875em]' : ''
             }
             ${index < activeMenuIndex - 1 || index > activeMenuIndex + 1 ? 'opacity-[0]' : ''}
             ${index === 0 ? 'pointer-events-none' : ''}

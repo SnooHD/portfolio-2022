@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  modules: ['@nuxt/image-edge', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxt/image', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
   mail: {
     message: {
       to: 'snoohd@gmail.com'
@@ -22,6 +22,14 @@ export default defineNuxtConfig({
     viewer: true
   },
   image: {
+    screens: {
+      xxs: 320,
+      xs: 460,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280
+    },
     presets: {
       image: {
         modifiers: {

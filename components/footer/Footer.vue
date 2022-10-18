@@ -113,21 +113,12 @@ const onButtonClick = (e: MouseEvent) => {
           transform: `translateX(${animationState['translate-y-work']}%)`
         }"
       >
-        <Link href="#next" class="lg:text-[32px]">View my work</Link>
+        <Link href="#next" class="text-[16px] xs:text-[18px] md:text-[21px] lg:text-[24px]">
+          View my work
+        </Link>
       </VisibilityWrapper>
-      <VisibilityWrapper id="view-my-work" :show-on-touch="false" :visible="0.5">
+      <VisibilityWrapper id="view-my-work" :show-on-touch="false" :visible="1.5">
         <Button class="ml-auto w-[160px] relative h-[40px] shrink-0" @click.stop="onButtonClick">
-          <VisibilityWrapper
-            id="view-my-work"
-            :show-on-touch="false"
-            :hidden="2.5"
-            :style="{
-              opacity: animationState['opacity-out-work'],
-              transform: `translateY(${animationState['translate-y-work']}px)`
-            }"
-          >
-            View my work
-          </VisibilityWrapper>
           <VisibilityWrapper
             id="show-case"
             :visible="1.5"
@@ -187,7 +178,7 @@ const onButtonClick = (e: MouseEvent) => {
     </div>
     <div
       onclick="moveToSection"
-      class="flex justify-center font-public-sans font-light text-gray text-[14px] sm:text-[16px] md:text-[18px] lg:text-[21px]"
+      class="flex justify-center font-public-sans font-light text-gray text-[14px] md:text-[16px] lg:text-[18px]"
     >
       <span>scroll {{ lastSection ? 'up' : 'down' }}</span>
     </div>

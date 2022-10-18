@@ -33,6 +33,8 @@ const { pending: isFontLoading } = useAsyncData(
     server: false
   }
 )
+
+const { fadeInClasses } = useTransitionDone()
 </script>
 
 <template>
@@ -46,17 +48,27 @@ const { pending: isFontLoading } = useAsyncData(
     >
       <div
         :class="`
-              ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
-              transition-opacity duration-300 max-w-[1280px] sticky top-0 flex-shrink-0
-              flex flex-col w-full h-full lg:px-[30px] sm:px-[20px] px-[15px]
-            `"
+          ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
+          transition-opacity duration-300 max-w-[1280px] sticky top-0 flex-shrink-0
+          flex flex-col w-full h-full lg:px-[30px] px-[20px]
+        `"
       >
-        <Header class="h-[10%] max-h-[100px] min-h-[80px]" />
+        <Header
+          :class="`
+            h-[10%] max-h-[100px] min-h-[80px]
+            ${fadeInClasses}
+          `"
+        />
         <!-- max height = 100% - (header + footer)  -->
-        <section class="sm:px-[10%] flex-grow flex max-h-[calc(100%-180px)] items-center">
+        <section class="sm:px-[5%] flex-grow flex h-[70%] items-center">
           <slot />
         </section>
-        <Footer class="relative z-[2] sm:px-[10%] h-[20%] max-h-[180px] min-h-[100px]" />
+        <Footer
+          :class="`
+            relative z-[2] sm:px-[5%] h-[15%] max-h-[120px] lg:max-h-[140px] min-h-[100px]
+            ${fadeInClasses}
+          `"
+        />
       </div>
       <div
         class="flex-shrink-0"

@@ -8,7 +8,7 @@ const { menuState, activeState } = useMenuOverlay('main-menu')
 <template>
   <nav class="relative select-none" role="navigation" aria-label="Main menu">
     <button
-      class="text-[30px] md:text-[35px] lg:text-[40px] relative right-0 top-0 z-[110]"
+      class="text-[28px] sm:text-[30px] md:text-[32px] lg:text-[34px] relative z-[110] flex items-center"
       :aria-expanded="!!activeState"
       :aria-controls="activeState === 'work-item' ? 'work-item' : 'main-menu'"
       @click.stop="() => (menuState = !menuState)"
@@ -18,18 +18,23 @@ const { menuState, activeState } = useMenuOverlay('main-menu')
     <MenuOverlay
       id="main-menu"
       type="main-menu"
-      class="origin-top-right right-[-75px] w-[300px] h-[300px] z-[99] top-[-100px]"
+      :class="`
+        origin-top-right right-[-75px] z-[99] top-[-100px]
+        w-[320px] h-[320px] sm:w-[350px] sm:h-[350px] xl:w-[380px] xl:h-[380px]
+      `"
     >
       <ul
         :class="`
-          inline-flex flex-col space-y-[4px] pl-[100px] pt-[115px]
+          inline-flex flex-col pl-[100px] pt-[115px] xl:pl-[120px]
+          space-y-[15px] sm:space-y-[20px] xl:space-y-[25px]
+          text-[18px] sm:text-[20px] xl:text-[22px]
         `"
       >
         <li
           v-for="(menuItem, index) in menuItems"
           :key="`header-navigation-item-${index}`"
           :class="`
-            relative pl-3 transition-all duration-400 h-[1.5em] font-public-sans text-[16px] font-light
+            relative pl-[1em] transition-all duration-400 h-[1.5em] font-public-sans font-light
             before:absolute before:bg-blue before:w-[.4em] before:h-[.4em] before:rounded-full
             before:top-1/2 before:translate-y-[-50%] before:left-0 before:transition-all before:duration-400 before:ease-linear
             ${

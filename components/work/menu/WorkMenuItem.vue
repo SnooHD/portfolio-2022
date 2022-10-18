@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import { WorkMenuItemProps } from '~/types/menu.types'
-const { getImageFormat, getImageSrcSet, hasWebpSupport } = useImages()
+const { getImageSrcSet } = useImages()
 
 defineProps({
   menuItems: {
@@ -24,7 +24,7 @@ defineProps({
         </div>
         <NuxtPicture
           :src="image"
-          :srcset="getImageSrcSet(image, 400)"
+          :srcset="getImageSrcSet(image, [{ width: 400 }])"
           preset="image"
           :img-attrs="{
             class: 'w-full max-w-[400px] mt-[10px]'
