@@ -1,35 +1,31 @@
 <script lang="ts" setup>
+const { scrollPosition } = useScroller()
 const { animationState } = useAnimationScroller([
   {
-    property: 'opacity-in',
     fromValue: 0,
     toValue: 1,
-    scrollStart: 0.5,
-    scrollEnd: 0.9
+    scrollStart: 0.75,
+    scrollEnd: 1,
+    property: 'opacity-in'
   },
   {
-    property: 'opacity-out',
     fromValue: 1,
     toValue: 0,
-    scrollStart: 1.1,
-    scrollEnd: 1.5
+    scrollStart: 1.75,
+    scrollEnd: 2,
+    property: 'opacity-out'
   }
 ])
 </script>
 
 <template>
-  <VisibilityWrapper
-    :visible="0.5"
-    :hidden="1.5"
+  <div
     :class="`
       pt-[60px] h-xs:pt-[150px] max-w-[600px]
       text-[16px] sm:text-[18px] lg:text-[21px]
     `"
     :style="{
-      opacity:
-        animationState['opacity-in'] < 1
-          ? animationState['opacity-in']
-          : animationState['opacity-out']
+      opacity: scrollPosition < 1 ? animationState['opacity-in'] : animationState['opacity-out']
     }"
   >
     <Paragraph>
@@ -42,5 +38,5 @@ const { animationState } = useAnimationScroller([
       systems. I find great joy in pressing buttons, but I also take great responsibility for how I
       press them.
     </Paragraph>
-  </VisibilityWrapper>
+  </div>
 </template>

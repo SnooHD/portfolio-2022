@@ -59,14 +59,14 @@ export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
   watch(element, (value, _oldValue, onCleanUp) => {
     const swipeElement = value
     if (swipeElement) {
-      swipeElement.addEventListener('touchstart', handleTouchStartEvent)
-      swipeElement.addEventListener('touchmove', handleTouchMoveEvent)
-      swipeElement.addEventListener('touchend', handleTouchEndEvent)
+      swipeElement.addEventListener('touchstart', handleTouchStartEvent, { passive: true })
+      swipeElement.addEventListener('touchmove', handleTouchMoveEvent, { passive: true })
+      swipeElement.addEventListener('touchend', handleTouchEndEvent, { passive: true })
 
       onCleanUp(() => {
-        swipeElement.removeEventListener('touchstart', handleTouchStartEvent)
-        swipeElement.removeEventListener('touchmove', handleTouchMoveEvent)
-        swipeElement.removeEventListener('touchend', handleTouchEndEvent)
+        swipeElement.removeEventListener('touchstart', handleTouchStartEvent, { passive: true })
+        swipeElement.removeEventListener('touchmove', handleTouchMoveEvent, { passive: true })
+        swipeElement.removeEventListener('touchend', handleTouchEndEvent, { passive: true })
       })
     }
   })

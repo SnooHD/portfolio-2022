@@ -1,14 +1,4 @@
 <script setup lang="ts">
-const { animationState } = useAnimationScroller([
-  {
-    property: 'opacity',
-    fromValue: 0,
-    toValue: 1,
-    scrollStart: 1.5,
-    scrollEnd: 1.9
-  }
-])
-
 const { state } = useWorkCarousel()
 const workItems = {
   0: resolveComponent('WorkBasicFit'),
@@ -21,20 +11,22 @@ watch(state, (stateValue, previousStateValue) => {
   stateValue < previousStateValue ? (animateButton.value = 'back') : (animateButton.value = 'next')
 })
 
-const onTransitionEnd = () => {
-  console.log('end')
-}
+const { transitionState } = useScrollTransition({
+  visible: 2,
+  hidden: 3,
+  id: 'work'
+})
 </script>
 
 <template>
-  <VisibilityWrapper :visible="1.5" :hidden="2.5" class="w-full h-full">
+  <div
+    :class="`
+      w-full h-full
+      ${transitionState}
+    `"
+  >
     <div class="relative w-full h-full">
-      <div
-        class="h-full flex-shrink-0 flex flex-nowrap transition-opacity duration-400"
-        :style="{
-          opacity: animationState.opacity
-        }"
-      >
+      <div class="h-full flex-shrink-0 flex flex-nowrap">
         <template v-for="(item, _key, index) in workItems" :key="`work-item-${item}`">
           <Component :is="item" :index="index" />
         </template>
@@ -63,10 +55,11 @@ const onTransitionEnd = () => {
           rounded-full absolute top-1/2 translate-y-[-50%] w-[60px] h-[60px] z-[110] group
           ${direction === 'left' ? 'left-[-20px]' : 'right-[-20px]'}
         `"
-        :style="{
-          opacity: animationState.opacity
-        }"
-        @click.stop="() => (direction === 'left' ? state-- : state++)"
+        @click.stop="
+          () => {
+            direction === 'left' ? state-- : state++
+          }
+        "
       >
         <div
           :class="`
@@ -89,5 +82,5 @@ const onTransitionEnd = () => {
         </div>
       </button>
     </Transition>
-  </VisibilityWrapper>
+  </div>
 </template>

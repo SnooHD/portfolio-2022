@@ -31,7 +31,7 @@ export const useMenu = () => {
     currentMenuIndex.value = scrollToPositionValue
   })
 
-  const activeMenuIndex = computed<number>(() => Math.round(currentMenuIndex.value) + 1)
+  const activeMenuIndex = computed<number>(() => Math.floor(currentMenuIndex.value) + 1)
 
   return {
     menuItems,

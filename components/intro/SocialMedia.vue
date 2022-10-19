@@ -1,16 +1,6 @@
 <script lang="ts" setup>
 import { IconType } from '~/types/icons.types'
 
-const { animationState } = useAnimationScroller([
-  {
-    property: 'opacity',
-    fromValue: 1,
-    toValue: 0,
-    scrollStart: 0.25,
-    scrollEnd: 0.5
-  }
-])
-
 interface SocialMediaProps {
   link: string
   text: string
@@ -39,6 +29,16 @@ const socials: SocialMediaProps[] = [
     text: 'Codesandbox'
   }
 ]
+
+const { animationState } = useAnimationScroller([
+  {
+    fromValue: 1,
+    toValue: 0,
+    scrollStart: 0.75,
+    scrollEnd: 1,
+    property: 'opacity-out'
+  }
+])
 </script>
 
 <template>
@@ -49,7 +49,7 @@ const socials: SocialMediaProps[] = [
         text-[16px] xs:text-[18px] lg:text-[21px] flex flex-col justify-center
       `"
       :style="{
-        opacity: animationState.opacity
+        opacity: animationState['opacity-out']
       }"
     >
       <li v-for="({ link, icon, text }, index) in socials" :key="`intro-social-list-${index}`">

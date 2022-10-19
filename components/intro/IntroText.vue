@@ -1,24 +1,4 @@
 <script lang="ts" setup>
-const getIndexState = (index) => index * (0.4 / 3)
-const { animationState } = useAnimationScroller(
-  [...Array(3)].flatMap((_value, index) => [
-    {
-      property: `translateX-${index}`,
-      fromValue: 0,
-      toValue: -5,
-      scrollStart: 0 + getIndexState(index),
-      scrollEnd: 0.5 + getIndexState(index)
-    },
-    {
-      property: `opacity-${index}`,
-      fromValue: 1,
-      toValue: 0,
-      scrollStart: 0 + getIndexState(index),
-      scrollEnd: 0.25 + getIndexState(index)
-    }
-  ])
-)
-
 const { isImageLoaded } = useImages()
 const { isFontLoaded } = useFonts()
 
@@ -44,6 +24,26 @@ const setTransitionDone = () => {
     introTextDone.value = true
   }, 300)
 }
+
+const getIndexState = (index) => index * (0.25 / 3)
+const { animationState } = useAnimationScroller(
+  [...Array(3)].flatMap((_value, index) => [
+    {
+      property: `translateX-${index}`,
+      fromValue: 0,
+      toValue: -10,
+      scrollStart: 0.5 + getIndexState(index),
+      scrollEnd: 0.75 + getIndexState(index)
+    },
+    {
+      property: `opacity-${index}`,
+      fromValue: 1,
+      toValue: 0,
+      scrollStart: 0.5 + getIndexState(index),
+      scrollEnd: 0.75 + getIndexState(index)
+    }
+  ])
+)
 </script>
 
 <template>
@@ -51,6 +51,10 @@ const setTransitionDone = () => {
     class="text-white text-[28px] xs:text-[32px] sm:text-[36px] md:text-[40px] lg:text-[44px] xl:text-[48px] lg:leading-[1.25em]"
   >
     <div
+      :class="`
+        transition-[opacity,_transform] duration-400
+        ${animationState['translateX-0'] < 0 ? '!transition-none' : ''}
+      `"
       :style="{
         opacity: `${animationState['opacity-0']}`,
         transform: `translateX(${animationState['translateX-0']}%)`
@@ -68,6 +72,10 @@ const setTransitionDone = () => {
 
     <div class="font-atyp-display font-bold t">
       <div
+        :class="`
+          transition-[opacity,_transform] duration-400
+          ${animationState['translateX-1'] < 0 ? '!transition-none' : ''}
+        `"
         :style="{
           opacity: `${animationState['opacity-1']}`,
           transform: `translateX(${animationState['translateX-1']}%)`
@@ -92,6 +100,10 @@ const setTransitionDone = () => {
       </div>
 
       <div
+        :class="`
+          transition-[opacity,_transform] duration-400
+          ${animationState['translateX-2'] < 0 ? '!transition-none' : ''}
+        `"
         :style="{
           opacity: `${animationState['opacity-2']}`,
           transform: `translateX(${animationState['translateX-2']}%)`

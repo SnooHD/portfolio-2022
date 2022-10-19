@@ -35,6 +35,21 @@ const { pending: isFontLoading } = useAsyncData(
 )
 
 const { fadeInClasses } = useTransitionDone()
+
+// const setViewHeight = () => {
+//   const viewHeight = window.outerHeight
+//   console.log(viewHeight)
+//   document.querySelector('html').style.height = `${viewHeight}px`
+// }
+
+// onMounted(() => {
+//   setViewHeight()
+//   window.addEventListener('resize', setViewHeight)
+// })
+
+// onUnmounted(() => {
+//   window.removeEventListener('resize', setViewHeight)
+// })
 </script>
 
 <template>

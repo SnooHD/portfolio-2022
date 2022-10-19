@@ -1,29 +1,35 @@
 <script lang="ts" setup>
 const props = defineProps({
-  showOnTouch: {
-    type: Boolean,
-    default: true
-  },
   visible: {
     type: Number,
-    default: -1
+    default: 0
   },
   hidden: {
     type: Number,
-    default: null
+    default: 4
+  },
+  id: {
+    type: String,
+    required: true
   }
 })
 
-const { scrollPosition, isTouching } = useScroller()
-const isVisible = computed(() =>
-  props.hidden
-    ? scrollPosition.value > props.visible && scrollPosition.value <= props.hidden
-    : scrollPosition.value > props.visible
+const { scrollPosition } = useScroller()
+
+// isRendered makes sure that on initial load only the current section is rendered into view.
+// This makes sure crawlers get the right data from the section
+const isRendered = useState(
+  `${props.id}-is-rendered`,
+  () => scrollPosition.value >= props.visible && scrollPosition.value <= props.hidden
 )
+
+onMounted(() => {
+  isRendered.value = true
+})
 </script>
 
 <template>
-  <div v-if="(showOnTouch && isTouching) || isVisible" v-show="isVisible">
+  <div v-if="isRendered" class="absolute w-full h-full top-0 left-0">
     <slot />
   </div>
 </template>
