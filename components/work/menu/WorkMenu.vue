@@ -20,13 +20,13 @@ const workItemMenus = {
       <!-- Counter the negative offset so the content is back at the original place -->
       <div
         :class="`
-        absolute left-[300px] top-[200px] transition-opacity duration-400 w-full
+        absolute left-[300px] top-[200px] transition-opacity duration-300 w-full
       `"
       >
         <template v-for="(item, _key, index) in workItemMenus" :key="`work-item-menu-${item}`">
           <div
             :class="`
-            transition-opacity duration-400 absolute left-0 top-0
+            transition-opacity duration-300 absolute left-0 top-0
             ${state === index ? 'opacity-100' : 'opacity-0'}
           `"
           >

@@ -45,13 +45,13 @@ const { transitionState } = useScrollTransition({
       :key="`my-work-direction-${direction}`"
       enter-from-class="!opacity-[0]"
       leave-to-class="!opacity-[0]"
-      enter-active-class="duration-400 transition-opacity"
-      leave-active-class="duration-400 transition-opacity"
+      enter-active-class="duration-300 transition-opacity"
+      leave-active-class="duration-300 transition-opacity"
     >
       <button
         v-show="direction === 'left' ? state > 0 : state < Object.keys(workItems).length - 1"
         :class="`
-          transition-opacity duration-400 bg-white/[.1] backdrop-blur-[2.5px] flex items-center justify-center
+          transition-opacity duration-300 bg-white/[.1] backdrop-blur-[2.5px] flex items-center justify-center
           rounded-full absolute top-1/2 translate-y-[-50%] w-[60px] h-[60px] z-[110] group
           ${direction === 'left' ? 'left-[-20px]' : 'right-[-20px]'}
         `"

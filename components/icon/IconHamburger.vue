@@ -22,7 +22,7 @@ defineProps({
       width="27"
       height="2.5"
       :class="`
-        transition-transform duration-400 origin-top-right stroke-gray fill-gray
+        transition-transform duration-300 origin-top-right stroke-gray fill-gray
         ${animationState ? 'rotate-[-45deg] translate-x-[-2px]' : ''}
       `"
       stroke-width="0.5"
@@ -33,7 +33,7 @@ defineProps({
       width="22"
       height="2.5"
       :class="`
-        transition-all duration-400 origin-right stroke-gray fill-gray
+        transition-all duration-300 origin-right stroke-gray fill-gray
         ${animationState ? 'scale-x-[0] opacity-[0]' : ''}
       `"
       stroke-width="0.5"
@@ -44,7 +44,7 @@ defineProps({
       height="2.5"
       width="27"
       :class="`
-        transition-transform duration-400 origin-bottom-right stroke-gray fill-gray
+        transition-transform duration-300 origin-bottom-right stroke-gray fill-gray
         ${animationState ? 'scale-x-[1] rotate-[45deg] translate-x-[-3px]' : 'scale-x-[.45]'}
       `"
       stroke-width="0.5"

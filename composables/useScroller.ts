@@ -4,13 +4,12 @@
 
 export const useScroller = () => {
   const scrollSectionHeight = 400
-  const scrollRef = ref<HTMLDivElement>()
 
   const isScrollingToPosition = useState('is-scrolling-to-position', () => null)
   const scrollToScrollPosition = (top: number) => {
     isScrollingToPosition.value = top * scrollSectionHeight
 
-    scrollRef.value.scroll({
+    window.scroll({
       top: top * scrollSectionHeight,
       behavior: 'smooth'
     })
@@ -20,35 +19,29 @@ export const useScroller = () => {
   const lastScrollPosition = useState<number>('active-scroll-position', () => null)
   const scrollDirection = useState<'down' | 'up'>('scroll-direction', () => 'down')
 
-  const handleScrollEvent = (e: WheelEvent) =>
+  const handleScrollEvent = () =>
     requestAnimationFrame(() => {
-      const currentTarget = e.target as HTMLDivElement
-      const { scrollTop } = currentTarget
-      scrollPosition.value = Math.max(scrollTop / scrollSectionHeight, 0)
+      const { scrollY } = window
+      scrollPosition.value = Math.max(scrollY / scrollSectionHeight, 0) + 0.8
 
-      scrollDirection.value = lastScrollPosition.value < scrollRef.value.scrollTop ? 'down' : 'up'
-      lastScrollPosition.value = scrollRef.value.scrollTop
+      scrollDirection.value = lastScrollPosition.value < window.scrollY ? 'down' : 'up'
+      lastScrollPosition.value = window.scrollY
     })
 
-  watch([scrollRef], (value, _oldValue, onCleanUp) => {
-    const [scrollElement] = value
-    if (scrollElement) {
-      // scrollElement.addEventListener('scroll', handleScrollEvent)
-      // onCleanUp(() => {
-      //   scrollElement.removeEventListener('scroll', handleScrollEvent)
-      // })
-    }
+  onMounted(() => {
+    document.addEventListener('scroll', handleScrollEvent)
+  })
+
+  onUnmounted(() => {
+    document.removeEventListener('scroll', handleScrollEvent)
   })
 
   const scrollToPosition = useState('scroll-to-position', () => 0)
   watch(scrollToPosition, (scrollToPositionValue) => {
-    if (scrollRef.value) {
-      scrollToScrollPosition(scrollToPositionValue)
-    }
+    scrollToScrollPosition(scrollToPositionValue)
   })
 
   return {
-    scrollRef,
     scrollPosition,
     scrollDirection,
     scrollToPosition,

@@ -53,7 +53,7 @@ const onTransitionEnd = () => {
     ref="menuRef"
     :class="`
       flex items-center justify-center absolute z-[99]
-      transition-transform duration-400 h-full w-full
+      transition-transform duration-300 h-full w-full
       ${menuInvisible ? 'invisible' : 'visible'}
       ${menuState ? 'scale-[1]' : 'scale-[0]'}
     `"

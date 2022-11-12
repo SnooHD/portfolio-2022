@@ -29,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="isRendered" class="absolute w-full h-full top-0 left-0">
+  <div v-if="isRendered" class="w-full h-full">
     <slot />
   </div>
 </template>

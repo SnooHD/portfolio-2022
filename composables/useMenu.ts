@@ -16,7 +16,7 @@ export const useMenu = () => {
   const triggeredScroll = useState('triggered-scroll', () => false)
   watch(scrollPosition, (scrollPositionValue) => {
     if (!triggeredScroll.value && activeMenuIndex.value !== scrollPositionValue) {
-      currentMenuIndex.value = scrollPositionValue
+      currentMenuIndex.value = Math.floor(scrollPositionValue)
     }
 
     // If the scrollPositionValue is the scrollToPosition.value we know

@@ -26,18 +26,17 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
       <ul
         :class="`
           text-white inline-flex flex-col select-none
-          ${navWrapperTransition ? 'transition-transform duration-400' : ''}
+          transition-transform duration-300
         `"
         :style="{ transform: `translateY(${menuOffset}px)` }"
-        @transitionend="() => (navWrapperTransition = false)"
       >
         <li
           v-for="(menuItem, index) in ['', ...menuItems]"
           :key="`header-sub-navigation-item-${index}`"
           :class="`
-            relative pl-[.8em] transition-all duration-400 h-[1.5em] font-public-sans
+            relative pl-[.8em] transition-all duration-300 h-[1.5em] font-public-sans
             before:absolute before:bg-blue before:w-[.4em] before:h-[.4em] before:rounded-full font-light
-            before:top-1/2 before:translate-y-[-50%] before:left-0 before:transition-all before:duration-400 before:ease-linear
+            before:top-1/2 before:translate-y-[-50%] before:left-0 before:transition-all before:duration-300 before:ease-linear
             ${index === activeMenuIndex ? 'before:opacity-[1]' : 'before:opacity-[0]'}
             ${
               index < activeMenuIndex

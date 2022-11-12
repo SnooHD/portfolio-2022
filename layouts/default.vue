@@ -3,7 +3,7 @@ import { fontWeightTypes } from '~/composables/useFonts'
 
 const { loadFont } = useFonts()
 const { menuItems } = useMenu()
-const { scrollRef, scrollSectionHeight } = useScroller()
+const { scrollSectionHeight } = useScroller()
 
 const { pending: isFontLoading } = useAsyncData(
   'preload-fonts',
@@ -35,62 +35,51 @@ const { pending: isFontLoading } = useAsyncData(
 )
 
 const { fadeInClasses } = useTransitionDone()
-
-// const setViewHeight = () => {
-//   const viewHeight = window.outerHeight
-//   console.log(viewHeight)
-//   document.querySelector('html').style.height = `${viewHeight}px`
-// }
-
-// onMounted(() => {
-//   setViewHeight()
-//   window.addEventListener('resize', setViewHeight)
-// })
-
-// onUnmounted(() => {
-//   window.removeEventListener('resize', setViewHeight)
-// })
 </script>
 
 <template>
-  <div class="relative w-full h-full">
-    <div class="absolute z-[-1] left-0 top-0 overflow-hidden w-full h-full">
-      <Background />
-    </div>
+  <div class="w-full h-full">
     <div
-      ref="scrollRef"
-      class="overflow-y-auto overflow-x-hidden scroll-smooth z-[0] w-full h-full flex flex-col items-center"
-    >
-      <div
-        :class="`
+      :class="`
           ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
-          transition-opacity duration-300 max-w-[1280px] sticky top-0 flex-shrink-0
-          flex flex-col w-full h-full lg:px-[30px] px-[20px]
+          transition-opacity duration-300 w-full h-screen flex justify-center  sticky top-0
         `"
-      >
+    >
+      <div class="z-[-1] left-0 top-0 overflow-hidden w-full h-full fixed">
+        <Background />
+      </div>
+      <div class="max-w-[1280px] flex flex-col w-full h-full lg:px-[30px] px-[20px]">
         <Header
           :class="`
             h-[10%] max-h-[100px] min-h-[80px]
             ${fadeInClasses}
           `"
         />
-        <!-- max height = 100% - (header + footer)  -->
-        <section class="sm:px-[5%] flex-grow flex h-[70%] items-center">
+        <section class="sm:px-[5%] flex-grow-0 flex h-[80%] items-center">
           <slot />
         </section>
-        <Footer
+        <!--
+          Chromium mobile browsers are right now not able to animate viewport changes
+          when the menu bar scrolls in or out. To keep things tidy, the footer has been
+          set to a fixed position with bottom 0.
+        -->
+        <div
           :class="`
-            relative z-[2] sm:px-[5%] h-[15%] max-h-[120px] lg:max-h-[140px] min-h-[100px]
+            fixed px-[20px] bottom-0 h-[15%] max-h-[120px] lg:max-h-[140px] min-h-[100px] w-full
+            transition-[all] duration-300 max-w-[1280px] left-1/2 translate-x-[-50%] z-[1]
             ${fadeInClasses}
           `"
-        />
+        >
+          <Footer class="sm:px-[5%]" />
+        </div>
       </div>
-      <div
-        class="flex-shrink-0"
-        :style="{
-          height: `${(menuItems.length - 1) * scrollSectionHeight}px`
-        }"
-      />
     </div>
+
+    <div
+      class="flex-shrink-0"
+      :style="{
+        height: `calc(100vh + ${(menuItems.length - 2) * scrollSectionHeight}px)`
+      }"
+    />
   </div>
 </template>

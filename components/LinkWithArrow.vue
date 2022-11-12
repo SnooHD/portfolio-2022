@@ -16,7 +16,7 @@ defineProps({
       :class="`
         inline-block relative
         before:absolute before:w-full before:h-[2px] before:left-0 before:bottom-[0px] before:scale-x-[0]
-        before:transition-transform before:duration-400 before:bg-blue-light before:origin-left group-hover:before:scale-x-[1]
+        before:transition-transform before:duration-300 before:bg-blue-light before:origin-left group-hover:before:scale-x-[1]
       `"
     >
       <slot />
@@ -24,7 +24,7 @@ defineProps({
     <Icon
       icon="ArrowBottomRight"
       :class="`
-        scale-[.6] translate-y-[22%] translate-x-[7px] transition-transform duration-400
+        scale-[.6] translate-y-[22%] translate-x-[7px] transition-transform duration-300
         group-hover:translate-y-[60%] group-hover:translate-x-[12px] group-hover:scale-[.7]
       `"
     />

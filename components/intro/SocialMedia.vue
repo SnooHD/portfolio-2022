@@ -34,7 +34,7 @@ const { animationState } = useAnimationScroller([
   {
     fromValue: 1,
     toValue: 0,
-    scrollStart: 0.75,
+    scrollStart: 0.8,
     scrollEnd: 1,
     property: 'opacity-out'
   }
@@ -58,7 +58,7 @@ const { animationState } = useAnimationScroller([
             <Icon
               :icon="icon"
               :class="`
-                transition-[color,_transform] duration-400
+                transition-[color,_transform] duration-300
                 translate-y-[3px] scale-[1.25]
                 group-hover:scale-[1.4] group-hover:rotate-[2deg] group-hover:text-blue-light
               `"
@@ -68,12 +68,12 @@ const { animationState } = useAnimationScroller([
                   ml-[15px] md:ml-[25px]
                   after:w-full after:h-[2px] after:bg-white after:scale-x-[0]
                   after:absolute after:left-0 after:bottom-[-1px] after:block after:transition-transform
-                  after:duration-400 after:origin-left group-hover:after:scale-x-[1]
+                  after:duration-300 after:origin-left group-hover:after:scale-x-[1]
                   relative inline-block
               `"
             >
               <span
-                class="transition-transform duration-400 inline-block group-hover:translate-y-[-3px] inline-block"
+                class="transition-transform duration-300 inline-block group-hover:translate-y-[-3px] inline-block"
               >
                 {{ text }}
               </span>

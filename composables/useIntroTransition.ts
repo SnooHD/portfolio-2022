@@ -3,12 +3,12 @@ export const useTransitionDone = () => {
 
   const fadeInClasses = useState(
     'fade-in-classes',
-    () => 'transition-[opacity,_transform] duration-400 opacity-0 translate-y-[15px]'
+    () => 'transition-[opacity,_transform] duration-300 opacity-0 translate-y-[15px]'
   )
 
   watch(introTextDone, (introTextDoneValue) => {
     if (introTextDoneValue) {
-      fadeInClasses.value = 'transition-[opacity,_transform] duration-400 opacity-1 translate-y-[0]'
+      fadeInClasses.value = 'transition-[opacity,_transform] duration-300 opacity-1 translate-y-[0]'
     }
   })
 

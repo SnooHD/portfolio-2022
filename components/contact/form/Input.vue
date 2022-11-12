@@ -26,7 +26,7 @@ watch(messageRef, (messageRefValue) => {
             :key="`form-input-${$attrs.name}-${key}`"
             :class="`
               ${context.classes.message}
-              transition-[opacity,_height] duration-400
+              transition-[opacity,_height] duration-300
             `"
             :style="{
               height: `${elementHeight[index]}px`
