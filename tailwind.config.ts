@@ -27,7 +27,8 @@ export default <Config>{
     fontFamily: {
       'public-sans': ['Public Sans', 'sans-serif'],
       'atyp-display': ['Atyp Display', 'sans-serif'],
-      'atyp-text': ['Atyp Text', 'sans-serif']
+      'atyp-text': ['Atyp Text', 'sans-serif'],
+      'heading-pro': ['Heading Pro', 'sans-serif']
     },
     extend: {
       colors: {
@@ -37,6 +38,7 @@ export default <Config>{
           dark: '#037D98'
         },
         gray: {
+          light: '#424242',
           DEFAULT: '#CFCFCF'
         },
         black: {
@@ -46,7 +48,8 @@ export default <Config>{
         white: {
           DEFAULT: '#fff',
           opaque: 'rgba(255,255,255,.1)'
-        }
+        },
+        mint: '#7ADEC9'
       },
       transitionDuration: {
         400: '400ms'
@@ -70,6 +73,10 @@ export default <Config>{
       animation: {
         'move-left': 'move-left 1200ms linear infinite',
         'move-right': 'move-right 1200ms linear infinite'
+      },
+      backgroundImage: {
+        'orange-gradient': 'linear-gradient(135deg, #FFAA30 0%, #FE7000 36.14%, #FE7000 100%)',
+        'gray-gradient': 'linear-gradient(135deg, #2D2D2D 31.77%, #121212 100%)'
       }
     }
   },
