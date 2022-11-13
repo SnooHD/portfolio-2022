@@ -1,6 +1,6 @@
 export interface UseScrollTransitionsProps {
   visible: number
-  hidden: number
+  hidden?: number
   transitionDelay?: string
   transitionClasses?: string
   transitionIn?: string
@@ -24,7 +24,10 @@ export const useScrollTransition = ({
     scrollPosition,
     (scrollPositionValue) => {
       const delayClass = scrollDirection.value === 'down' ? transitionDelay : ''
-      if (scrollPositionValue >= visible && scrollPositionValue <= hidden) {
+      if (
+        (!hidden && scrollPositionValue >= visible) ||
+        (hidden && scrollPositionValue >= visible && scrollPositionValue <= hidden)
+      ) {
         transitionState.value = `${transitionClasses} ${delayClass} ${transitionIn}`
         return
       }

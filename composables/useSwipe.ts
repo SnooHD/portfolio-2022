@@ -5,8 +5,8 @@
 import { UseSwipeProps } from '~/types/swipe.types'
 
 export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
-  const touchStartX = useState<number>('touch-start-x', () => null)
-  const touchStartY = useState<number>('touch-start-y', () => null)
+  const touchStartX = useState<number | null>('touch-start-x', () => null)
+  const touchStartY = useState<number | null>('touch-start-y', () => null)
 
   const handleTouchStartEvent = (e: TouchEvent) =>
     requestAnimationFrame(() => {
@@ -18,8 +18,8 @@ export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
       touchStartX.value = e.touches[0].clientX
     })
 
-  const touchEndX = useState<number>('touch-end-x', () => null)
-  const touchEndY = useState<number>('touch-end-y', () => null)
+  const touchEndX = useState<number | null>('touch-end-x', () => null)
+  const touchEndY = useState<number | null>('touch-end-y', () => null)
   const handleTouchMoveEvent = (e: TouchEvent) =>
     requestAnimationFrame(() => {
       if (direction === 'y') {
@@ -34,8 +34,8 @@ export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
     requestAnimationFrame(() => {
       const moved =
         direction === 'y'
-          ? touchEndY.value - touchStartY.value
-          : touchEndX.value - touchStartX.value
+          ? (touchEndY.value as number) - (touchStartY.value as number)
+          : (touchEndX.value as number) - (touchStartX.value as number)
 
       if (Math.abs(moved) > 100) {
         if (moved > 0) {
@@ -44,7 +44,7 @@ export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
           onSwipe('next')
         }
       } else {
-        onSwipe(null)
+        onSwipe()
       }
 
       touchStartX.value = null
@@ -59,14 +59,14 @@ export const useSwipe = ({ element, onSwipe, direction }: UseSwipeProps) => {
   watch(element, (value, _oldValue, onCleanUp) => {
     const swipeElement = value
     if (swipeElement) {
-      swipeElement.addEventListener('touchstart', handleTouchStartEvent, { passive: true })
-      swipeElement.addEventListener('touchmove', handleTouchMoveEvent, { passive: true })
-      swipeElement.addEventListener('touchend', handleTouchEndEvent, { passive: true })
+      swipeElement.addEventListener('touchstart', handleTouchStartEvent)
+      swipeElement.addEventListener('touchmove', handleTouchMoveEvent)
+      swipeElement.addEventListener('touchend', handleTouchEndEvent)
 
       onCleanUp(() => {
-        swipeElement.removeEventListener('touchstart', handleTouchStartEvent, { passive: true })
-        swipeElement.removeEventListener('touchmove', handleTouchMoveEvent, { passive: true })
-        swipeElement.removeEventListener('touchend', handleTouchEndEvent, { passive: true })
+        swipeElement.removeEventListener('touchstart', handleTouchStartEvent)
+        swipeElement.removeEventListener('touchmove', handleTouchMoveEvent)
+        swipeElement.removeEventListener('touchend', handleTouchEndEvent)
       })
     }
   })

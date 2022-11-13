@@ -14,7 +14,7 @@ const { pending: isFontLoading } = useAsyncData(
       'Atyp Text': [400]
     }
 
-    const fontPromises = []
+    const fontPromises: Promise<void>[] = []
     Object.entries(fonts).forEach(([fontName, fontWeights]) =>
       fontWeights.forEach((fontWeight) => {
         fontPromises.push(
@@ -42,10 +42,10 @@ const { fadeInClasses } = useTransitionDone()
     <div
       :class="`
           ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
-          transition-opacity duration-300 w-full h-screen flex justify-center  sticky top-0
+          transition-opacity duration-300 w-full h-screen flex justify-center fixed top-0
         `"
     >
-      <div class="z-[-1] left-0 top-0 overflow-hidden w-full h-full fixed">
+      <div class="z-[-1] left-0 top-0 overflow-hidden w-full h-screen fixed">
         <Background />
       </div>
       <div class="max-w-[1280px] flex flex-col w-full h-full lg:px-[30px] px-[20px]">
@@ -55,9 +55,10 @@ const { fadeInClasses } = useTransitionDone()
             ${fadeInClasses}
           `"
         />
-        <section class="sm:px-[5%] flex-grow-0 flex h-[80%] items-center">
+        <section class="sm:px-[5%] flex-grow flex items-center">
           <slot />
         </section>
+        <div class="h-[15%] max-h-[120px] lg:max-h-[140px] min-h-[100px]" />
         <!--
           Chromium mobile browsers are right now not able to animate viewport changes
           when the menu bar scrolls in or out. To keep things tidy, the footer has been
@@ -65,7 +66,7 @@ const { fadeInClasses } = useTransitionDone()
         -->
         <div
           :class="`
-            fixed px-[20px] bottom-0 h-[15%] max-h-[120px] lg:max-h-[140px] min-h-[100px] w-full
+            fixed px-[20px] bottom-0 h-[15vh] max-h-[120px] lg:max-h-[140px] min-h-[100px] w-full
             transition-[all] duration-300 max-w-[1280px] left-1/2 translate-x-[-50%] z-[1]
             ${fadeInClasses}
           `"
@@ -78,7 +79,7 @@ const { fadeInClasses } = useTransitionDone()
     <div
       class="flex-shrink-0"
       :style="{
-        height: `calc(100vh + ${(menuItems.length - 2) * scrollSectionHeight}px)`
+        height: `calc(100vh + ${(menuItems.length - 1) * scrollSectionHeight}px)`
       }"
     />
   </div>

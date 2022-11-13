@@ -8,7 +8,14 @@ const { currentMenuIndex } = useMenu()
 
 <template>
   <div class="w-full h-full relative z-[1]">
-    <VisibilityWrapper id="intro" :hidden="2" :class="currentMenuIndex < 2 ? 'z-[1]' : 'z-[0]'">
+    <VisibilityWrapper
+      id="intro"
+      :hidden="2"
+      :class="`
+        absolute left-0 top-0
+        ${currentMenuIndex < 2 ? 'z-[1]' : 'z-[0]'}
+      `"
+    >
       <!--
         We are using shape-outside with the self portrait so the text wraps around the image,
         this css property only works with inline floated elements
@@ -22,12 +29,22 @@ const { currentMenuIndex } = useMenu()
       id="work"
       :visible="2"
       :hidden="3"
-      :class="currentMenuIndex === 2 ? 'z-[1]' : 'z-[0]'"
+      :class="`
+        absolute left-0 top-0
+        ${currentMenuIndex === 2 ? 'z-[1]' : 'z-[0]'}
+      `"
     >
       <Work />
     </VisibilityWrapper>
-    <!-- <VisibilityWrapper :hidden="3" :class="currentMenuIndex === 3 ? 'z-[1]' : 'z-[0]'"> -->
-    <!-- <Contact /> -->
-    <!-- </VisibilityWrapper> -->
+    <VisibilityWrapper
+      id="contact-form"
+      :visible="3"
+      :class="`
+        absolute left-0 top-0
+        ${currentMenuIndex === 3 ? 'z-[1]' : 'z-[0]'}
+      `"
+    >
+      <Contact />
+    </VisibilityWrapper>
   </div>
 </template>

@@ -5,7 +5,7 @@ const menuWrapper = ref<HTMLUListElement>()
 const menuItemHeight = useState<number>('menuItemHeight', () => 0)
 
 onMounted(() => {
-  const menuItem = menuWrapper.value.querySelector('li')
+  const menuItem = (menuWrapper.value as HTMLUListElement).querySelector('li') as HTMLLIElement
   menuItemHeight.value = menuItem.getBoundingClientRect().height
 })
 

@@ -73,7 +73,7 @@ const { animationState } = useAnimationScroller([
               `"
             >
               <span
-                class="transition-transform duration-300 inline-block group-hover:translate-y-[-3px] inline-block"
+                class="transition-transform duration-300 group-hover:translate-y-[-3px] inline-block"
               >
                 {{ text }}
               </span>

@@ -5,7 +5,7 @@
 export const useScroller = () => {
   const scrollSectionHeight = 400
 
-  const isScrollingToPosition = useState('is-scrolling-to-position', () => null)
+  const isScrollingToPosition = useState<number>('is-scrolling-to-position', () => 0)
   const scrollToScrollPosition = (top: number) => {
     isScrollingToPosition.value = top * scrollSectionHeight
 
@@ -15,8 +15,8 @@ export const useScroller = () => {
     })
   }
 
-  const scrollPosition = useState('scroll-position', () => 0)
-  const lastScrollPosition = useState<number>('active-scroll-position', () => null)
+  const scrollPosition = useState<number | null>('scroll-position', () => null)
+  const lastScrollPosition = useState<number | null>('active-scroll-position', () => null)
   const scrollDirection = useState<'down' | 'up'>('scroll-direction', () => 'down')
 
   const handleScrollEvent = () =>
@@ -24,7 +24,7 @@ export const useScroller = () => {
       const { scrollY } = window
       scrollPosition.value = Math.max(scrollY / scrollSectionHeight, 0) + 0.8
 
-      scrollDirection.value = lastScrollPosition.value < window.scrollY ? 'down' : 'up'
+      scrollDirection.value = (lastScrollPosition.value as number) < window.scrollY ? 'down' : 'up'
       lastScrollPosition.value = window.scrollY
     })
 

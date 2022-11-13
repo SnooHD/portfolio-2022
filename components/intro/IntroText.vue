@@ -25,7 +25,7 @@ const setTransitionDone = () => {
   }, 300)
 }
 
-const getIndexState = (index) => index * (0.2 / 3)
+const getIndexState = (index: number) => index * (0.2 / 3)
 const { animationState } = useAnimationScroller(
   [...Array(3)].flatMap((_value, index) => [
     {

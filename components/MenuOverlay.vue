@@ -21,7 +21,7 @@ const { menuState } = useMenuOverlay(props.type)
 const menuRef = ref<HTMLMenuElement>()
 const { addBodyEvent, removeBodyEvent } = useBodyEvent('click', (e: PointerEvent) => {
   // ignore clicks on child element
-  if (e.target !== menuRef.value && menuRef.value.contains(e.target as Node)) {
+  if (e.target !== menuRef.value && (menuRef.value as HTMLMenuElement).contains(e.target as Node)) {
     return
   }
 

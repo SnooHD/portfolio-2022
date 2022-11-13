@@ -5,7 +5,7 @@ export default {
     validationVisibility: 'submit',
     classes: generateClasses({
       global: {
-        form: 'space-y-[10px]',
+        form: 'space-y-[10px] h-full flex flex-col',
         inner: `
           border-b-[1px] border-white/[.15] transition-[border,_color] duration-300
           focus-within:border-white/[.75] focus-within:text-white text-white/[.6] flex-grow
@@ -20,7 +20,10 @@ export default {
         wrapper: 'flex font-public-sans'
       },
       textarea: {
-        inner: '!border-none'
+        inner: '!border-none',
+        outer: 'flex-grow',
+        wrapper: 'h-full',
+        input: 'h-full resize-none'
       }
     })
   }

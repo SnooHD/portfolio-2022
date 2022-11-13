@@ -29,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="isRendered" class="w-full h-full">
+  <div v-if="isRendered" :id="id" class="w-full h-full">
     <slot />
   </div>
 </template>

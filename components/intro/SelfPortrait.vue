@@ -11,11 +11,11 @@ interface PictureRefProps {
   src: string
 }
 
-const pictureRef = ref<PictureRefProps>(null)
-const shapeOutsideSrc = useState<string>('shape-outside-src', () => null)
+const pictureRef = ref<PictureRefProps>()
+const shapeOutsideSrc = useState<string>('shape-outside-src', () => '')
 
 const onImageLoad = () => {
-  const { src, $el } = pictureRef.value
+  const { src, $el } = pictureRef.value as PictureRefProps
   const image = $el.querySelector('img')
   if (!image || !image.complete) {
     return

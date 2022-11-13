@@ -31,3 +31,8 @@
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) rotateX(var(--tw-rotate-x))
     rotateY(var(--tw-rotate-y)) rotateZ(var(--tw-rotate-z)) translateZ(var(--tw-translate-z));
 }
+
+html,
+body {
+  overflow-x: hidden;
+}

@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
       subject: 'Message from portfolio 2022 form',
       html
     })
-  } catch (error) {
+  } catch (error: any) {
     return sendError(event, error)
   }
 

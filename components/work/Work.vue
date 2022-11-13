@@ -6,7 +6,7 @@ const workItems = {
   2: resolveComponent('WorkFreelance')
 }
 
-const animateButton = useState<string>('animate-button-state', () => null)
+const animateButton = useState<string>('animate-button-state', () => '')
 watch(state, (stateValue, previousStateValue) => {
   stateValue < previousStateValue ? (animateButton.value = 'back') : (animateButton.value = 'next')
 })
@@ -52,8 +52,12 @@ const { transitionState } = useScrollTransition({
         v-show="direction === 'left' ? state > 0 : state < Object.keys(workItems).length - 1"
         :class="`
           transition-opacity duration-300 bg-white/[.1] backdrop-blur-[2.5px] flex items-center justify-center
-          rounded-full absolute top-1/2 translate-y-[-50%] w-[60px] h-[60px] z-[110] group
-          ${direction === 'left' ? 'left-[-20px]' : 'right-[-20px]'}
+          rounded-full w-[60px] h-[60px] z-[110] group
+          fixed bottom-[120px]
+          md:absolute md:bottom-auto md:top-1/2 md:translate-y-[-50%]
+          ${
+            direction === 'left' ? 'left-[-20px] md:left-[-40px]' : 'right-[-20px] md:right-[-40px]'
+          }
         `"
         @click.stop="
           () => {
@@ -74,7 +78,7 @@ const { transitionState } = useScrollTransition({
               ${direction === 'right' && animateButton === 'next' ? 'translate-x-[3px]' : ''}
             `"
             :icon="direction === 'left' ? 'ArrowLeft' : 'ArrowRight'"
-            @transitionend.native="() => (animateButton = null)"
+            @transitionend.native="() => (animateButton = '')"
           />
           <span class="text-gray font-light font-public-sans">
             {{ direction === 'left' ? 'back' : 'next' }}

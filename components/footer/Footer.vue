@@ -82,7 +82,9 @@ const onButtonClick = (e: MouseEvent) => {
   const currentTarget = e.currentTarget as HTMLButtonElement
   const actionTarget = currentTarget.querySelector('[id]')
 
-  switch (actionTarget.id) {
+  console.log(currentTarget)
+
+  switch (actionTarget?.id) {
     case 'show-case':
       openShowCaseMenu()
       break
@@ -97,7 +99,7 @@ const onButtonClick = (e: MouseEvent) => {
 </script>
 
 <template>
-  <footer class="flex w-full flex-col py-[15px] justify-between">
+  <footer class="flex w-full h-full flex-col pt-[15px]">
     <div class="flex items-center justify-between">
       <VisibilityWrapper
         id="footer-view-my-work"
@@ -121,7 +123,14 @@ const onButtonClick = (e: MouseEvent) => {
           opacity: animationState['opacity-in-footer-button']
         }"
       >
-        <Button class="ml-auto w-[180px] relative h-[50px] shrink-0" @click.stop="onButtonClick">
+        <Button
+          :class="`
+            ml-auto relative shrink-0
+            text-[16px] w-[154px] h-[36px]
+            lg:text-[18px] lg:w-[180px] lg:h-[50px]
+          `"
+          @click.stop="onButtonClick"
+        >
           <VisibilityWrapper
             id="show-case"
             :visible="2"
@@ -169,7 +178,7 @@ const onButtonClick = (e: MouseEvent) => {
     </div>
     <div
       onclick="moveToSection"
-      class="flex justify-center font-public-sans font-light text-gray text-[14px] md:text-[16px] lg:text-[18px]"
+      class="flex flex-grow justify-center items-center font-public-sans font-light text-gray text-[14px] md:text-[16px] lg:text-[18px]"
     >
       <span>scroll {{ lastSection ? 'up' : 'down' }}</span>
     </div>

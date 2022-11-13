@@ -30,7 +30,7 @@ defineProps({
           ${state === index ? 'opacity-100' : 'opacity-0'}
         `"
       >
-        <div class="flex w-full h-full items-center px-[50px]">
+        <div class="flex w-full h-full items-center md:px-[50px]">
           <slot name="item" />
         </div>
         <div
