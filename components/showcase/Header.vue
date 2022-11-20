@@ -1,13 +1,4 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
-
-defineProps({
-  spacing: {
-    type: String as PropType<'md' | 'lg'>,
-    default: 'lg'
-  }
-})
-
 const { getTextClasses, getSpacing, getFontSize } = useShowcaseClasses()
 </script>
 
@@ -15,7 +6,7 @@ const { getTextClasses, getSpacing, getFontSize } = useShowcaseClasses()
   <header
     :class="`
       ${getSpacing('px')}
-      ${spacing === 'md' ? getSpacing('py-md') : getSpacing('py')}
+      ${getSpacing('py')}
       relative z-[0] min-h-[150px] flex items-center
     `"
   >

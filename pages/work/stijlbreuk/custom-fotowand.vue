@@ -3,13 +3,15 @@ definePageMeta({
   layout: 'showcase'
 })
 
-const { getSpacing } = useShowcaseClasses()
+const { getSpacing, spacingSize } = useShowcaseClasses()
+spacingSize.value = 'md'
+
 const { getImageSrcSet } = useImages()
 </script>
 
 <template>
   <div :class="`font-manrope xl:py-[80px]`">
-    <ShowcaseHeader class="relative md:!pt-[12%]">
+    <ShowcaseHeader class="relative md:!pt-[12%] !pb-[5%] md:!pb-[8%]">
       <template #background>
         <NuxtPicture
           preset="image"
@@ -27,7 +29,7 @@ const { getImageSrcSet } = useImages()
         <span class="text-white">Role: Medior developer</span>
       </template>
     </ShowcaseHeader>
-    <ShowcaseSection spacing="md">
+    <ShowcaseSection>
       <template #title>Intro</template>
       <template #content>
         <ShowcaseParagraph>
@@ -38,7 +40,7 @@ const { getImageSrcSet } = useImages()
         </ShowcaseParagraph>
       </template>
     </ShowcaseSection>
-    <ShowcaseSection spacing="md">
+    <ShowcaseSection>
       <template #title>Exactly enough options</template>
       <template #content>
         <ShowcaseParagraph>
@@ -60,7 +62,7 @@ const { getImageSrcSet } = useImages()
         </div>
       </template>
     </ShowcaseSection>
-    <ShowcaseSection spacing="md">
+    <ShowcaseSection>
       <template #title>Development</template>
       <template #content>
         <ShowcaseParagraph>
@@ -72,10 +74,11 @@ const { getImageSrcSet } = useImages()
         <div
           :class="`
             flex items-center justify-between
+            flex-col sm:flex-row
             ${getSpacing('space-y-md')}
           `"
         >
-          <ShowcaseParagraph class="w-2/5">
+          <ShowcaseParagraph class="w-full sm:w-2/5">
             <template #title>DPI check</template>
             <template #content>
               To guarantee that every customer receives a beautiful end product delivered to their
@@ -83,7 +86,7 @@ const { getImageSrcSet } = useImages()
               Our DPI check indicates whether your photo meets the quality requirements.
             </template>
           </ShowcaseParagraph>
-          <ShowcaseImage class="w-1/2">
+          <ShowcaseImage class="w-full sm:w-1/2">
             <NuxtPicture
               preset="image"
               src="images/showcase/custom-fotowand/dpi-check.png"
@@ -96,7 +99,7 @@ const { getImageSrcSet } = useImages()
         </div>
       </template>
     </ShowcaseSection>
-    <ShowcaseFooter spacing="md">
+    <ShowcaseFooter>
       <template #title>Integration</template>
       <template #content>
         <ShowcaseParagraph>

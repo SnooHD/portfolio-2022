@@ -1,13 +1,4 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
-
-defineProps({
-  spacing: {
-    type: String as PropType<'md' | 'lg'>,
-    default: 'lg'
-  }
-})
-
 const { getSpacing, getTextClasses } = useShowcaseClasses()
 </script>
 
@@ -15,7 +6,7 @@ const { getSpacing, getTextClasses } = useShowcaseClasses()
   <footer
     :class="`
       ${getSpacing('px')}
-      ${spacing === 'md' ? getSpacing('py-md') : getSpacing('py')}
+      ${getSpacing('py')}
       ${getSpacing('space-y')}
     `"
   >

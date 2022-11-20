@@ -2,7 +2,14 @@ type SpacingTypes = 'space-y' | 'space-y-md' | 'space-x' | 'p' | 'py-md' | 'px' 
 type FontSizeTypes = 'xl' | 'lg' | 'md' | 'sm'
 
 export const useShowcaseClasses = () => {
+  const spacingSize = useState<'md' | 'lg'>('showcase-page-spacing', () => 'lg')
+
   const getSpacing = (type: SpacingTypes) => {
+    if (spacingSize.value === 'md') {
+      if (type === 'space-y') type = 'space-y-md'
+      else if (type === 'py') type = 'py-md'
+    }
+
     switch (type) {
       case 'space-y':
         return 'space-y-[15px] xs:space-y-[25px] sm:space-y-[30px] md:space-y-[45px] lg:space-y-[60px]'
@@ -45,5 +52,5 @@ export const useShowcaseClasses = () => {
     }
   }
 
-  return { getSpacing, getFontSize, getTextClasses }
+  return { getSpacing, getFontSize, getTextClasses, spacingSize }
 }
