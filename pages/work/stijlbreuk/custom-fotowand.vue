@@ -94,15 +94,6 @@ const { getImageSrcSet } = useImages()
             />
           </ShowcaseImage>
         </div>
-        <ShowcaseParagraph>
-          <template #title>Load what you need</template>
-          <template #content>
-            All data was always fetched globally, but most users directly enter My Basic-Fit on one
-            specific page, which does not use most data. We separated the API calls on a per-route
-            basis. That does imply that data can be re-fetched on every page change. That is where
-            SWR comes into play: if the API call was already done, it would return the cached data.
-          </template>
-        </ShowcaseParagraph>
       </template>
     </ShowcaseSection>
     <ShowcaseFooter spacing="md">
