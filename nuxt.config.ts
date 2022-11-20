@@ -2,19 +2,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  modules: ['@nuxt/image', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
-  mail: {
-    message: {
-      to: 'snoohd@gmail.com'
-    },
-    smtp: {
-      service: 'gmail',
-      auth: {
-        user: 'snoohd@gmail.com',
-        pass: 'ceafurqyqraksuax'
-      }
-    }
-  },
+  modules: ['@nuxt/image-edge', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: '~/tailwind.config.ts',

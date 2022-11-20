@@ -28,7 +28,8 @@ export default <Config>{
       'public-sans': ['Public Sans', 'sans-serif'],
       'atyp-display': ['Atyp Display', 'sans-serif'],
       'atyp-text': ['Atyp Text', 'sans-serif'],
-      'heading-pro': ['Heading Pro', 'sans-serif']
+      'heading-pro': ['Heading Pro', 'sans-serif'],
+      manrope: ['Manrope', 'sans-serif']
     },
     extend: {
       colors: {
@@ -41,6 +42,10 @@ export default <Config>{
           light: '#424242',
           DEFAULT: '#CFCFCF'
         },
+        anthracite: {
+          DEFAULT: '2D2D2D',
+          light: '#575757'
+        },
         black: {
           DEFAULT: '#000',
           light: '#111'
@@ -49,7 +54,8 @@ export default <Config>{
           DEFAULT: '#fff',
           opaque: 'rgba(255,255,255,.1)'
         },
-        mint: '#7ADEC9'
+        mint: '#7ADEC9',
+        orange: '#FE7000'
       },
       transitionDuration: {
         400: '400ms'
@@ -75,8 +81,8 @@ export default <Config>{
         'move-right': 'move-right 1200ms linear infinite'
       },
       backgroundImage: {
-        'orange-gradient': 'linear-gradient(135deg, #FFAA30 0%, #FE7000 36.14%, #FE7000 100%)',
-        'gray-gradient': 'linear-gradient(135deg, #2D2D2D 31.77%, #121212 100%)'
+        'orange-gradient': 'linear-gradient(135deg, #FFAA30 0%, #FE7000 35%, #FE7000 100%)',
+        'gray-gradient': 'linear-gradient(135deg, #2D2D2D 30%, #121212 100%)'
       }
     }
   },

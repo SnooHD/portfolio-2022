@@ -1,20 +1,20 @@
 <script lang="ts" setup>
-defineProps({
-  padding: {
-    type: Boolean,
-    required: false,
-    default: true
-  }
-})
+const { getFontSize, getTextClasses } = useShowcaseClasses()
 </script>
 
 <template>
-  <p
-    :class="`
-      text-[16px] text-white md:text-[18px] lg:text-[21px]
-      ${padding ? 'p-[15px] xs:px-[30px] sm:px-[60px] md:px-[90px] lg:px-[120px]' : ''}
-    `"
-  >
-    <slot />
-  </p>
+  <div>
+    <h3 v-if="$slots.title" :class="`${getTextClasses('md')} uppercase`">
+      <slot name="title" />
+    </h3>
+    <p
+      :class="`
+        text-white font-public-sans font-normal
+        ${getFontSize('md')}
+      `"
+    >
+      <slot v-if="$slots.content" name="content" />
+      <slot v-else />
+    </p>
+  </div>
 </template>

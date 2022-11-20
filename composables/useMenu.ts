@@ -10,13 +10,13 @@ export const useMenu = () => {
   // If we use the scrollPosition, there would be a delay between the click
   // and the active menu actually being set, since it will first need to scroll
   // to the correct position
-  const currentMenuIndex = useState('active-menu-index', () => 0)
+  const currentMenuIndex = useState<number | null>('active-menu-index', () => null)
 
   // Use a boolean to keep state if a menu item was clicked that initiated the scroll
   const triggeredScroll = useState('triggered-scroll', () => false)
   watch(scrollPosition, (scrollPositionValue) => {
     if (!triggeredScroll.value && activeMenuIndex.value !== scrollPositionValue) {
-      currentMenuIndex.value = Math.floor(scrollPositionValue)
+      currentMenuIndex.value = Math.floor(scrollPositionValue as number)
     }
 
     // If the scrollPositionValue is the scrollToPosition.value we know
@@ -31,7 +31,7 @@ export const useMenu = () => {
     currentMenuIndex.value = scrollToPositionValue
   })
 
-  const activeMenuIndex = computed<number>(() => Math.floor(currentMenuIndex.value) + 1)
+  const activeMenuIndex = computed<number>(() => Math.floor(currentMenuIndex.value as number) + 1)
 
   return {
     menuItems,

@@ -4,99 +4,204 @@ definePageMeta({
 })
 
 const { getImageSrcSet } = useImages()
+const { getSpacing } = useShowcaseClasses()
 </script>
 
 <template>
-  <div class="font-heading-pro mb-[15px] xs:mb-[30px] sm:mb-[60px] md:mb-[90px] lg:mb-[120px]">
-    <ShowcaseHeader>
+  <div class="xl:my-[80px] font-heading-pro">
+    <ShowcaseHeader class="relative">
       <template #background>
         <div class="w-full h-full bg-orange-gradient" />
       </template>
       <template #title>
+        <span>Basic-Fit</span>
+        <br />
         <span
-          :class="`
-          uppercase  text-white font-black
-          text-[28px] leading-[34px]
-          xs:text-[36px] xs:leading-[44px]
-          sm:text-[40px] sm:leading-[48px]
-          md:text-[46px] md:leading-[54px]
-          lg:text-[64px] lg:leading-[74px]
-        `"
+          class="text-transparent"
+          :style="{
+            '-webkit-text-stroke-color': '#fff',
+            '-webkit-text-stroke-width': '1px'
+          }"
         >
-          <span>Basic-Fit</span>
-          <br />
-          <span
-            class="text-transparent"
-            :style="{
-              '-webkit-text-stroke-color': '#fff',
-              '-webkit-text-stroke-width': '1px'
-            }"
-          >
-            Kiosk
-          </span>
+          Kiosk
         </span>
       </template>
       <template #role>
-        <span class="text-[12px] md:text-[14px] lg:text-[16px] text-white">
-          Role: Senior developer
-        </span>
+        <span class="text-white">Role: Senior developer</span>
       </template>
       <template #image>
-        <div class="relative">
-          <NuxtPicture
-            src="images/showcase/kiosk/kiosk.png"
-            :srcset="getImageSrcSet('images/showcase/kiosk/kiosk.png', [{ width: 400 }])"
-            preset="image"
-            :img-attrs="{
-              class: 'w-full absolute right-0 top-0 translate-y-[-5%]'
-            }"
-          />
-        </div>
+        <NuxtPicture
+          src="images/showcase/kiosk/kiosk.png"
+          :srcset="getImageSrcSet('images/showcase/kiosk/kiosk.png', [{ width: 400 }])"
+          preset="image"
+          :img-attrs="{
+            class: 'w-[30%] absolute right-0 bottom-0 translate-y-[20%] translate-x-[-20%]'
+          }"
+        />
       </template>
     </ShowcaseHeader>
-    <div
-      class="space-y-[15px] xs:space-y-[25px] sm:space-y-[35px] md:space-y-[45px] lg:space-y-[60px]"
-    >
-      <ShowcaseParagraph class="mt-[60px] xs:mt-[80px] md:mt-[110px] lg:mt-[140px]">
+    <ShowcaseSection class="mt-[15px] xs:mt-[20px] md:mt-[30px] lg:mt-[40px]">
+      <ShowcaseParagraph>
         The kiosks contain a small PC running windows 10, this allows us to run Google Chrome in
         Kiosk mode as the interface for the application.
         <br />
         <br />
-        This app was built up using React.js and Typescript. We used Tailwind to style our
-        components and Storybook to document these components for our team members.
+        This app was built using React.js and Typescript. We used Tailwind to style our components
+        and Storybook to document these components for our team members.
       </ShowcaseParagraph>
-      <ShowcaseBlock class="border-mint bg-gray-light">
-        <div class="space-y-[60px]">
+    </ShowcaseSection>
+    <ShowcaseBlock class="border-mint bg-gray-light">
+      <template #title>Design</template>
+      <template #content>
+        <div :class="getSpacing('space-y-md')">
+          <ShowcaseImage>
+            <NuxtPicture
+              preset="image"
+              src="images/showcase/kiosk/overview.png"
+              :srcset="getImageSrcSet('images/showcase/kiosk/overview.png', [{ width: 1200 }])"
+              :img-attrs="{
+                class: 'w-full'
+              }"
+            />
+          </ShowcaseImage>
+          <div
+            :class="`
+              flex justify-between w-full
+              ${getSpacing('space-x')}
+            `"
+          >
+            <ShowcaseImage>
+              <NuxtPicture
+                preset="image"
+                src="images/showcase/kiosk/details.png"
+                :srcset="getImageSrcSet('images/showcase/kiosk/details.png', [{ width: 600 }])"
+                class="w-full"
+              />
+            </ShowcaseImage>
+            <ShowcaseImage>
+              <NuxtPicture
+                preset="image"
+                src="images/showcase/kiosk/membership.png"
+                :srcset="getImageSrcSet('images/showcase/kiosk/showcase.png', [{ width: 600 }])"
+                class="w-full"
+              />
+            </ShowcaseImage>
+          </div>
+        </div>
+        <ShowcaseParagraph>
+          The design aims to give energy and get you going. The Kiosk is capable of some important
+          things:
+          <ul>
+            <li>New customers can sign up to become a member</li>
+            <li>Members can log in and change their memberships</li>
+            <li>Members can buy a day pass</li>
+            <li>
+              New customers can start there membership using the voucher kit that was bought online.
+            </li>
+          </ul>
+        </ShowcaseParagraph>
+      </template>
+    </ShowcaseBlock>
+    <ShowcaseSection>
+      <template #title>Offline</template>
+      <template #content>
+        <ShowcaseImage>
           <NuxtPicture
             preset="image"
-            src="images/showcase/kiosk/overview.png"
-            :srcset="getImageSrcSet('images/showcase/kiosk/overview.png', [{ width: 1200 }])"
+            src="images/showcase/kiosk/offline.png"
+            :srcset="getImageSrcSet('images/showcase/kiosk/offline.png', [{ width: 600 }])"
+            class="w-full"
+          />
+        </ShowcaseImage>
+        <ShowcaseParagraph>
+          Signing up is the main feature of the kiosk, it needs to happen flawlessly and it should
+          always work. To make this a reality we utilize the power of service workers using WorkBox,
+          this allows the app to run even when there is no internet connection. During this offline
+          period only signup is possible. All payments are postponed, and members will receive an
+          email to complete the payment as soon the internet is back.
+        </ShowcaseParagraph>
+      </template>
+    </ShowcaseSection>
+    <ShowcaseBlock class="border-orange bg-gray-light">
+      <template #title>Hardware Communication</template>
+      <template #content>
+        <ShowcaseImage>
+          <NuxtPicture
+            preset="image"
+            src="images/showcase/kiosk/payment.png"
+            :srcset="getImageSrcSet('images/showcase/kiosk/payment.png', [{ width: 1200 }])"
             :img-attrs="{
               class: 'w-full'
             }"
           />
-          <div class="flex justify-between space-x-[60px] w-full">
+        </ShowcaseImage>
+        <ShowcaseParagraph>
+          The kiosk uses a local .NET server to communicate with the hardware. We can interact with
+          this server using a WebSocket running through SignalR. This allows us to send requests
+          like making a payment, reading a barcode, or issuing a member card.
+          <br />
+          <br />
+          It also allows us to listen to events, that way we can respond to errors and give feedback
+          to the users.
+        </ShowcaseParagraph>
+        <div
+          :class="`
+              flex justify-between w-full
+              ${getSpacing('space-x')}
+            `"
+        >
+          <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/kiosk/details.png"
-              :srcset="getImageSrcSet('images/showcase/kiosk/details.png', [{ width: 600 }])"
+              src="images/showcase/kiosk/scan_card.png"
+              :srcset="getImageSrcSet('images/showcase/kiosk/scan_card.png', [{ width: 600 }])"
               class="w-full"
             />
+          </ShowcaseImage>
+          <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/kiosk/membership.png"
-              :srcset="getImageSrcSet('images/showcase/kiosk/showcase.png', [{ width: 600 }])"
+              src="images/showcase/kiosk/scan_error.png"
+              :srcset="getImageSrcSet('images/showcase/kiosk/scan_error.png', [{ width: 600 }])"
               class="w-full"
             />
-          </div>
-          <ShowcaseParagraph :padding="false">
-            The design aims to give energy and get you going. The Kiosk is capable of some important
-            things: New customers can sign up to become a member Members can log in and change their
-            memberships Members can buy a day pass New customers can start there membership using
-            the voucher kit that was bought online.
-          </ShowcaseParagraph>
+          </ShowcaseImage>
         </div>
-      </ShowcaseBlock>
-    </div>
+      </template>
+    </ShowcaseBlock>
+    <ShowcaseSection>
+      <template #title>Automated testing</template>
+      <template #content>
+        <ShowcaseParagraph>
+          To prevent changes from breaking the codebase we have to write tests. Since this is not a
+          regular website, we have decided to focus on the different flows the app holds. Every flow
+          has a test that runs in Cypress before being built. These tests make sure that the flow
+          can be interacted with from start till end without issues.
+
+          <br />
+          <br />
+          On top of this, we have written Unit tests using Jest. These tests make sure our logic is
+          working as it's supposed to and prevent unwanted bugs.
+        </ShowcaseParagraph>
+      </template>
+    </ShowcaseSection>
+    <ShowcaseFooter class="bg-gray-light">
+      <template #title>Monitoring, logging and errors</template>
+      <template #content>
+        <ShowcaseParagraph>
+          Basic-Fit has over 2000 active kiosks running, so we want to make sure our application is
+          running as it should everywhere. I created a Fastify app on top of NodeJS that allows us
+          to push logs to a MongoDB instance. This allows us to see if all kiosks are for example
+          running the latest version, or if they are offline.
+          <br />
+          <br />
+          Running into errors is not something we want to happen, but running on over 2000 systems
+          you run into some problems eventually. To handle these errors we have implemented Sentry
+          into our App. Sentry shows us a trace from where in the code the error occurred and how
+          often it occurs. This allows us to set priorities accordingly and find out the cause of
+          bugs faster.
+        </ShowcaseParagraph>
+      </template>
+    </ShowcaseFooter>
   </div>
 </template>
