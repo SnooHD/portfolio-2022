@@ -1,8 +1,8 @@
-import { Config } from 'tailwindcss'
-import tailwindPlugin from 'tailwindcss/plugin'
-import formkitTailwind from '@formkit/themes/tailwindcss'
+/* eslint-disable @typescript-eslint/no-var-requires */
+const tailwindPlugin = require('tailwindcss/plugin')
+const formkitTailwind = require('@formkit/themes/tailwindcss')
 
-export default <Config>{
+module.exports = {
   content: [
     './components/**/*.vue',
     './layouts/**/*.vue',
@@ -90,16 +90,16 @@ export default <Config>{
     formkitTailwind,
     tailwindPlugin(({ matchUtilities }) => {
       matchUtilities({
-        mask: (value: string) => ({
+        mask: (value) => ({
           maskImage: value
         }),
-        'shape-margin': (value: string) => ({
+        'shape-margin': (value) => ({
           shapeMargin: value
         }),
-        backface: (value: string) => ({
+        backface: (value) => ({
           backfaceVisibility: value
         }),
-        'text-fill-color': (value: string) => ({
+        'text-fill-color': (value) => ({
           textFillColor: value,
           '-webkit-text-fill-color': value
         })

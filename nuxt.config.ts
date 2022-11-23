@@ -2,12 +2,13 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  modules: ['@nuxt/image-edge', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
-  tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
-    configPath: '~/tailwind.config.ts',
-    exposeConfig: true,
-    viewer: true
+  modules: ['@nuxt/image-edge', '@formkit/nuxt'],
+  css: ['~/assets/css/tailwind.css', '~/assets/css/fonts.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {}
+    }
   },
   image: {
     screens: {
