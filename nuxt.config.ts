@@ -2,14 +2,9 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  modules: ['@nuxt/image-edge', '@formkit/nuxt'],
-  css: ['~/assets/css/tailwind.css', '~/assets/css/fonts.css'],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {}
-    }
-  },
+  modules: ['@nuxt/image-edge', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
+  css: ['~/assets/css/fonts.css'],
+  tailwindcss: { cssPath: '~/assets/css/tailwind.css' },
   image: {
     screens: {
       xxs: 320,
