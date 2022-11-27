@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+/**
+ * Firefox contains a bug where using blur on the background
+ * causes artifacts on moving elements that overlap.
+ * Disabling the blur for Firefox for now.
+ */
+const isFirefox = useState('is-firefox', () => false)
+onMounted(() => {
+  isFirefox.value = !!navigator.userAgent.match(/firefox|fxios/i)
+})
+</script>
+
 <template>
   <div class="w-full h-full bg-black">
     <svg
@@ -27,7 +39,7 @@
           </linearGradient>
         </g>
 
-        <g id="flare-blur">
+        <g v-if="!isFirefox" id="flare-blur">
           <filter id="bg-flare-blur" x="0" y="0">
             <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
           </filter>
@@ -62,7 +74,7 @@
           </radialGradient>
         </g>
       </defs>
-      <g id="flares" filter="url(#bg-flare-blur)">
+      <g id="flares" :filter="!isFirefox ? 'url(#bg-flare-blur)' : ''">
         <polygon fill="#000" points="1911.9,3188.1 -88,2566.1 738.8,-92.2 2738.7,529.8" />
         <polygon
           fill="url(#bg-flare-1)"

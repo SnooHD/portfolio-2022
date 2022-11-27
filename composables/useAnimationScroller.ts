@@ -25,26 +25,34 @@ export const useAnimationScroller = (animationConfig: AnimationConfigProps[]) =>
     ) as AnimationStateType
   )
 
-  watch(scrollPosition, (currentScrollPosition) =>
-    requestAnimationFrame(() => {
-      animationConfig.forEach(({ property, toValue, fromValue, scrollEnd, scrollStart }) => {
-        if ((currentScrollPosition as number) <= scrollStart) {
-          animationState[property] = fromValue
-          return
-        }
+  watch(
+    scrollPosition,
+    (currentScrollPosition) => {
+      if (!process.client) return
 
-        if ((currentScrollPosition as number) >= scrollEnd) {
-          animationState[property] = toValue
-          return
-        }
+      requestAnimationFrame(() => {
+        animationConfig.forEach(({ property, toValue, fromValue, scrollEnd, scrollStart }) => {
+          if (currentScrollPosition <= scrollStart) {
+            animationState[property] = fromValue
+            return
+          }
 
-        const scrollDistance = scrollEnd - scrollStart
-        const scrollRatio = ((currentScrollPosition as number) - scrollStart) / scrollDistance
+          if (currentScrollPosition >= scrollEnd) {
+            animationState[property] = toValue
+            return
+          }
 
-        const animationDistance = toValue - fromValue
-        animationState[property] = fromValue + animationDistance * scrollRatio
+          const scrollDistance = scrollEnd - scrollStart
+          const scrollRatio = (currentScrollPosition - scrollStart) / scrollDistance
+
+          const animationDistance = toValue - fromValue
+          animationState[property] = fromValue + animationDistance * scrollRatio
+        })
       })
-    })
+    },
+    {
+      immediate: true
+    }
   )
 
   return {

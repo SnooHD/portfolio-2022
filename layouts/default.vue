@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { fontWeightTypes } from '~/composables/useFonts'
 
+useHashChange()
 const { loadFont } = useFonts()
 const { menuItems } = useMenu()
 const { scrollSectionHeight } = useScroller()
@@ -35,15 +36,23 @@ const { pending: isFontLoading } = useAsyncData(
 )
 
 const { fadeInClasses } = useTransitionDone()
+
+const templateWrapper = ref<HTMLDivElement>()
+const { disableScroll } = useScrollDisabler()
+const { menuState } = useMenuOverlay('work-item')
+watch(menuState, (menuStateValue) => {
+  if (!templateWrapper.value) return
+  disableScroll(templateWrapper.value, menuStateValue)
+})
 </script>
 
 <template>
-  <div class="w-full h-full">
+  <div ref="templateWrapper" class="w-full h-full">
     <div
       :class="`
-          ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
-          transition-opacity duration-300 w-full h-screen flex justify-center fixed top-0
-        `"
+        ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
+        transition-opacity duration-300 w-full h-screen flex justify-center fixed top-0
+      `"
     >
       <div class="z-[-1] left-0 top-0 overflow-hidden w-full h-screen fixed">
         <Background />

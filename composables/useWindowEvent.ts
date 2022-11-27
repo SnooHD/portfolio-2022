@@ -2,13 +2,16 @@
  * This hook allows us to easily set up a global window event without writing the same logic everywhere
  */
 
-export const useWindowEvent = (event: Event['type'], callback: (e?: PointerEvent) => void) => {
+export function useWindowEvent<T extends keyof WindowEventMap>(
+  event: T,
+  callback: (e: WindowEventMap[T]) => void
+) {
   const addWindowEvent = () => {
-    window.addEventListener(event, () => requestAnimationFrame(() => callback()))
+    window.addEventListener<T>(event, (e) => requestAnimationFrame(() => callback(e)))
   }
 
   const removeWindowEvent = () => {
-    window.removeEventListener(event, () => requestAnimationFrame(() => callback()))
+    window.removeEventListener<T>(event, (e) => requestAnimationFrame(() => callback(e)))
   }
 
   onMounted(() => {

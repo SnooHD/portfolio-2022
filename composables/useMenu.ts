@@ -15,8 +15,8 @@ export const useMenu = () => {
   // Use a boolean to keep state if a menu item was clicked that initiated the scroll
   const triggeredScroll = useState('triggered-scroll', () => false)
   watch(scrollPosition, (scrollPositionValue) => {
-    if (!triggeredScroll.value && activeMenuIndex.value !== scrollPositionValue) {
-      currentMenuIndex.value = Math.floor(scrollPositionValue as number)
+    if (!triggeredScroll.value) {
+      currentMenuIndex.value = Math.floor(scrollPositionValue)
     }
 
     // If the scrollPositionValue is the scrollToPosition.value we know
@@ -27,11 +27,14 @@ export const useMenu = () => {
   })
 
   watch(scrollToPosition, (scrollToPositionValue) => {
+    if (scrollToPositionValue === null) return
     triggeredScroll.value = true
     currentMenuIndex.value = scrollToPositionValue
   })
 
-  const activeMenuIndex = computed<number>(() => Math.floor(currentMenuIndex.value as number) + 1)
+  const activeMenuIndex = computed<number>(() =>
+    currentMenuIndex.value === null ? 1 : Math.floor(currentMenuIndex.value) + 1
+  )
 
   return {
     menuItems,

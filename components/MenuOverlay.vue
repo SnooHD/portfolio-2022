@@ -19,7 +19,7 @@ const props = defineProps({
 
 const { menuState } = useMenuOverlay(props.type)
 const menuRef = ref<HTMLMenuElement>()
-const { addBodyEvent, removeBodyEvent } = useBodyEvent('click', (e: PointerEvent) => {
+const { addBodyEvent, removeBodyEvent } = useBodyEvent<'click'>('click', (e: MouseEvent) => {
   // ignore clicks on child element
   if (e.target !== menuRef.value && (menuRef.value as HTMLMenuElement).contains(e.target as Node)) {
     return
@@ -63,7 +63,6 @@ const onTransitionEnd = () => {
       :class="`
         absolute z-[-1] block bg-white/[.04]
         rounded-full backdrop-blur-[2.5px] aspect-square p-[2px]
-        backface-[hidden]
         ${
           size === 'lg'
             ? `

@@ -4,7 +4,7 @@ const messageRef = ref<HTMLSpanElement[]>([])
 const elementHeight = useState<number[]>('contact-input-message-height', () => [])
 watch(messageRef, (messageRefValue) => {
   messageRefValue.forEach((value, index) => {
-    const element = value.querySelector('span')
+    const element = value.querySelector('span') as HTMLSpanElement
     elementHeight.value[index] = element.getBoundingClientRect().height
   })
 })

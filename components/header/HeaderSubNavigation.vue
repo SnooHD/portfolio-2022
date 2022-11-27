@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-const { scrollToPosition } = useScroller()
 const { activeMenuIndex, currentMenuIndex, menuItems } = useMenu()
 const menuWrapper = ref<HTMLUListElement>()
 const menuItemHeight = useState<number>('menuItemHeight', () => 0)
@@ -9,7 +8,7 @@ onMounted(() => {
   menuItemHeight.value = menuItem.getBoundingClientRect().height
 })
 
-const menuOffset = computed<number>(() => -menuItemHeight.value * currentMenuIndex.value)
+const menuOffset = computed<number>(() => -menuItemHeight.value * (currentMenuIndex.value || 0))
 const navWrapperTransition = useState('nav-wrapper-transition', () => false)
 </script>
 
@@ -67,7 +66,6 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
               @click="
                 () => {
                   navWrapperTransition = true
-                  scrollToPosition = index - 1
                 }
               "
             >

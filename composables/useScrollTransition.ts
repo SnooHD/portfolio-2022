@@ -23,6 +23,8 @@ export const useScrollTransition = ({
   watch(
     scrollPosition,
     (scrollPositionValue) => {
+      if (scrollPositionValue === null) return
+
       const delayClass = scrollDirection.value === 'down' ? transitionDelay : ''
       if (
         (!hidden && scrollPositionValue >= visible) ||

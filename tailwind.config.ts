@@ -96,9 +96,6 @@ export default <Config>{
         'shape-margin': (value: string) => ({
           shapeMargin: value
         }),
-        backface: (value: string) => ({
-          backfaceVisibility: value
-        }),
         'text-fill-color': (value: string) => ({
           textFillColor: value,
           '-webkit-text-fill-color': value

@@ -4,26 +4,25 @@
 
 export const useScroller = () => {
   const scrollSectionHeight = 400
+  const scrollOffset = 0.8
 
-  const isScrollingToPosition = useState<number>('is-scrolling-to-position', () => 0)
   const scrollToScrollPosition = (top: number) => {
-    isScrollingToPosition.value = top * scrollSectionHeight
-
     window.scroll({
       top: top * scrollSectionHeight,
       behavior: 'smooth'
     })
   }
 
-  const scrollPosition = useState<number | null>('scroll-position', () => null)
-  const lastScrollPosition = useState<number | null>('active-scroll-position', () => null)
+  const scrollPosition = useState<number>('scroll-position', () => (process.client ? scrollY : 0))
+  const lastScrollPosition = useState<number>('active-scroll-position', () =>
+    process.client ? scrollY : 0
+  )
   const scrollDirection = useState<'down' | 'up'>('scroll-direction', () => 'down')
 
   const handleScrollEvent = () =>
     requestAnimationFrame(() => {
-      const { scrollY } = window
-      scrollPosition.value = Math.max(scrollY / scrollSectionHeight, 0) + 0.8
-
+      // scrollOffset makes sure the first section directly starts scrolling
+      scrollPosition.value = Math.max(scrollY / scrollSectionHeight, 0) + scrollOffset
       scrollDirection.value = (lastScrollPosition.value as number) < window.scrollY ? 'down' : 'up'
       lastScrollPosition.value = window.scrollY
     })
@@ -36,9 +35,16 @@ export const useScroller = () => {
     document.removeEventListener('scroll', handleScrollEvent)
   })
 
-  const scrollToPosition = useState('scroll-to-position', () => 0)
-  watch(scrollToPosition, (scrollToPositionValue) => {
-    scrollToScrollPosition(scrollToPositionValue)
+  const scrollToPositionState = useState<number | null>('scroll-to-position', () => null)
+  const scrollToPosition = computed<number | null>({
+    set: (value) => {
+      if (value === null) return
+      // We subtract half the offset to make sure we end up in the middle of the section.
+      scrollToPositionState.value = value - scrollOffset / 2
+      scrollToScrollPosition(value === 0 ? 0 : value - scrollOffset / 2)
+    },
+    get: () =>
+      scrollToPositionState.value === null ? null : scrollToPositionState.value + scrollOffset
   })
 
   return {

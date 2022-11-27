@@ -67,7 +67,7 @@ const { transitionState } = useScrollTransition({
       >
         <div
           :class="`
-            w-[56px] h-[56px] rounded-full bg-black/[.6] flex flex-col justify-center px-[10px] text-gray text-[12px]
+            w-[56px] h-[56px] rounded-full bg-black/[.6] flex flex-col justify-center md:items-center px-[10px] text-gray text-[12px]
             ${direction === 'left' ? 'items-end' : 'items-start'}
           `"
         >
@@ -78,7 +78,7 @@ const { transitionState } = useScrollTransition({
               ${direction === 'right' && animateButton === 'next' ? 'translate-x-[3px]' : ''}
             `"
             :icon="direction === 'left' ? 'ArrowLeft' : 'ArrowRight'"
-            @transitionend.native="() => (animateButton = '')"
+            @transitionend="() => (animateButton = '')"
           />
           <span class="text-gray font-light font-public-sans">
             {{ direction === 'left' ? 'back' : 'next' }}
