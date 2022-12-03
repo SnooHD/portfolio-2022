@@ -25,22 +25,22 @@ const setTransitionDone = () => {
   }, 300)
 }
 
-const getIndexState = (index: number) => index * (0.2 / 3)
+const getIndexState = (index: number) => index * (0.8 / 3)
 const { animationState } = useAnimationScroller(
   [...Array(3)].flatMap((_value, index) => [
     {
       property: `translateX-${index}`,
       fromValue: 0,
       toValue: -40,
-      scrollStart: 0.8 + getIndexState(index),
-      scrollEnd: 0.8 + getIndexState(index + 1)
+      scrollStart: 0 + getIndexState(index),
+      scrollEnd: 0 + getIndexState(index + 1)
     },
     {
       property: `opacity-${index}`,
       fromValue: 1,
       toValue: 0,
-      scrollStart: 0.8 + getIndexState(index),
-      scrollEnd: 0.8 + getIndexState(index + 1)
+      scrollStart: 0 + getIndexState(index),
+      scrollEnd: 0 + getIndexState(index + 1)
     }
   ])
 )

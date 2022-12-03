@@ -34,8 +34,8 @@ const { animationState } = useAnimationScroller([
   {
     fromValue: 1,
     toValue: 0,
-    scrollStart: 0.8,
-    scrollEnd: 1,
+    scrollStart: 0,
+    scrollEnd: 0.8,
     property: 'opacity-out'
   }
 ])

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const { activeMenuIndex, menuItems } = useMenu()
-const { scrollToPosition } = useScroller()
+const { scrollToHash, stringToHash } = useHashChange()
 
 const { menuState, activeState } = useMenuOverlay('main-menu')
 </script>
@@ -37,22 +37,22 @@ const { menuState, activeState } = useMenuOverlay('main-menu')
             relative pl-[1em] transition-all duration-300 h-[1.5em] font-public-sans font-light
             before:absolute before:bg-blue before:w-[.4em] before:h-[.4em] before:rounded-full
             before:top-1/2 before:translate-y-[-50%] before:left-0 before:transition-all before:duration-300 before:ease-linear
-            ${
-              menuState && index + 1 === activeMenuIndex
-                ? 'before:opacity-[1]'
-                : 'before:opacity-[0]'
-            }
-            ${menuState && index + 1 !== activeMenuIndex ? 'opacity-[.6] cursor-pointer' : ''}
+            ${menuState && index === activeMenuIndex ? 'before:opacity-[1]' : 'before:opacity-[0]'}
+            ${menuState && index !== activeMenuIndex ? 'opacity-[.6] cursor-pointer' : ''}
           `"
           :style="{
-            '-webkit-text-stroke-width': menuState && index + 1 !== activeMenuIndex ? '0px' : '1px',
+            '-webkit-text-stroke-width': menuState && index !== activeMenuIndex ? '0px' : '1px',
             '-webkit-text-stroke-color': 'white'
           }"
         >
           <a
-            class="inline-block translate-y-[-2px]"
-            :href="`#${menuItem.replace(/ /g, '-')}`"
-            @click="() => (scrollToPosition = index)"
+            class="inline-block"
+            :href="stringToHash(menuItem)"
+            @click.prevent="
+              () => {
+                scrollToHash(menuItem)
+              }
+            "
           >
             {{ menuItem }}
           </a>

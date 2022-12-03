@@ -1,11 +1,7 @@
 <script lang="ts" setup>
 import { fontWeightTypes } from '~/composables/useFonts'
 
-useHashChange()
 const { loadFont } = useFonts()
-const { menuItems } = useMenu()
-const { scrollSectionHeight } = useScroller()
-
 const { pending: isFontLoading } = useAsyncData(
   'preload-fonts',
   () => {
@@ -44,6 +40,13 @@ watch(menuState, (menuStateValue) => {
   if (!templateWrapper.value) return
   disableScroll(templateWrapper.value, menuStateValue)
 })
+
+const { scrollToHash } = useHashChange()
+const { scrollSectionHeight, handleScrollEvent } = useScroller()
+
+onMounted(scrollToHash)
+useWindowEvent('hashchange', () => scrollToHash())
+useDocumentEvent('scroll', handleScrollEvent)
 </script>
 
 <template>
@@ -88,7 +91,7 @@ watch(menuState, (menuStateValue) => {
     <div
       class="flex-shrink-0"
       :style="{
-        height: `calc(100vh + ${(menuItems.length - 1) * scrollSectionHeight}px)`
+        height: `calc(100vh + ${(sections.length - 1) * scrollSectionHeight}px)`
       }"
     />
   </div>

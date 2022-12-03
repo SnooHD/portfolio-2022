@@ -24,11 +24,10 @@ export const useScrollTransition = ({
     scrollPosition,
     (scrollPositionValue) => {
       if (scrollPositionValue === null) return
-
       const delayClass = scrollDirection.value === 'down' ? transitionDelay : ''
       if (
         (!hidden && scrollPositionValue >= visible) ||
-        (hidden && scrollPositionValue >= visible && scrollPositionValue <= hidden)
+        (hidden && scrollPositionValue >= visible && scrollPositionValue < hidden)
       ) {
         transitionState.value = `${transitionClasses} ${delayClass} ${transitionIn}`
         return

@@ -19,25 +19,26 @@ const props = defineProps({
 
 const { menuState } = useMenuOverlay(props.type)
 const menuRef = ref<HTMLMenuElement>()
-const { addBodyEvent, removeBodyEvent } = useBodyEvent<'click'>('click', (e: MouseEvent) => {
+
+const handleMenuState = (e: MouseEvent) => {
   // ignore clicks on child element
   if (e.target !== menuRef.value && (menuRef.value as HTMLMenuElement).contains(e.target as Node)) {
     return
   }
 
   menuState.value = false
-})
+}
 
 const menuInvisible = useState<boolean>(`menu-invisible-${props.id}`, () => true)
 watch(menuState, (menuStateValue) => {
   if (menuStateValue) {
     menuInvisible.value = false
-    addBodyEvent()
+    document.body.addEventListener('click', handleMenuState)
 
     return
   }
 
-  removeBodyEvent()
+  document.body.removeEventListener('click', handleMenuState)
 })
 
 const onTransitionEnd = () => {

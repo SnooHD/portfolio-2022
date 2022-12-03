@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { submitForm } from '@formkit/core'
 
-const lastSection = computed<boolean>(() => {
-  return false
-})
-
 const { animationState } = useAnimationScroller([
   {
     fromValue: 1,
@@ -57,12 +53,10 @@ const { animationState } = useAnimationScroller([
   }
 ])
 
+const { currentMenuIndex } = useMenu()
+const { scrollToSection, scrollPosition } = useScroller()
 const { activeState: activeMenuState } = useMenuOverlay('work-item')
 const workMenuIsOpen = () => activeMenuState.value === 'work-item'
-
-const moveToSection = () => {
-  console.log('move')
-}
 
 const openShowCaseMenu = () => {
   const { menuState } = useMenuOverlay('work-item')
@@ -82,8 +76,6 @@ const onButtonClick = (e: MouseEvent) => {
   const currentTarget = e.currentTarget as HTMLButtonElement
   const actionTarget = currentTarget.querySelector('[id]')
 
-  console.log(currentTarget)
-
   switch (actionTarget?.id) {
     case 'show-case':
       openShowCaseMenu()
@@ -92,10 +84,18 @@ const onButtonClick = (e: MouseEvent) => {
       onSubmitForm()
       break
     case 'view-my-work':
-      // code block
+      scrollToSection('my-work')
       break
   }
 }
+
+const { transitionState } = useScrollTransition({
+  visible: 0,
+  hidden: 3,
+  id: 'footer-next-section'
+})
+
+const { hashSections, scrollToHash } = useHashChange()
 </script>
 
 <template>
@@ -111,7 +111,7 @@ const onButtonClick = (e: MouseEvent) => {
           transform: `translateX(${animationState['translate-y-work']}px)`
         }"
       >
-        <LinkWithArrow href="#next" class="text-[18px] md:text-[21px] lg:text-[25px]">
+        <LinkWithArrow href="#my-work" class="text-[18px] md:text-[21px] lg:text-[25px]">
           View my work
         </LinkWithArrow>
       </VisibilityWrapper>
@@ -176,11 +176,18 @@ const onButtonClick = (e: MouseEvent) => {
         </Button>
       </VisibilityWrapper>
     </div>
-    <div
-      onclick="moveToSection"
-      class="flex flex-grow justify-center items-center font-public-sans font-light text-gray text-[14px] md:text-[16px] lg:text-[18px]"
+    <a
+      :class="`
+        flex flex-grow justify-center items-center font-public-sans font-light text-gray text-[14px] md:text-[16px] lg:text-[18px]
+        cursor-pointer
+      `"
+      :href="scrollPosition >= 3 ? hashSections[0] : hashSections[currentMenuIndex + 1]"
+      @click.prevent="
+        () =>
+          scrollToHash(scrollPosition >= 3 ? hashSections[0] : hashSections[currentMenuIndex + 1])
+      "
     >
-      <span>scroll {{ lastSection ? 'up' : 'down' }}</span>
-    </div>
+      <span>scroll {{ scrollPosition >= 3 ? 'to top' : 'down' }}</span>
+    </a>
   </footer>
 </template>

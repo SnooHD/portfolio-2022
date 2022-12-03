@@ -1,16 +1,22 @@
 <script lang="ts" setup>
+import { PropType } from 'vue'
+import { HashSectionType } from '~/composables/useHashChange'
+
 defineProps({
   href: {
-    type: String,
+    type: String as PropType<HashSectionType>,
     required: true
   }
 })
+
+const { scrollToHash } = useHashChange()
 </script>
 
 <template>
   <a
+    class="group font-medium text-[18px] lg:text-[21px] font-public-sans text-blue-light cursor-pointer"
     :href="href"
-    class="group font-medium text-[18px] lg:text-[21px] font-public-sans text-blue-light translate-y-[-2px]"
+    @click.prevent="() => scrollToHash(href)"
   >
     <span
       :class="`

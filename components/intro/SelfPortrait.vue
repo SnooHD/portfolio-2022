@@ -34,14 +34,14 @@ const { animationState } = useAnimationScroller([
   {
     fromValue: 1.4,
     toValue: 1,
-    scrollStart: 0.8,
+    scrollStart: 0,
     scrollEnd: 1,
     property: 'scale'
   },
   {
     fromValue: 0,
     toValue: 10,
-    scrollStart: 0.8,
+    scrollStart: 0,
     scrollEnd: 1,
     property: 'translate-y'
   },
