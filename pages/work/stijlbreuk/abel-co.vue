@@ -85,7 +85,7 @@ const { getImageSrcSet } = useImages()
         </ShowcaseImage>
       </template>
     </ShowcaseSection>
-    <ShowcaseFooter>
+    <ShowcaseSection>
       <template #title>Download report</template>
       <template #content>
         <ShowcaseParagraph>
@@ -95,6 +95,7 @@ const { getImageSrcSet } = useImages()
           this PDF loading a custom HTML template in Puppeteer.
         </ShowcaseParagraph>
       </template>
-    </ShowcaseFooter>
+    </ShowcaseSection>
+    <ShowcaseFooter company="stijlbreuk" />
   </div>
 </template>

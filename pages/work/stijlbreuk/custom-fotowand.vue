@@ -11,13 +11,16 @@ const { getImageSrcSet } = useImages()
 
 <template>
   <div :class="`font-manrope xl:py-[80px]`">
-    <ShowcaseHeader class="relative md:!pt-[12%] !pb-[5%] md:!pb-[8%]">
+    <ShowcaseHeader class="relative md:!py-[6%] !pb-[5%]">
       <template #background>
         <NuxtPicture
           preset="image"
           src="images/showcase/custom-fotowand/header.png"
           :srcset="getImageSrcSet('images/showcase/custom-fotowand/header.png', [{ width: 900 }])"
-          class="absolute w-[110%] left-0 md:left-auto md:w-[90%] h-[105%] md:h-auto object-cover object-bottom md:object-contain md:right-[2%] top-[-5%] md:top-[2%] xl:top-[0] z-[-1]"
+          :class="`
+            absolute w-[110%] left-0 md:left-auto md:w-[90%] h-[105%] md:h-auto
+            object-cover object-bottom md:object-contain md:right-[2%] top-[-5%] md:top-[50%] md:translate-y-[-50%] z-[-1]
+          `"
         />
       </template>
       <template #title>
@@ -99,7 +102,7 @@ const { getImageSrcSet } = useImages()
         </div>
       </template>
     </ShowcaseSection>
-    <ShowcaseFooter>
+    <ShowcaseSection>
       <template #title>Integration</template>
       <template #content>
         <ShowcaseParagraph>
@@ -110,6 +113,7 @@ const { getImageSrcSet } = useImages()
           customizing the price.
         </ShowcaseParagraph>
       </template>
-    </ShowcaseFooter>
+    </ShowcaseSection>
+    <ShowcaseFooter company="stijlbreuk" />
   </div>
 </template>

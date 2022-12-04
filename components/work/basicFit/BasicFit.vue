@@ -14,9 +14,9 @@ defineProps({
         <LogoBasicFit class="w-[140px] h-[60px] text-white" />
         <Text class="mt-[15px]">
           <span>{{ 'For ' }}</span>
-          <a href="https://basic-fit.com/" target="_blank" class="text-blue-light underline">
+          <NuxtLink href="https://basic-fit.com/" target="_blank" class="text-blue-light underline">
             {{ 'Basic-Fit' }}
-          </a>
+          </NuxtLink>
           <span>
             {{
               ', I am actively working on numerous online platforms to improve upon customer journeys.'

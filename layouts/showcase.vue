@@ -32,6 +32,9 @@ const { pending: isFontLoading } = useAsyncData(
 )
 
 const { fadeInClasses } = useTransitionDone()
+
+const { handleScrollEvent } = useScroller()
+useDocumentEvent('scroll', handleScrollEvent)
 </script>
 
 <template>

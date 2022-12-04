@@ -185,7 +185,7 @@ const { getSpacing } = useShowcaseClasses()
         </ShowcaseParagraph>
       </template>
     </ShowcaseSection>
-    <ShowcaseFooter class="bg-gray-light">
+    <ShowcaseSection class="bg-gray-light">
       <template #title>Monitoring, logging and errors</template>
       <template #content>
         <ShowcaseParagraph>
@@ -202,6 +202,7 @@ const { getSpacing } = useShowcaseClasses()
           bugs faster.
         </ShowcaseParagraph>
       </template>
-    </ShowcaseFooter>
+    </ShowcaseSection>
+    <ShowcaseFooter company="basic-fit" />
   </div>
 </template>

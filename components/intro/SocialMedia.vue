@@ -53,7 +53,7 @@ const { animationState } = useAnimationScroller([
       }"
     >
       <li v-for="({ link, icon, text }, index) in socials" :key="`intro-social-list-${index}`">
-        <a :href="link" target="_blank" class="group inline-block">
+        <NuxtLink :href="link" target="_blank" class="group inline-block">
           <Text>
             <Icon
               :icon="icon"
@@ -79,7 +79,7 @@ const { animationState } = useAnimationScroller([
               </span>
             </span>
           </Text>
-        </a>
+        </NuxtLink>
       </li>
     </ul>
   </div>

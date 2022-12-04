@@ -155,7 +155,7 @@ const { getImageSrcSet } = useImages()
         </ShowcaseParagraph>
       </template>
     </ShowcaseSection>
-    <ShowcaseFooter class="bg-gray-light">
+    <ShowcaseSection class="bg-gray-light">
       <template #title>Monitoring</template>
       <template #content>
         <ShowcaseParagraph>
@@ -168,6 +168,7 @@ const { getImageSrcSet } = useImages()
           and solve a problem quickly.
         </ShowcaseParagraph>
       </template>
-    </ShowcaseFooter>
+    </ShowcaseSection>
+    <ShowcaseFooter company="basic-fit" />
   </div>
 </template>

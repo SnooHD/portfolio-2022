@@ -148,7 +148,7 @@ const { getImageSrcSet } = useImages()
         </ShowcaseImage>
       </template>
     </ShowcaseSection>
-    <ShowcaseFooter>
+    <ShowcaseSection>
       <template #title>Development</template>
       <template #content>
         <ShowcaseParagraph>
@@ -156,6 +156,7 @@ const { getImageSrcSet } = useImages()
           components easily. The website is hosted in the cloud using AWS S3.
         </ShowcaseParagraph>
       </template>
-    </ShowcaseFooter>
+    </ShowcaseSection>
+    <ShowcaseFooter company="freelance" link="https://nativeway.com.uy" />
   </div>
 </template>

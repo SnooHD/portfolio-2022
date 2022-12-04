@@ -10,7 +10,7 @@ const { getImageSrcSet } = useImages()
 </script>
 
 <template>
-  <div :class="`font-manrope xl:py-[80px]`">
+  <div class="font-manrope xl:py-[80px]">
     <ShowcaseHeader>
       <template #background>
         <NuxtPicture
@@ -76,7 +76,7 @@ const { getImageSrcSet } = useImages()
         </ShowcaseImage>
       </template>
     </ShowcaseSection>
-    <ShowcaseFooter>
+    <ShowcaseSection>
       <template #title>Development</template>
       <template #content>
         <ShowcaseParagraph>
@@ -137,12 +137,17 @@ const { getImageSrcSet } = useImages()
             <br />
             <br />
             A proof of concept can be found here:
-            <a class="text-blue-light underline" href="https://codepen.io/snoo/pen/OJjgXPe">
+            <NuxtLink
+              class="text-blue-light underline"
+              target="_blank"
+              href="https://codepen.io/snoo/pen/OJjgXPe"
+            >
               Codepen
-            </a>
+            </NuxtLink>
           </template>
         </ShowcaseParagraph>
       </template>
-    </ShowcaseFooter>
+    </ShowcaseSection>
+    <ShowcaseFooter company="freelance" />
   </div>
 </template>

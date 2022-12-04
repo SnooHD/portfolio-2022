@@ -51,6 +51,7 @@ export const useScroller = () => {
     scrollPosition,
     scrollDirection,
     scrollToPosition,
-    scrollSectionHeight
+    scrollSectionHeight,
+    lastScrollPosition
   }
 }

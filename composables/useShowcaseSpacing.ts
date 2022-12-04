@@ -1,4 +1,4 @@
-type SpacingTypes = 'space-y' | 'space-y-md' | 'space-x' | 'p' | 'py-md' | 'px' | 'py' | 'mt'
+type SpacingTypes = 'space-y' | 'space-y-md' | 'space-x' | 'p' | 'py-md' | 'px' | 'py' | 'mt' | 'mb'
 type FontSizeTypes = 'xl' | 'lg' | 'md' | 'sm'
 
 export const useShowcaseClasses = () => {
@@ -27,6 +27,8 @@ export const useShowcaseClasses = () => {
         return 'py-[7.5px] xs:py-[15px] sm:py-[20px] md:py-[30px] lg:py-[40px]'
       case 'mt':
         return 'mt-[15px] xs:mt-[30px] sm:mt-[40px] md:mt-[60px] lg:mt-[80px]'
+      case 'mb':
+        return 'mb-[15px] xs:mb-[30px] sm:mb-[40px] md:mb-[60px] lg:mb-[80px]'
     }
   }
 
