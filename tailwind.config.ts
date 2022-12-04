@@ -43,7 +43,7 @@ export default <Config>{
           DEFAULT: '#CFCFCF'
         },
         anthracite: {
-          DEFAULT: '2D2D2D',
+          DEFAULT: '#2D2D2D',
           light: '#575757'
         },
         black: {
@@ -54,6 +54,7 @@ export default <Config>{
           DEFAULT: '#fff',
           opaque: 'rgba(255,255,255,.1)'
         },
+        purple: '#535C81',
         mint: '#7ADEC9',
         orange: '#FE7000'
       },

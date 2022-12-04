@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     shim: false
   },
   modules: ['@nuxt/image-edge', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
-  css: ['~/assets/css/fonts.css'],
+  css: ['~/assets/css/fonts.css', 'vue3-highlightjs/styles/atom-one-dark-reasonable.css'],
   tailwindcss: { cssPath: '~/assets/css/tailwind.css' },
   image: {
     screens: {
