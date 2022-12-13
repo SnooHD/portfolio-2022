@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { KioskImage } from '@/types/images.types'
+
 definePageMeta({
   layout: 'showcase'
 })
@@ -31,8 +33,8 @@ const { getSpacing } = useShowcaseClasses()
       </template>
       <template #image>
         <NuxtPicture
-          src="images/showcase/kiosk/kiosk.png"
-          :srcset="getImageSrcSet('images/showcase/kiosk/kiosk.png', [{ width: 400 }])"
+          :src="KioskImage.kiosk"
+          :srcset="getImageSrcSet(KioskImage.kiosk, [{ width: 400 }])"
           preset="image"
           :img-attrs="{
             class: 'w-[30%] absolute right-0 bottom-0 translate-y-[20%] translate-x-[-20%]'
@@ -57,8 +59,8 @@ const { getSpacing } = useShowcaseClasses()
           <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/kiosk/overview.png"
-              :srcset="getImageSrcSet('images/showcase/kiosk/overview.png', [{ width: 1200 }])"
+              :src="KioskImage.overview"
+              :srcset="getImageSrcSet(KioskImage.overview, [{ width: 1200 }])"
               :img-attrs="{
                 class: 'w-full'
               }"
@@ -73,16 +75,16 @@ const { getSpacing } = useShowcaseClasses()
             <ShowcaseImage>
               <NuxtPicture
                 preset="image"
-                src="images/showcase/kiosk/details.png"
-                :srcset="getImageSrcSet('images/showcase/kiosk/details.png', [{ width: 600 }])"
+                :src="KioskImage.details"
+                :srcset="getImageSrcSet(KioskImage.details, [{ width: 600 }])"
                 class="w-full"
               />
             </ShowcaseImage>
             <ShowcaseImage>
               <NuxtPicture
                 preset="image"
-                src="images/showcase/kiosk/membership.png"
-                :srcset="getImageSrcSet('images/showcase/kiosk/showcase.png', [{ width: 600 }])"
+                :src="KioskImage.showcase"
+                :srcset="getImageSrcSet(KioskImage.showcase, [{ width: 600 }])"
                 class="w-full"
               />
             </ShowcaseImage>
@@ -108,8 +110,8 @@ const { getSpacing } = useShowcaseClasses()
         <ShowcaseImage>
           <NuxtPicture
             preset="image"
-            src="images/showcase/kiosk/offline.png"
-            :srcset="getImageSrcSet('images/showcase/kiosk/offline.png', [{ width: 600 }])"
+            :src="KioskImage.offline"
+            :srcset="getImageSrcSet(KioskImage.offline, [{ width: 600 }])"
             class="w-full"
           />
         </ShowcaseImage>
@@ -128,8 +130,8 @@ const { getSpacing } = useShowcaseClasses()
         <ShowcaseImage>
           <NuxtPicture
             preset="image"
-            src="images/showcase/kiosk/payment.png"
-            :srcset="getImageSrcSet('images/showcase/kiosk/payment.png', [{ width: 1200 }])"
+            :src="KioskImage.payment"
+            :srcset="getImageSrcSet(KioskImage.payment, [{ width: 1200 }])"
             :img-attrs="{
               class: 'w-full'
             }"
@@ -153,16 +155,16 @@ const { getSpacing } = useShowcaseClasses()
           <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/kiosk/scan_card.png"
-              :srcset="getImageSrcSet('images/showcase/kiosk/scan_card.png', [{ width: 600 }])"
+              :src="KioskImage.scanCard"
+              :srcset="getImageSrcSet(KioskImage.scanCard, [{ width: 600 }])"
               class="w-full"
             />
           </ShowcaseImage>
           <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/kiosk/scan_error.png"
-              :srcset="getImageSrcSet('images/showcase/kiosk/scan_error.png', [{ width: 600 }])"
+              :src="KioskImage.scanError"
+              :srcset="getImageSrcSet(KioskImage.scanError, [{ width: 600 }])"
               class="w-full"
             />
           </ShowcaseImage>

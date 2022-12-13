@@ -1,6 +1,31 @@
 <script lang="ts" setup>
 import { fontWeightTypes } from '~/composables/useFonts'
 
+const dimensionRef = ref<HTMLDivElement>()
+const metaViewport = useState('meta-viewport', () => 'width=device-width, initial-scale=1')
+const handleOrientation = (landscape: boolean) => {
+  if (landscape) {
+    if (!dimensionRef.value) return
+    const scale = 768
+    const { height } = dimensionRef.value?.getBoundingClientRect()
+    const zoom = height / scale
+    metaViewport.value = `height=${scale}, initial-scale=${zoom}`
+    return
+  }
+
+  metaViewport.value = 'width=device-width, initial-scale=1'
+}
+
+onMounted(() => {
+  const portrait = window.matchMedia('(orientation: landscape)')
+  if ((portrait.matches && screen.height > 768) || (!portrait.matches && screen.width > 768)) {
+    return
+  }
+
+  if (portrait.matches) handleOrientation(true)
+  portrait.addEventListener('change', ({ matches }) => handleOrientation(matches))
+})
+
 const { loadFont } = useFonts()
 const { pending: isFontLoading } = useAsyncData(
   'preload-fonts',
@@ -51,12 +76,16 @@ useDocumentEvent('scroll', handleScrollEvent)
 
 <template>
   <div ref="templateWrapper" class="w-full h-full">
+    <Head>
+      <Meta name="viewport" :content="metaViewport" />
+    </Head>
     <div
       :class="`
         ${isFontLoading ? 'opacity-[0]' : 'opacity-[1]'}
         transition-opacity duration-300 w-full h-screen flex justify-center fixed top-0
       `"
     >
+      <div ref="dimensionRef" class="fixed left-0 top-0 h-full w-full" />
       <div class="z-[-1] left-0 top-0 overflow-hidden w-full h-screen fixed">
         <Background />
       </div>

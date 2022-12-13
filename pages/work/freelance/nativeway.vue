@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { NativewayImage } from '@/types/images.types'
+
 definePageMeta({
   layout: 'showcase'
 })
@@ -123,8 +125,8 @@ const { getImageSrcSet } = useImages()
           <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/nativeway/homepage.png"
-              :srcset="getImageSrcSet('images/showcase/nativeway/homepage.png', [{ width: 900 }])"
+              :src="NativewayImage.homepage"
+              :srcset="getImageSrcSet(NativewayImage.homepage, [{ width: 900 }])"
               class="w-full"
             />
           </ShowcaseImage>
@@ -141,8 +143,8 @@ const { getImageSrcSet } = useImages()
         <ShowcaseImage class="w-full">
           <NuxtPicture
             preset="image"
-            src="images/showcase/nativeway/english-test.png"
-            :srcset="getImageSrcSet('images/showcase/nativeway/english-test.png', [{ width: 900 }])"
+            :src="NativewayImage.test"
+            :srcset="getImageSrcSet(NativewayImage.test, [{ width: 900 }])"
             class="w-full"
           />
         </ShowcaseImage>

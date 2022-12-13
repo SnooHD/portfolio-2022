@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { AbelCoImage } from '@/types/images.types'
+
 definePageMeta({
   layout: 'showcase'
 })
@@ -58,10 +60,8 @@ const { getImageSrcSet } = useImages()
           <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/abel-co/questionnaire.png"
-              :srcset="
-                getImageSrcSet('images/showcase/abel-co/questionnaire.png', [{ width: 900 }])
-              "
+              :src="AbelCoImage.questionnaire"
+              :srcset="getImageSrcSet(AbelCoImage.questionnaire, [{ width: 900 }])"
               class="w-full"
             />
           </ShowcaseImage>
@@ -78,8 +78,8 @@ const { getImageSrcSet } = useImages()
         <ShowcaseImage class="w-full">
           <NuxtPicture
             preset="image"
-            src="images/showcase/abel-co/result.png"
-            :srcset="getImageSrcSet('images/showcase/abel-co/result.png', [{ width: 900 }])"
+            :src="AbelCoImage.result"
+            :srcset="getImageSrcSet(AbelCoImage.result, [{ width: 900 }])"
             class="w-full"
           />
         </ShowcaseImage>

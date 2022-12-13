@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { LogoPickerImage } from '@/types/images.types'
+
 definePageMeta({
   layout: 'showcase'
 })
@@ -15,8 +17,8 @@ const { getImageSrcSet } = useImages()
       <template #background>
         <NuxtPicture
           preset="image"
-          src="images/showcase/logopicker/header-bg.png"
-          :srcset="getImageSrcSet('images/showcase/logopicker/header-bg.png', [{ width: 900 }])"
+          :src="LogoPickerImage.header"
+          :srcset="getImageSrcSet(LogoPickerImage.header, [{ width: 900 }])"
           class="w-full h-full object-cover"
         />
       </template>
@@ -48,10 +50,8 @@ const { getImageSrcSet } = useImages()
           <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/logopicker/questionnaire.png"
-              :srcset="
-                getImageSrcSet('images/showcase/logopicker/questionnaire.png', [{ width: 900 }])
-              "
+              :src="LogoPickerImage.questionnaire"
+              :srcset="getImageSrcSet(LogoPickerImage.questionnaire, [{ width: 900 }])"
               class="w-full"
             />
           </ShowcaseImage>
@@ -69,8 +69,8 @@ const { getImageSrcSet } = useImages()
         <ShowcaseImage class="w-full">
           <NuxtPicture
             preset="image"
-            src="images/showcase/logopicker/tool.png"
-            :srcset="getImageSrcSet('images/showcase/logopicker/tool.png', [{ width: 900 }])"
+            :src="LogoPickerImage.tool"
+            :srcset="getImageSrcSet(LogoPickerImage.tool, [{ width: 900 }])"
             class="w-full"
           />
         </ShowcaseImage>

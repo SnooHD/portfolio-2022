@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { CustomFotowandImage } from '@/types/images.types'
+
 definePageMeta({
   layout: 'showcase'
 })
@@ -15,8 +17,8 @@ const { getImageSrcSet } = useImages()
       <template #background>
         <NuxtPicture
           preset="image"
-          src="images/showcase/custom-fotowand/header.png"
-          :srcset="getImageSrcSet('images/showcase/custom-fotowand/header.png', [{ width: 900 }])"
+          :src="CustomFotowandImage.header"
+          :srcset="getImageSrcSet(CustomFotowandImage.header, [{ width: 900 }])"
           :class="`
             absolute w-[110%] left-0 md:left-auto md:w-[90%] h-[105%] md:h-auto
             object-cover object-bottom md:object-contain md:right-[2%] top-[-5%] md:top-[50%] md:translate-y-[-50%] z-[-1]
@@ -55,10 +57,8 @@ const { getImageSrcSet } = useImages()
           <ShowcaseImage>
             <NuxtPicture
               preset="image"
-              src="images/showcase/custom-fotowand/preview.png"
-              :srcset="
-                getImageSrcSet('images/showcase/custom-fotowand/preview.png', [{ width: 900 }])
-              "
+              :src="CustomFotowandImage.preview"
+              :srcset="getImageSrcSet(CustomFotowandImage.preview, [{ width: 900 }])"
               class="w-full"
             />
           </ShowcaseImage>
@@ -92,10 +92,8 @@ const { getImageSrcSet } = useImages()
           <ShowcaseImage class="w-full sm:w-1/2">
             <NuxtPicture
               preset="image"
-              src="images/showcase/custom-fotowand/dpi-check.png"
-              :srcset="
-                getImageSrcSet('images/showcase/custom-fotowand/dpi-check.png', [{ width: 400 }])
-              "
+              :src="CustomFotowandImage.dpiCheck"
+              :srcset="getImageSrcSet(CustomFotowandImage.dpiCheck, [{ width: 400 }])"
               class="w-full"
             />
           </ShowcaseImage>

@@ -1,6 +1,6 @@
-import { Config } from 'tailwindcss'
 import tailwindPlugin from 'tailwindcss/plugin'
 import formkitTailwind from '@formkit/themes/tailwindcss'
+import { Config } from 'tailwindcss/types/config'
 
 export default <Config>{
   content: [
@@ -68,18 +68,18 @@ export default <Config>{
         'key-bottom': '1px -1px 0 #1a1a1a'
       },
       keyframes: {
-        'move-left': {
-          '0%, 100%': { transform: 'translateX(0px)' },
-          '50%': { transform: 'translateX(3px)' }
+        fog: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' }
         },
-        'move-right': {
-          '0%, 100%': { transform: 'translateX(0px)' },
-          '50%': { transform: 'translateX(-3px)' }
+        fog2: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0%)' }
         }
       },
       animation: {
-        'move-left': 'move-left 1200ms linear infinite',
-        'move-right': 'move-right 1200ms linear infinite'
+        fog: 'fog 75s linear infinite',
+        fog2: 'fog2 75s linear infinite'
       },
       backgroundImage: {
         'orange-gradient': 'linear-gradient(135deg, #FFAA30 0%, #FE7000 35%, #FE7000 100%)',

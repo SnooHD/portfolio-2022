@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { MyBasicFitImage } from '@/types/images.types'
+
 definePageMeta({
   layout: 'showcase'
 })
@@ -18,8 +20,8 @@ const { getImageSrcSet } = useImages()
       </template>
       <template #image>
         <NuxtPicture
-          src="images/showcase/my-basic-fit/head-image.png"
-          :srcset="getImageSrcSet('images/showcase/my-basic-fit/head-image.png', [{ width: 400 }])"
+          :src="MyBasicFitImage.header"
+          :srcset="getImageSrcSet(MyBasicFitImage.header, [{ width: 400 }])"
           preset="image"
           :img-attrs="{
             class: 'w-2/6 xs:w-2/5 absolute right-0 bottom-0 translate-y-[18.5%] translate-x-[11%]'
@@ -49,18 +51,16 @@ const { getImageSrcSet } = useImages()
         <ShowcaseImage>
           <NuxtPicture
             preset="image"
-            src="images/showcase/my-basic-fit/redesign.png"
-            :srcset="getImageSrcSet('images/showcase/my-basic-fit/redesign.png', [{ width: 600 }])"
+            :src="MyBasicFitImage.redesign"
+            :srcset="getImageSrcSet(MyBasicFitImage.redesign, [{ width: 600 }])"
             class="w-full"
           />
         </ShowcaseImage>
         <div class="absolute bottom-0 right-0">
           <NuxtPicture
             preset="image"
-            src="images/showcase/my-basic-fit/wave-artifact.png"
-            :srcset="
-              getImageSrcSet('images/showcase/my-basic-fit/wave-artifact.png', [{ width: 100 }])
-            "
+            :src="MyBasicFitImage.waveArtifact"
+            :srcset="getImageSrcSet(MyBasicFitImage.waveArtifact, [{ width: 100 }])"
             class="w-[40px] xs:w-[60px] sm:w-[80px] md:w-[150px] translate-x-[20%] sm:translate-x-[40%] translate-y-[30%]"
           />
         </div>
@@ -122,20 +122,16 @@ const { getImageSrcSet } = useImages()
         <ShowcaseImage>
           <NuxtPicture
             preset="image"
-            src="images/showcase/my-basic-fit/performance.png"
-            :srcset="
-              getImageSrcSet('images/showcase/my-basic-fit/performance.png', [{ width: 600 }])
-            "
+            :src="MyBasicFitImage.performance"
+            :srcset="getImageSrcSet(MyBasicFitImage.performance, [{ width: 600 }])"
             class="w-full"
           />
         </ShowcaseImage>
         <div class="absolute bottom-0 right-0">
           <NuxtPicture
             preset="image"
-            src="images/showcase/my-basic-fit/circle-artifact.png"
-            :srcset="
-              getImageSrcSet('images/showcase/my-basic-fit/circle-artifact.png', [{ width: 100 }])
-            "
+            :src="MyBasicFitImage.circleArtifact"
+            :srcset="getImageSrcSet(MyBasicFitImage.circleArtifact, [{ width: 100 }])"
             class="w-[40px] xs:w-[60px] sm:w-[80px] md:w-[150px] translate-y-[52%] translate-x-[-2%] sm:translate-x-[43%] sm:translate-y-[18%]"
           />
         </div>

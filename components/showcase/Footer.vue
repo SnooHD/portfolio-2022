@@ -26,10 +26,10 @@ watch(scrollPosition, () => {
 <template>
   <div
     :class="`
-      fixed bottom-0 left-0 w-full backdrop-blur-[5px] 
+      fixed bottom-0 left-0 w-full
       h-[100px] flex items-center justify-center bg-anthracite/60
-      transition-[transform,_background,_border] duration-400 border-t-[1px] border-t-gray-light
-      ${showShowcaseFooter ? 'bg-anthracite/0 border-t-gray-light/0' : ''}
+      transition-[transform,_background,_border,_filter] duration-400 border-t-[1px] border-t-gray-light
+      ${showShowcaseFooter ? 'bg-anthracite/0 border-t-gray-light/0' : 'backdrop-blur-[5px]'}
       ${
         scrollDirection === 'down' && scrollPosition > 0 && !showShowcaseFooter
           ? 'translate-y-[100%]'

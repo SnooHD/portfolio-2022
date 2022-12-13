@@ -1,17 +1,24 @@
 <script lang="ts" setup>
-/**
- * Firefox contains a bug where using blur on the background
- * causes artifacts on moving elements that overlap.
- * Disabling the blur for Firefox for now.
- */
-const isFirefox = useState('is-firefox', () => false)
+const { introTextDone } = useTransitionDone()
+const { scrollPosition } = useScroller()
+const { animationState } = useAnimationScroller([
+  {
+    fromValue: 0.2,
+    toValue: 0,
+    scrollStart: 1.8,
+    scrollEnd: 2,
+    property: 'opacity'
+  }
+])
+
+const componentReady = useState('background-component-ready', () => false)
 onMounted(() => {
-  isFirefox.value = !!navigator.userAgent.match(/firefox|fxios/i)
+  componentReady.value = true
 })
 </script>
 
 <template>
-  <div class="w-full h-full bg-black">
+  <div class="w-full h-full bg-black relative z-0">
     <svg
       viewBox="0 0 1920 1080"
       height="100%"
@@ -39,21 +46,14 @@ onMounted(() => {
           </linearGradient>
         </g>
 
-        <g v-if="!isFirefox" id="flare-blur">
-          <filter id="bg-flare-blur" x="0" y="0">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
-          </filter>
-        </g>
-
         <g id="flare-gradients">
           <radialGradient
             id="bg-flare-0"
-            cx="1959.6866"
-            cy="1851.3885"
-            r="0.9496"
-            fx="1958.7529"
-            fy="1851.3885"
-            gradientTransform="matrix(231.462 548.433 775.6407 -327.3532 -1888876.25 -467937.1562)"
+            cx="750"
+            cy="750"
+            r="40%"
+            fx="600"
+            fy="400"
             gradientUnits="userSpaceOnUse"
           >
             <stop offset="0" stop-color="#00FFFF" />
@@ -74,22 +74,41 @@ onMounted(() => {
           </radialGradient>
         </g>
       </defs>
-      <g id="flares" :filter="!isFirefox ? 'url(#bg-flare-blur)' : ''">
-        <polygon fill="#000" points="1911.9,3188.1 -88,2566.1 738.8,-92.2 2738.7,529.8" />
-        <polygon
-          fill="url(#bg-flare-1)"
-          class="translate-x-[100px] sm:translate-x-[0px]"
-          points="855.4,-316.6 1412,647.5 48.6,1434.6 -508,470.6"
-        />
-        <polygon
-          fill="url(#bg-flare-0)"
-          points="1245.9,-69.9 1685.4,971.7 212.4,1593.4 -227.2,551.8"
-        />
+      <g id="flares">
+        <rect width="100%" height="100%" fill="url(#bg-flare-1)" />
+        <rect width="100%" height="100%" fill="url(#bg-flare-0)" />
       </g>
       <g id="overlay" class="translate-x-[-100%] scale-x-[3]" opacity=".99">
         <rect fill="#000" width="100%" height="100%" mask="url(#bg-flare-mask)" />
         <rect width="100%" height="100%" fill="url(#bg-overlay-gradient)" />
       </g>
     </svg>
+    <div
+      :class="`
+        scale-y-[1.5] scale-x-[1.5] relative w-full h-full transition-opacity duration-[2000ms]
+        ${componentReady ? 'opacity-[.2]' : 'opacity-0'}
+        ${!introTextDone ? 'delay-[800ms]' : ''}
+      `"
+      :style="{
+        opacity: componentReady ? animationState.opacity : undefined
+      }"
+    >
+      <NuxtImg
+        src="/images/fog.png"
+        class="absolute top-0 left-0 z-10 w-full object-contain min-w-[1920px] animate-fog"
+        preset="image"
+        :style="{
+          animationPlayState: scrollPosition >= 2 ? 'paused' : 'running'
+        }"
+      />
+      <NuxtImg
+        src="/images/fog.png"
+        class="absolute top-0 left-0 z-10 w-full object-contain min-w-[1920px] animate-fog2"
+        preset="image"
+        :style="{
+          animationPlayState: scrollPosition >= 2 ? 'paused' : 'running'
+        }"
+      />
+    </div>
   </div>
 </template>
