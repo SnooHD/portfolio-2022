@@ -58,13 +58,13 @@ const { pending: isFontLoading } = useAsyncData(
 
 const { fadeInClasses } = useTransitionDone()
 
-const templateWrapper = ref<HTMLDivElement>()
-const { disableScroll } = useScrollDisabler()
-const { menuState } = useMenuOverlay('work-item')
-watch(menuState, (menuStateValue) => {
-  if (!templateWrapper.value) return
-  disableScroll(templateWrapper.value, menuStateValue)
-})
+// const templateWrapper = ref<HTMLDivElement>()
+// const { disableScroll } = useScrollDisabler()
+// const { menuState } = useMenuOverlay('work-item')
+// watch(menuState, (menuStateValue) => {
+//   if (!templateWrapper.value) return
+//   disableScroll(templateWrapper.value, menuStateValue)
+// })
 
 const { scrollToHash } = useHashChange()
 const { scrollSectionHeight, handleScrollEvent } = useScroller()
@@ -75,7 +75,7 @@ useDocumentEvent('scroll', handleScrollEvent)
 </script>
 
 <template>
-  <div ref="templateWrapper" class="w-full h-full">
+  <div class="w-full h-full">
     <Head>
       <Meta name="viewport" :content="metaViewport" />
     </Head>

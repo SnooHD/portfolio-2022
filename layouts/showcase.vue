@@ -31,15 +31,13 @@ const { pending: isFontLoading } = useAsyncData(
   }
 )
 
-const { fadeInClasses } = useTransitionDone()
-
 const { handleScrollEvent } = useScroller()
 useDocumentEvent('scroll', handleScrollEvent)
 </script>
 
 <template>
   <div class="w-full h-full min-h-screen bg-gray-gradient flex justify-center">
-    <div class="max-w-[1280px] w-full">
+    <div class="max-w-[1280px] w-full relative">
       <slot />
     </div>
   </div>

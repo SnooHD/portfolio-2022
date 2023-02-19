@@ -32,7 +32,7 @@ export const KioskImage = {
   kiosk: 'images/showcase/kiosk/kiosk.png',
   overview: 'images/showcase/kiosk/overview.png',
   details: 'images/showcase/kiosk/details.png',
-  showcase: 'images/showcase/kiosk/showcase.png',
+  membership: 'images/showcase/kiosk/membership.png',
   offline: 'images/showcase/kiosk/offline.png',
   payment: 'images/showcase/kiosk/payment.png',
   scanCard: 'images/showcase/kiosk/scan_card.png',

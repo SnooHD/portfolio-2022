@@ -18,20 +18,7 @@ export const useImages = () => {
     return stringified.join(', ')
   }
 
-  const loadedImages = useState<string[]>('loaded-images', () => [])
-  const setImageLoaded = (name: string) => {
-    loadedImages.value = [...loadedImages.value, name.toLowerCase()]
-  }
-  const isImageLoaded = (name: string) => loadedImages.value.includes(name.toLowerCase())
-
-  // Regex grouping used to parse the image name
-  // https://regex101.com/r/fNXstO/2
-  const getImageName = (src: string) => src.replace(/.*\/(.*)\..*$/, '$1')
-
   return {
-    isImageLoaded,
-    setImageLoaded,
-    getImageSrcSet,
-    getImageName
+    getImageSrcSet
   }
 }

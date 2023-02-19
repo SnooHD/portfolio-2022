@@ -14,6 +14,14 @@ const props = defineProps({
   size: {
     type: String as PropType<'sm' | 'lg'>,
     default: 'sm'
+  },
+  backgroundClass: {
+    type: String,
+    default: ''
+  },
+  menuClass: {
+    type: String,
+    default: ''
   }
 })
 
@@ -72,6 +80,7 @@ const onTransitionEnd = () => {
             `
             : 'left-0 top-0 min-w-full min-h-full'
         }
+        ${backgroundClass}
       `"
     >
       <div class="w-full h-full bg-black/[.6] rounded-full" />
@@ -81,6 +90,7 @@ const onTransitionEnd = () => {
         flex absolute z-[1] w-full
         text-white transition-opacity duration-200 top-0 left-0
         ${menuState ? 'opacity-[1] delay-100' : 'opacity-[0]'}
+        ${menuClass}
       `"
     >
       <slot />

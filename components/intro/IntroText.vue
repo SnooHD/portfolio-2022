@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { isImageLoaded } = useImages()
+const { isImageLoaded } = useImagePreloader()
 const { isFontLoaded } = useFonts()
 
 const animateText = useState('animate-text', () => false)

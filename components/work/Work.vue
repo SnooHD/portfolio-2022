@@ -19,25 +19,18 @@ const { transitionState } = useScrollTransition({
 </script>
 
 <template>
-  <div
-    :class="`
-      w-full h-full
-      ${transitionState}
-    `"
-  >
-    <div class="relative w-full h-full">
+  <div class="w-full h-full">
+    <div
+      :class="`
+        relative w-full h-full 
+        ${transitionState}
+      `"
+    >
       <div class="h-full flex-shrink-0 flex flex-nowrap">
         <template v-for="(item, _key, index) in workItems" :key="`work-item-${item}`">
           <Component :is="item" :index="index" />
         </template>
       </div>
-      <!--
-        Background blur using backdrop-blur doesn't work if the parent element has an opacity.
-        Because of this the visibilityWrapper in this component doesn't add any opacity.
-        The other elements that do need to fade have the opacity directly set to them.
-        The only downside is that if you scroll with this menu open, there is no smooth transition.
-      -->
-      <WorkMenu />
     </div>
 
     <Transition
@@ -58,6 +51,7 @@ const { transitionState } = useScrollTransition({
           ${
             direction === 'left' ? 'left-[-20px] md:left-[-40px]' : 'right-[-20px] md:right-[-40px]'
           }
+          ${transitionState}
         `"
         @click.stop="
           () => {
@@ -87,4 +81,9 @@ const { transitionState } = useScrollTransition({
       </button>
     </Transition>
   </div>
+  <!--
+      Background blur using backdrop-blur doesn't work if the parent element has an opacity.
+      For that reason, the menu is managing its own transition
+    -->
+  <WorkMenu />
 </template>

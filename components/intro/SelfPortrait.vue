@@ -1,34 +1,15 @@
 <script lang="ts" setup>
-const { isImageLoaded, getImageName, setImageLoaded } = useImages()
+import { PictureRefProps, useImagePreloader } from '@/composables/useImagePreloader'
+
+const { pictureRef, onImageLoad, isImageLoaded, loadedImages } = useImagePreloader()
 
 /**
  * Using `url(#image)` for shapeOutside does not work.
  * We want to make sure that the `shapeOutside` and the image `src` are using the same format
  * else we are loading an extra image.
  */
-interface PictureRefProps {
-  $el: HTMLPictureElement
-  src: string
-}
 
-const pictureRef = ref<PictureRefProps>()
 const shapeOutsideSrc = useState<string>('shape-outside-src', () => '')
-
-const onImageLoad = () => {
-  const { src, $el } = pictureRef.value as PictureRefProps
-  const image = $el.querySelector('img')
-  if (!image || !image.complete) {
-    return
-  }
-
-  shapeOutsideSrc.value = image.currentSrc
-  const name = getImageName(src)
-  setImageLoaded(name)
-}
-
-onMounted(() => {
-  onImageLoad()
-})
 
 const { animationState } = useAnimationScroller([
   {
@@ -53,6 +34,15 @@ const { animationState } = useAnimationScroller([
     property: 'opacity-out'
   }
 ])
+
+watch(loadedImages, () => {
+  if (!isImageLoaded('portrait')) return
+
+  const { $el } = pictureRef.value as PictureRefProps
+  const image = $el.querySelector('img') as HTMLImageElement
+
+  shapeOutsideSrc.value = image.currentSrc
+})
 </script>
 
 <template>

@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxt/image-edge', '@formkit/nuxt', '@nuxtjs/tailwindcss'],
   css: ['~/assets/css/fonts.css', 'vue3-highlightjs/styles/atom-one-dark-reasonable.css'],
+  app: { layoutTransition: { name: 'layout', mode: 'out-in', duration: 400 } },
   tailwindcss: { cssPath: '~/assets/css/tailwind.css' },
   image: {
     screens: {
