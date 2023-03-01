@@ -37,17 +37,18 @@ const handleSubmit = async (data: EmailBodyProps, node: FormKitNode) => {
     />
     <FormKit type="text" name="to" label="to:" value="snoohd@gmail.com">
       <template #inner="context">
-        <div :class="context.classes.inner">
+        <div>
           <a
             :id="context.id"
             href="mailto:snoohd@gmail.com"
             title="snoohd@gmail.com"
             :class="`
-              border-blue border-[1px] rounded-md
-              w-[90px] text-center mb-[2px] text-white block
+              border-blue border-[1px] rounded-md py-[4px] md:py-[6px] md:px-[12px] bg-black/[.25]
+              text-center h-full flex items-center justify-center font-light
             `"
           >
-            <Text class="!text-[12px]">Mike de Snoo</Text>
+            <Icon icon="CheckMark" class="text-blue text-[14px] translate-y-[-1px] mr-[4px]" />
+            <Text class="!text-[12px] md:!text-[14px] !text-white/[.8]">Mike de Snoo</Text>
           </a>
         </div>
       </template>

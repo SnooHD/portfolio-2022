@@ -5,22 +5,19 @@ export default {
     validationVisibility: 'submit',
     classes: generateClasses({
       global: {
-        form: 'space-y-[10px] h-full flex flex-col',
-        inner: `
-          border-b-[1px] border-white/[.15] transition-[border,_color] duration-300
-          focus-within:border-white/[.75] focus-within:text-white text-white/[.6] flex-grow
-        `,
+        form: 'space-y-[10px] md:space-y-[12px] h-full flex flex-col',
+        inner: 'flex-grow max-w-[300px]',
         input: `
-          bg-transparent pb-[1px]
-          focus-visible:outline-none w-full
-          !bg-clip-text autofill:!text-fill-color-[#fff] !caret-white
-          placeholder:text-white/[.4] placeholder:transition-[color] placeholder:duration-300 focus:placeholder:text-white/[.6]
+          pl-[10px] bg-black/[.15] rounded-md border-[1px] border-white/0
+          focus-visible:outline-none w-full py-[4px] md:py-[8px] transition-[border,_color] duration-300
+          autofill:!text-fill-color-[#fff] !caret-white focus:border-white/[.15] focus:text-white text-white/[.5] 
+          placeholder:text-white/[.5] placeholder:transition-[color] placeholder:duration-300 focus:placeholder:text-white/[.8]
         `,
-        label: 'text-white/[.8] w-[65px]',
+        label: 'text-white/[.8] w-[65px] capitalize flex items-center mr-[4px]',
         wrapper: 'flex font-public-sans'
       },
       textarea: {
-        inner: '!border-none',
+        inner: '!max-w-full',
         outer: 'flex-grow',
         wrapper: 'h-full',
         input: 'h-full resize-none'
