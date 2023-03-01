@@ -22,14 +22,14 @@ defineProps({
         <div v-if="description" class="font-public-sans font-light text-[16px] sm:text-[18px]">
           {{ description }}
         </div>
-        <NuxtPicture
+        <NuxtImg
           :src="image"
           :srcset="getImageSrcSet(image, [{ width: 400 }])"
           preset="image"
-          :img-attrs="{
-            class:
-              'w-full max-w-[400px] mt-[10px] transition-[filter,_transform] duration-400 group-hover:scale-[1.02] group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,.15)]'
-          }"
+          :class="`
+            w-full max-w-[400px] mt-[10px] transition-[filter,_transform] duration-400
+            group-hover:scale-[1.02] group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,.15)]
+          `"
         />
       </NuxtLink>
     </li>

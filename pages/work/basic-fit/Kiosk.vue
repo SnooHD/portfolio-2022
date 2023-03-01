@@ -40,16 +40,14 @@ const { getSpacing } = useShowcaseClasses()
           <span class="text-white">Role: Senior developer</span>
         </template>
         <template #image>
-          <NuxtPicture
+          <NuxtImg
             ref="pictureRef"
             :src="KioskImage.kiosk"
             :srcset="getImageSrcSet(KioskImage.kiosk, [{ width: 400 }])"
             preset="image"
-            :img-attrs="{
-              class: `
+            :class="`
               w-[30%] absolute right-0 bottom-0 translate-y-[20%] translate-x-[-20%]
-            `
-            }"
+            `"
             @load="onImageLoad"
           />
         </template>
@@ -70,13 +68,11 @@ const { getSpacing } = useShowcaseClasses()
           <div :class="getSpacing('space-y-md')">
             <ShowcaseParagraph>The design aims to give energy and get you going.</ShowcaseParagraph>
             <ShowcaseImage>
-              <NuxtPicture
+              <NuxtImg
                 preset="image"
                 :src="KioskImage.overview"
                 :srcset="getImageSrcSet(KioskImage.overview, [{ width: 1200 }])"
-                :img-attrs="{
-                  class: 'w-full'
-                }"
+                class="w-full"
               />
             </ShowcaseImage>
             <div
@@ -86,7 +82,7 @@ const { getSpacing } = useShowcaseClasses()
             `"
             >
               <ShowcaseImage>
-                <NuxtPicture
+                <NuxtImg
                   preset="image"
                   :src="KioskImage.details"
                   :srcset="getImageSrcSet(KioskImage.details, [{ width: 600 }])"
@@ -94,7 +90,7 @@ const { getSpacing } = useShowcaseClasses()
                 />
               </ShowcaseImage>
               <ShowcaseImage>
-                <NuxtPicture
+                <NuxtImg
                   preset="image"
                   :src="KioskImage.membership"
                   :srcset="getImageSrcSet(KioskImage.membership, [{ width: 600 }])"
@@ -121,7 +117,7 @@ const { getSpacing } = useShowcaseClasses()
         <template #title>Offline</template>
         <template #content>
           <ShowcaseImage>
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="KioskImage.offline"
               :srcset="getImageSrcSet(KioskImage.offline, [{ width: 600 }])"
@@ -141,13 +137,11 @@ const { getSpacing } = useShowcaseClasses()
         <template #title>Hardware Communication</template>
         <template #content>
           <ShowcaseImage>
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="KioskImage.payment"
               :srcset="getImageSrcSet(KioskImage.payment, [{ width: 1200 }])"
-              :img-attrs="{
-                class: 'w-full'
-              }"
+              class="w-full"
             />
           </ShowcaseImage>
           <ShowcaseParagraph>
@@ -166,7 +160,7 @@ const { getSpacing } = useShowcaseClasses()
             `"
           >
             <ShowcaseImage>
-              <NuxtPicture
+              <NuxtImg
                 preset="image"
                 :src="KioskImage.scanCard"
                 :srcset="getImageSrcSet(KioskImage.scanCard, [{ width: 600 }])"
@@ -174,7 +168,7 @@ const { getSpacing } = useShowcaseClasses()
               />
             </ShowcaseImage>
             <ShowcaseImage>
-              <NuxtPicture
+              <NuxtImg
                 preset="image"
                 :src="KioskImage.scanError"
                 :srcset="getImageSrcSet(KioskImage.scanError, [{ width: 600 }])"

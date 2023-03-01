@@ -65,7 +65,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
           </ShowcaseParagraph>
           <div class="flex">
             <ShowcaseImage>
-              <NuxtPicture
+              <NuxtImg
                 ref="pictureRef"
                 preset="image"
                 :src="AbelCoImage.questionnaire"
@@ -86,7 +86,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
             savings.
           </ShowcaseParagraph>
           <ShowcaseImage class="w-full">
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="AbelCoImage.result"
               :srcset="getImageSrcSet(AbelCoImage.result, [{ width: 900 }])"

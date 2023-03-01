@@ -22,15 +22,15 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
     >
       <ShowcaseHeader class="relative md:!py-[6%] !pb-[5%]">
         <template #background>
-          <NuxtPicture
+          <NuxtImg
             ref="pictureRef"
             preset="image"
             :src="CustomFotowandImage.header"
             :srcset="getImageSrcSet(CustomFotowandImage.header, [{ width: 900 }])"
             :class="`
-            absolute w-[110%] left-0 md:left-auto md:w-[90%] h-[105%] md:h-auto
-            object-cover object-bottom md:object-contain md:right-[2%] top-[-5%] md:top-[50%] md:translate-y-[-50%] z-[-1]
-          `"
+              absolute w-[110%] left-0 md:left-auto md:w-[90%] h-[105%] md:h-auto
+              object-cover object-bottom md:object-contain md:right-[2%] top-[-5%] md:top-[50%] md:translate-y-[-50%] z-[-1]
+            `"
             @load="onImageLoad"
           />
         </template>
@@ -65,7 +65,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
           </ShowcaseParagraph>
           <div class="flex">
             <ShowcaseImage>
-              <NuxtPicture
+              <NuxtImg
                 preset="image"
                 :src="CustomFotowandImage.preview"
                 :srcset="getImageSrcSet(CustomFotowandImage.preview, [{ width: 900 }])"
@@ -101,7 +101,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
               </template>
             </ShowcaseParagraph>
             <ShowcaseImage class="w-full sm:w-1/2">
-              <NuxtPicture
+              <NuxtImg
                 preset="image"
                 :src="CustomFotowandImage.dpiCheck"
                 :srcset="getImageSrcSet(CustomFotowandImage.dpiCheck, [{ width: 400 }])"

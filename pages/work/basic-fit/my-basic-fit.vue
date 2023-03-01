@@ -26,15 +26,14 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
           <span class="text-white">Role: Senior developer</span>
         </template>
         <template #image>
-          <NuxtPicture
+          <NuxtImg
             ref="pictureRef"
             :src="MyBasicFitImage.header"
             :srcset="getImageSrcSet(MyBasicFitImage.header, [{ width: 400 }])"
             preset="image"
-            :img-attrs="{
-              class:
-                'w-2/6 xs:w-2/5 absolute right-0 bottom-0 translate-y-[18.5%] translate-x-[11%]'
-            }"
+            :class="`
+                w-2/6 xs:w-2/5 absolute right-0 bottom-0 translate-y-[18.5%] translate-x-[11%]
+            `"
             @load="onImageLoad"
           />
         </template>
@@ -59,7 +58,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
             set out to make this happen
           </ShowcaseParagraph>
           <ShowcaseImage>
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="MyBasicFitImage.redesign"
               :srcset="getImageSrcSet(MyBasicFitImage.redesign, [{ width: 600 }])"
@@ -67,7 +66,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
             />
           </ShowcaseImage>
           <div class="absolute bottom-0 right-0">
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="MyBasicFitImage.waveArtifact"
               :srcset="getImageSrcSet(MyBasicFitImage.waveArtifact, [{ width: 100 }])"
@@ -131,7 +130,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
             </template>
           </ShowcaseParagraph>
           <ShowcaseImage>
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="MyBasicFitImage.performance"
               :srcset="getImageSrcSet(MyBasicFitImage.performance, [{ width: 600 }])"
@@ -139,7 +138,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
             />
           </ShowcaseImage>
           <div class="absolute bottom-0 right-0">
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="MyBasicFitImage.circleArtifact"
               :srcset="getImageSrcSet(MyBasicFitImage.circleArtifact, [{ width: 100 }])"

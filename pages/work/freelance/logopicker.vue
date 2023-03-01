@@ -22,7 +22,7 @@ const { getImageSrcSet } = useImages()
     >
       <ShowcaseHeader>
         <template #background>
-          <NuxtPicture
+          <NuxtImg
             ref="pictureRef"
             preset="image"
             :src="LogoPickerImage.header"
@@ -59,7 +59,7 @@ const { getImageSrcSet } = useImages()
           </ShowcaseParagraph>
           <div class="flex">
             <ShowcaseImage>
-              <NuxtPicture
+              <NuxtImg
                 preset="image"
                 :src="LogoPickerImage.questionnaire"
                 :srcset="getImageSrcSet(LogoPickerImage.questionnaire, [{ width: 900 }])"
@@ -78,7 +78,7 @@ const { getImageSrcSet } = useImages()
             your brand.
           </ShowcaseParagraph>
           <ShowcaseImage class="w-full">
-            <NuxtPicture
+            <NuxtImg
               preset="image"
               :src="LogoPickerImage.tool"
               :srcset="getImageSrcSet(LogoPickerImage.tool, [{ width: 900 }])"

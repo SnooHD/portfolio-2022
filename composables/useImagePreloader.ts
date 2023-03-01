@@ -1,5 +1,5 @@
 export interface PictureRefProps {
-  $el: HTMLPictureElement
+  $el: HTMLImageElement
   src: string
 }
 
@@ -17,8 +17,7 @@ export const useImagePreloader = () => {
   const getImageName = (src: string) => src.replace(/.*\/(.*)\..*$/, '$1')
 
   const onImageLoad = () => {
-    const { src, $el } = pictureRef.value as PictureRefProps
-    const image = $el.querySelector('img')
+    const { src, $el: image } = pictureRef.value as PictureRefProps
     if (!image || !image.complete) {
       return
     }
