@@ -21,22 +21,27 @@ const { animationState } = useAnimationScroller([
 <template>
   <div
     :class="`
-      pt-[60px] h-xs:pt-[150px] max-w-[600px]
-      text-[16px] sm:text-[18px] lg:text-[21px]
+      max-w-[600px] h-full
+      text-[16px] sm:text-[18px] xl:text-[21px]
     `"
     :style="{
       opacity: scrollPosition < 1 ? animationState['opacity-in'] : animationState['opacity-out']
     }"
   >
-    <Paragraph>
-      I am a Senior front-end developer from Holland. I'm unapologetically a web generalist, but I
-      particularly love diving deep into front-end development and UX design.
-    </Paragraph>
-    <br />
-    <Paragraph>
-      I develop from a strategic perspective of telling stories through visual and interactive
-      systems. I find great joy in pressing buttons, but I also take great responsibility for how I
-      press them.
-    </Paragraph>
+    <div class="w-full py-[10%] xs:py-[20%] sm:py-[25%] md:py-[33%] xl:py-[24%]">
+      <Paragraph>
+        I'm a web developer from the Netherlands with 12 years of experience in building websites
+        that combine stunning visuals with top-notch user experience. One of my favorite parts of
+        web development is animation, as it has the power to elevate a website from good to
+        exceptional.
+      </Paragraph>
+      <br />
+      <Paragraph>
+        I aim to bridge the gap between design and development. My aim is to provide a seamless user
+        experience, ensuring a perfect blend of creativity and functionality. I work with a modern
+        stack that includes Vue and React. I pay close attention to the code I write, ensuring that
+        it is clean, efficient, and maintainable.
+      </Paragraph>
+    </div>
   </div>
 </template>

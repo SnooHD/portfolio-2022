@@ -26,28 +26,28 @@ const { animationState } = useAnimationScroller([
   {
     fromValue: 1,
     toValue: 0,
-    scrollStart: 2.8,
+    scrollStart: 2.99,
     scrollEnd: 3,
     property: 'opacity-out-showcase'
   },
   {
     fromValue: 0,
     toValue: -25,
-    scrollStart: 2.8,
+    scrollStart: 2.99,
     scrollEnd: 3,
     property: 'translate-y-out-showcase'
   },
   {
     fromValue: 0,
     toValue: 1,
-    scrollStart: 2.8,
+    scrollStart: 2.99,
     scrollEnd: 3,
     property: 'opacity-in-submit'
   },
   {
     fromValue: 25,
     toValue: 0,
-    scrollStart: 2.8,
+    scrollStart: 2.99,
     scrollEnd: 3,
     property: 'translate-y-submit'
   }

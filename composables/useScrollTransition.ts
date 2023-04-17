@@ -13,9 +13,9 @@ export const useScrollTransition = ({
   hidden,
   id,
   transitionDelay = 'delay-[200ms]',
-  transitionClasses = 'transition-opacity duration-[400ms]',
-  transitionIn = 'opacity-[1]',
-  transitionOut = 'opacity-[0]'
+  transitionClasses = 'transition-opacity duration-300',
+  transitionIn = '!opacity-100',
+  transitionOut = '!opacity-0'
 }: UseScrollTransitionsProps) => {
   const { scrollPosition, scrollDirection } = useScroller()
   const transitionState = useState(`scroll-transition-state-${id}`, () => '')

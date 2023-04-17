@@ -11,11 +11,10 @@ defineProps({
   <WorkItem id="stijlbreuk" :index="index">
     <template #item>
       <div class="w-full">
-        <LogoBasicFit class="w-[120px] h-[60px]" />
         <Text>
-          For
-          <NuxtLink href="#" target="_blank">Stijlbreuk</NuxtLink>
-          , I am actively working on numerous online platforms to improve upon customer journeys.
+          <NuxtLink href="https://www.stijlbreuk.nl" target="_blank">Stijlbreuk</NuxtLink>
+          is an innovative UX agency that creates designs with a wow effect. With a talented team
+          and cutting-edge technology, they aim to deliver exceptional user experiences.
         </Text>
       </div>
     </template>

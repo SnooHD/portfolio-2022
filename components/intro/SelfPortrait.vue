@@ -52,7 +52,7 @@ watch(loadedImages, () => {
     preload
     sizes="lg:100vw xl:820px"
     :style="{
-      shapeMargin: '15px',
+      shapeMargin: '25px',
       shapeOutside: shapeOutsideSrc && `url(${shapeOutsideSrc})`,
       opacity: animationState['opacity-out'],
       '--tw-scale-x': animationState['scale'],
@@ -60,9 +60,9 @@ watch(loadedImages, () => {
       '--tw-translate-y': `${animationState['translate-y']}%`
     }"
     :class="`
-      mb-0 w-full h-full float-right object-contain object-bottom transition-[transform, _opacity] duration-300
-      mt-[20px] lg:mt-[40px] max-w-[840px] xl:max-w-[580px] xl:scale-[1.4] origin-top
-      mr-[-55%] xs:mr-[-45%] lg:mr-[-20%] xl:mr-[-5%] scale-[1]
+      mb-0 h-auto float-right object-contain object-bottom transition-[transform, _opacity] duration-300
+      mt-[20px] lg:mt-[40px] w-[400px] scale-[1.4] origin-top
+      mr-[-50%] xs:mr-[-35%] md:mr-[-20%] lg:mr-[0]
       ${animationState['scale'] < 1.4 && animationState['scale'] > 1 ? '!transition-none' : ''}
       ${!isImageLoaded('portrait') ? 'translate-x-[10%]' : ''}
     `"

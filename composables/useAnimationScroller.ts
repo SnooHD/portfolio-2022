@@ -47,8 +47,6 @@ export const useAnimationScroller = (animationConfig: AnimationConfigProps[]) =>
 
           const animationDistance = toValue - fromValue
           animationState[property] = fromValue + animationDistance * scrollRatio
-
-          console.log(animationState)
         })
       })
     },

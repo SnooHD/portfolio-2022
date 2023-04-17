@@ -11,11 +11,10 @@ defineProps({
   <WorkItem id="freelance" :index="index">
     <template #item>
       <div class="w-full">
-        <LogoBasicFit class="w-[120px] h-[60px]" />
         <Text>
-          For
-          <NuxtLink href="#" target="_blank">Freelance</NuxtLink>
-          , I am actively working on numerous online platforms to improve upon customer journeys.
+          Working across various industries, I strive to improve user experiences by developing
+          seamless applications for web and mobile platforms. With flexibility and autonomy, I
+          deliver high-quality work that meets the unique needs of each project.
         </Text>
       </div>
     </template>

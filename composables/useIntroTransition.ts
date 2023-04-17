@@ -8,7 +8,8 @@ export const useTransitionDone = () => {
 
   watch(introTextDone, (introTextDoneValue) => {
     if (introTextDoneValue) {
-      fadeInClasses.value = 'transition-[opacity,_transform] duration-300 opacity-1 translate-y-[0]'
+      fadeInClasses.value =
+        'transition-[opacity,_transform] duration-300 opacity-100 translate-y-[0]'
     }
   })
 

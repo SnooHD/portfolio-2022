@@ -10,7 +10,7 @@ const workItemMenus = {
 const { transitionState } = useScrollTransition({
   visible: 2,
   hidden: 3,
-  id: 'work'
+  id: 'work-menu'
 })
 </script>
 

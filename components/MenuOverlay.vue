@@ -89,7 +89,7 @@ const onTransitionEnd = () => {
       :class="`
         flex absolute z-[1] w-full
         text-white transition-opacity duration-200 top-0 left-0
-        ${menuState ? 'opacity-[1] delay-100' : 'opacity-[0]'}
+        ${menuState ? 'opacity-100 delay-100' : 'opacity-0'}
         ${menuClass}
       `"
     >

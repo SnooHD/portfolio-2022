@@ -11,17 +11,12 @@ defineProps({
   <WorkItem id="basic-fit" :index="index">
     <template #item>
       <div class="w-full">
-        <LogoBasicFit class="w-[140px] h-[60px] text-white" />
-        <Text class="mt-[15px]">
-          <span>{{ 'For ' }}</span>
-          <NuxtLink href="https://basic-fit.com/" target="_blank" class="text-blue-light underline">
-            {{ 'Basic-Fit' }}
-          </NuxtLink>
-          <span>
-            {{
-              ', I am actively working on numerous online platforms to improve upon customer journeys.'
-            }}
-          </span>
+        <Text>
+          As a developer for
+          <NuxtLink href="https://www.basic-fit.com" target="_blank">Basic-fit</NuxtLink>
+          , I get to work on various products and create innovative solutions to improve user
+          experiences, which includes developing for multiple platforms such as web and kiosk
+          applications.
         </Text>
       </div>
     </template>
