@@ -54,7 +54,7 @@ watch(scrollPosition, () => {
       `"
     >
       <Button>
-        <NuxtLink :to="{ path: '/', hash: '#my-work', params: { company } }">
+        <NuxtLink :to="{ path: '/', hash: '#my-work', query: { company, menu: 'true' } }">
           {{ '< Back' }}
         </NuxtLink>
       </Button>

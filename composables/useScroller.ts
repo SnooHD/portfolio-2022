@@ -4,14 +4,13 @@
 
 export type ScrollSectionType = 'home' | 'about-me' | 'my-work' | 'contact'
 export const sections: ScrollSectionType[] = ['home', 'about-me', 'my-work', 'contact']
+export const scrollSectionHeight = 400
 
 export const useScroller = () => {
-  const scrollSectionHeight = 400
-
-  const scrollToScrollPosition = (top: number) => {
+  const scrollToScrollPosition = (top: number, behavior: 'auto' | 'smooth' = 'smooth') => {
     window.scroll({
       top: top * scrollSectionHeight,
-      behavior: 'smooth'
+      behavior
     })
   }
 
@@ -51,6 +50,7 @@ export const useScroller = () => {
     scrollPosition,
     scrollDirection,
     scrollToPosition,
+    scrollToScrollPosition,
     scrollSectionHeight,
     lastScrollPosition
   }

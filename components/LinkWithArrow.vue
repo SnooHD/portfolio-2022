@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PropType } from 'vue'
-import { HashSectionType } from '~/composables/useHashChange'
+import { HashSectionType } from '~/composables/useHash'
 
 defineProps({
   href: {
@@ -9,11 +9,11 @@ defineProps({
   }
 })
 
-const { scrollToHash } = useHashChange()
+const { scrollToHash } = useHash()
 </script>
 
 <template>
-  <NuxtLink
+  <a
     class="group font-medium text-[18px] lg:text-[21px] font-public-sans text-blue-light cursor-pointer"
     :href="href"
     @click.prevent="() => scrollToHash(href)"
@@ -34,5 +34,5 @@ const { scrollToHash } = useHashChange()
         group-hover:translate-y-[60%] group-hover:translate-x-[12px] group-hover:scale-[.7]
       `"
     />
-  </NuxtLink>
+  </a>
 </template>

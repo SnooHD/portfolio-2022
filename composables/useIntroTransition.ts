@@ -1,9 +1,9 @@
-export const useTransitionDone = () => {
+export const useIntroTransition = () => {
   const introTextDone = useState('intro-text-transition-done', () => false)
 
   const fadeInClasses = useState(
     'fade-in-classes',
-    () => 'transition-[opacity,_transform] duration-300 opacity-0 translate-y-[15px]'
+    (): string => 'transition-[opacity,_transform] duration-300 opacity-0 translate-y-[15px]'
   )
 
   watch(introTextDone, (introTextDoneValue) => {

@@ -9,7 +9,7 @@ export const useMenuOverlay = (menu: MenuOverlayTypes) => {
   const menuStates = useState<Partial<MenuStateType>>('menu-states', () => ({}))
 
   const menuState = computed({
-    get: () => menuStates.value[menu] || false,
+    get: () => menuStates.value[menu],
     set: (value) => {
       const allStatesToFalse = Object.keys(menuStates.value).reduce(
         (previous, current) => ({ ...previous, [current]: false }),

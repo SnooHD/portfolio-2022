@@ -9,22 +9,22 @@ interface SocialMediaProps {
 
 const socials: SocialMediaProps[] = [
   {
-    link: '',
+    link: 'mailto:snoohd@gmail.com',
     icon: 'Email',
     text: 'Email'
   },
   {
-    link: '',
+    link: 'https://www.linkedin.com/in/snoo/',
     icon: 'Linkedin',
     text: 'Linkedin'
   },
   {
-    link: '',
+    link: 'https://codepen.io/snoo',
     icon: 'Codepen',
     text: 'Codepen'
   },
   {
-    link: '',
+    link: 'https://codesandbox.io/u/snoohd',
     icon: 'Codesandbox',
     text: 'Codesandbox'
   }

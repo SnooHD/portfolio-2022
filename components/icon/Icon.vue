@@ -5,6 +5,8 @@ const icons = {
   Email: resolveComponent('IconEmail'),
   Hamburger: resolveComponent('IconHamburger'),
   ArrowBottomRight: resolveComponent('IconArrowBottomRight'),
+  ArrowUp: resolveComponent('IconArrowUp'),
+  ArrowDown: resolveComponent('IconArrowDown'),
   ArrowRight: resolveComponent('IconArrowRight'),
   ArrowLeft: resolveComponent('IconArrowLeft'),
   Linkedin: resolveComponent('IconLinkedin'),

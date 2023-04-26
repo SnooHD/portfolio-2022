@@ -23,6 +23,9 @@ const { animationState } = useAnimationScroller([
     :class="`
       max-w-[600px] h-full
       text-[16px] sm:text-[18px] xl:text-[21px]
+      ${
+        scrollPosition > 0.8 && scrollPosition < 1.8 ? 'pointer-events-auto' : 'pointer-events-none'
+      }
     `"
     :style="{
       opacity: scrollPosition < 1 ? animationState['opacity-in'] : animationState['opacity-out']

@@ -22,7 +22,15 @@ const props = defineProps({
   menuClass: {
     type: String,
     default: ''
+  },
+  defaultMenuState: {
+    type: Boolean,
+    default: false
   }
+})
+
+onMounted(() => {
+  menuState.value = props.defaultMenuState
 })
 
 const { menuState } = useMenuOverlay(props.type)
@@ -30,7 +38,11 @@ const menuRef = ref<HTMLMenuElement>()
 
 const handleMenuState = (e: MouseEvent) => {
   // ignore clicks on child element
-  if (e.target !== menuRef.value && (menuRef.value as HTMLMenuElement).contains(e.target as Node)) {
+  if (
+    menuRef.value &&
+    e.target !== menuRef.value &&
+    (menuRef.value as HTMLMenuElement).contains(e.target as Node)
+  ) {
     return
   }
 

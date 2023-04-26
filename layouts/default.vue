@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { fontWeightTypes } from '~/composables/useFonts'
+import { HashSectionType } from '~/composables/useHash'
 
 const dimensionRef = ref<HTMLDivElement>()
 const metaViewport = useState('meta-viewport', () => 'width=device-width, initial-scale=1')
@@ -56,20 +57,12 @@ const { pending: isFontLoading } = useAsyncData(
   }
 )
 
-const { fadeInClasses } = useTransitionDone()
+const { fadeInClasses } = useIntroTransition()
 
-// const templateWrapper = ref<HTMLDivElement>()
-// const { disableScroll } = useScrollDisabler()
-// const { menuState } = useMenuOverlay('work-item')
-// watch(menuState, (menuStateValue) => {
-//   if (!templateWrapper.value) return
-//   disableScroll(templateWrapper.value, menuStateValue)
-// })
-
-const { scrollToHash } = useHashChange()
+const { scrollToHash } = useHash()
 const { scrollSectionHeight, handleScrollEvent } = useScroller()
 
-onMounted(scrollToHash)
+onMounted(() => scrollToHash(location.hash as HashSectionType, 'auto'))
 useWindowEvent('hashchange', () => scrollToHash())
 useDocumentEvent('scroll', handleScrollEvent)
 </script>

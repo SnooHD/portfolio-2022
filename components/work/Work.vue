@@ -44,10 +44,11 @@ const { transitionState } = useScrollTransition({
       <button
         v-show="direction === 'left' ? state > 0 : state < Object.keys(workItems).length - 1"
         :class="`
-          transition-opacity duration-300 bg-white/[.1] backdrop-blur-[2.5px] flex items-center justify-center
+          transition-all duration-300 bg-white/[.1] backdrop-blur-[2.5px] flex items-center justify-center
           rounded-full w-[60px] h-[60px] z-[110] group
           fixed bottom-[120px]
           md:absolute md:bottom-auto md:top-1/2 md:translate-y-[-50%]
+          hover:bg-white/[.2]
           ${
             direction === 'left' ? 'left-[-20px] md:left-[-40px]' : 'right-[-20px] md:right-[-40px]'
           }
@@ -68,8 +69,8 @@ const { transitionState } = useScrollTransition({
           <Icon
             :class="`
               transition-transform duration-300 mx-[7px]
-              ${direction === 'left' && animateButton === 'back' ? 'translate-x-[-3px]' : ''}
-              ${direction === 'right' && animateButton === 'next' ? 'translate-x-[3px]' : ''}
+              ${direction === 'left' && animateButton === 'back' ? 'translate-x-[-2px]' : ''}
+              ${direction === 'right' && animateButton === 'next' ? 'translate-x-[2px]' : ''}
             `"
             :icon="direction === 'left' ? 'ArrowLeft' : 'ArrowRight'"
             @transitionend="() => (animateButton = '')"

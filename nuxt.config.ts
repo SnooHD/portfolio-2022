@@ -21,6 +21,11 @@ export default defineNuxtConfig({
           format: 'webp',
           quality: 80
         }
+      },
+      svg: {
+        modifiers: {
+          quality: 80
+        }
       }
     }
   }

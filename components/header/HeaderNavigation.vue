@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const { activeMenuIndex, menuItems } = useMenu()
-const { scrollToHash, stringToHash } = useHashChange()
+const { stringToHash, scrollToHash } = useHash()
 
 const { menuState, activeState } = useMenuOverlay('main-menu')
 </script>
@@ -48,11 +48,7 @@ const { menuState, activeState } = useMenuOverlay('main-menu')
           <a
             class="inline-block"
             :href="stringToHash(menuItem)"
-            @click.prevent="
-              () => {
-                scrollToHash(menuItem)
-              }
-            "
+            @click.prevent="() => scrollToHash(stringToHash(menuItem))"
           >
             {{ menuItem }}
           </a>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { introTextDone } = useTransitionDone()
+const { introTextDone } = useIntroTransition()
 const { scrollPosition } = useScroller()
 const { animationState } = useAnimationScroller([
   {

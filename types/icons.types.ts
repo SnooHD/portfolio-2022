@@ -7,4 +7,6 @@ export type IconType =
   | 'Codesandbox'
   | 'ArrowLeft'
   | 'ArrowRight'
+  | 'ArrowDown'
+  | 'ArrowUp'
   | 'CheckMark'

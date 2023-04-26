@@ -13,7 +13,7 @@ defineProps({
     preset="image"
     :class="`
       w-full sm:w-[140%] h-full max-w-[1024px] min-h-[380px] min-w-[600px] xs:translate-x-[50%]
-      object-contain absolute right-[-60px] xs:right-[50%] opacity-75
+      object-contain absolute right-[-60px] xs:right-[50%] opacity-60
     `"
     :style="{
       maskImage: `linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%)`

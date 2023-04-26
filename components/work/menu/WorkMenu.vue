@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { state, workItems } = useWorkCarousel()
+const { state, workItems, defaultCarouselMenuState } = useWorkCarousel()
 
 const workItemMenus = {
   0: resolveComponent('WorkBasicFitMenu'),
@@ -22,6 +22,7 @@ const { transitionState } = useScrollTransition({
       class="origin-top-left top-[-200px] left-[-300px]"
       type="work-item"
       size="lg"
+      :default-menu-state="defaultCarouselMenuState"
       :background-class="transitionState"
       :menu-class="transitionState"
     >
@@ -34,9 +35,9 @@ const { transitionState } = useScrollTransition({
         <template v-for="(item, _key, index) in workItemMenus" :key="`work-item-menu-${item}`">
           <div
             :class="`
-            transition-opacity duration-300 absolute left-0 top-0
-            ${state === index ? 'opacity-100 z-[1]' : 'opacity-0 z-0'}
-          `"
+              transition-opacity duration-300 absolute left-0 top-0
+              ${state === index ? 'opacity-100 z-[1]' : 'opacity-0 z-0'}
+            `"
           >
             <Component :is="item" :index="index" />
           </div>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { fadeInClasses } = useTransitionDone()
+const { fadeInClasses } = useIntroTransition()
 </script>
 
 <template>

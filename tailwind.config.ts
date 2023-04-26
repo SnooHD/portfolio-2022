@@ -67,6 +67,11 @@ export default <Config>{
         'key-button': '1px -1px 0 #1a1a1a, 1px -1px 0 0 #595959 inset',
         'key-bottom': '1px -1px 0 #1a1a1a'
       },
+      textShadow: {
+        sm: '0 0 1px var(--tw-shadow-color)',
+        DEFAULT: '0 2px 4px var(--tw-shadow-color)',
+        lg: '0 8px 16px var(--tw-shadow-color)'
+      },
       keyframes: {
         fog: {
           '0%': { transform: 'translateX(0)' },
@@ -89,7 +94,7 @@ export default <Config>{
   },
   plugins: [
     formkitTailwind,
-    tailwindPlugin(({ matchUtilities }) => {
+    tailwindPlugin(({ matchUtilities, theme }) => {
       matchUtilities({
         mask: (value: string) => ({
           maskImage: value
@@ -100,7 +105,14 @@ export default <Config>{
         'text-fill-color': (value: string) => ({
           textFillColor: value,
           '-webkit-text-fill-color': value
-        })
+        }),
+        'text-shadow': (value) => {
+          const val = (theme('textShadow') as Record<string, string>)[value]
+
+          return {
+            textShadow: val
+          }
+        }
       })
     })
   ]

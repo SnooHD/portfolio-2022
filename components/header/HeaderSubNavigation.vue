@@ -4,8 +4,6 @@ const { scrollPosition } = useScroller()
 const menuWrapper = ref<HTMLUListElement>()
 const menuItemHeight = useState<number>('menuItemHeight', () => 0)
 
-const { scrollToHash, stringToHash } = useHashChange()
-
 onMounted(() => {
   const menuItem = (menuWrapper.value as HTMLUListElement).querySelector('li') as HTMLLIElement
   menuItemHeight.value = menuItem.getBoundingClientRect().height
@@ -14,7 +12,6 @@ onMounted(() => {
 const menuOffset = computed<number>(() =>
   Math.max(-menuItemHeight.value * scrollPosition.value, -75)
 )
-const navWrapperTransition = useState('nav-wrapper-transition', () => false)
 </script>
 
 <template>
@@ -66,18 +63,6 @@ const navWrapperTransition = useState('nav-wrapper-transition', () => false)
         >
           <span class="flex items-center absolute w-full h-full">
             <h1 v-if="menuItem && index === activeMenuIndex">{{ menuItem }}</h1>
-            <a
-              v-if="menuItem && index !== activeMenuIndex"
-              :href="stringToHash(menuItem)"
-              @click.prevent="
-                () => {
-                  navWrapperTransition = true
-                  scrollToHash(menuItem)
-                }
-              "
-            >
-              {{ menuItem }}
-            </a>
           </span>
         </li>
       </ul>
