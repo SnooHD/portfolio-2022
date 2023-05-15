@@ -4,16 +4,6 @@ const { isFontLoaded } = useFonts()
 const { hashValue } = useHash()
 
 const animateText = useState('animate-text', () => false)
-
-// When we have a hash, we don't want to animate the text.
-// When we set the animateText to true, the page will render with the end state
-watch(hashValue, () => {
-  if (hashValue.value === '#home') return
-
-  animateText.value = !!hashValue.value
-  introTextDone.value = true
-})
-
 watchEffect(() => {
   const preLoaded =
     isFontLoaded('atyp-display', { weight: 700 }) &&

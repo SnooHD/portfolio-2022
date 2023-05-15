@@ -2,7 +2,7 @@
 import { fontWeightTypes } from '~/composables/useFonts'
 
 const { loadFont } = useFonts()
-const { pending: isFontLoading } = useAsyncData(
+useAsyncData(
   'preload-fonts',
   () => {
     const fonts: Record<string, fontWeightTypes[]> = {

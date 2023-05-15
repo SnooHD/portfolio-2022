@@ -44,6 +44,17 @@ export const useScroller = () => {
     get: () => (scrollToPositionState.value === null ? null : scrollToPositionState.value)
   })
 
+  // When we have a hash, we don't want to animate the text.
+  // When we set the animateText to true, the page will render with the end state
+  const { introTextDone } = useIntroTransition()
+  watch(scrollPosition, (watchedScrollPosition) => {
+    if (introTextDone.value) return
+
+    if (watchedScrollPosition > 1) {
+      introTextDone.value = true
+    }
+  })
+
   return {
     handleScrollEvent,
     scrollToSection,
