@@ -33,12 +33,12 @@ watch(scrollPosition, () => {
     ref="footerElementRef"
     :class="`
       bottom-0 left-0 w-full
-      h-[100px] flex items-center justify-center bg-anthracite/60
-       duration-400 border-t-[1px] border-t-gray-light
+      h-[100px] flex items-center justify-center 
+      duration-400 border-t-[1px] border-t-gray-light
       ${
         showShowcaseFooter
           ? 'bg-anthracite/0 border-t-gray-light/0 transition-none absolute'
-          : 'backdrop-blur-[5px] transition-[transform,_background,_border,_filter] fixed duration-400'
+          : 'bg-anthracite/60 backdrop-blur-[5px] transition-[transform,_background,_border,_filter] fixed duration-400'
       }
       ${
         scrollDirection === 'down' && scrollPosition > 0 && !showShowcaseFooter
@@ -58,8 +58,14 @@ watch(scrollPosition, () => {
           {{ '< Back' }}
         </NuxtLink>
       </Button>
-      <Button v-if="link" class="bg-white">
-        <NuxtLink :href="link" target="_blank" class="text-anthracite">View project</NuxtLink>
+      <Button v-if="link" class="bg-white group">
+        <NuxtLink
+          :href="link"
+          target="_blank"
+          class="text-anthracite group-hover:text-white transition-colors duration-300"
+        >
+          View project
+        </NuxtLink>
       </Button>
     </div>
   </div>

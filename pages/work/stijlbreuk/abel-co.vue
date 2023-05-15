@@ -107,6 +107,6 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
         </template>
       </ShowcaseSection>
     </div>
-    <ShowcaseFooter company="stijlbreuk" />
+    <ShowcaseFooter company="stijlbreuk" link="https://abelenco.nl/warmtepompcheck/" />
   </div>
 </template>

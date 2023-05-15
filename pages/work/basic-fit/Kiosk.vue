@@ -194,7 +194,7 @@ const { getSpacing } = useShowcaseClasses()
           </ShowcaseParagraph>
         </template>
       </ShowcaseSection>
-      <ShowcaseSection class="bg-gray-light !pb-[100px]">
+      <ShowcaseSection class="bg-gray-light mb-[100px]">
         <template #title>Monitoring, logging and errors</template>
         <template #content>
           <ShowcaseParagraph>

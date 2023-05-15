@@ -161,7 +161,7 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
           </ShowcaseParagraph>
         </template>
       </ShowcaseSection>
-      <ShowcaseSection class="bg-gray-light !pb-[100px]">
+      <ShowcaseSection class="bg-gray-light mb-[100px]">
         <template #title>Monitoring</template>
         <template #content>
           <ShowcaseParagraph>
@@ -176,6 +176,6 @@ const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
         </template>
       </ShowcaseSection>
     </div>
-    <ShowcaseFooter company="basic-fit" />
+    <ShowcaseFooter company="basic-fit" link="https://my.basic-fit.com/" />
   </div>
 </template>

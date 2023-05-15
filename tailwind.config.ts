@@ -73,6 +73,20 @@ export default <Config>{
         lg: '0 8px 16px var(--tw-shadow-color)'
       },
       keyframes: {
+        shake: {
+          '10%, 90%': {
+            transform: 'translateX(-1px)'
+          },
+          '20%, 80%': {
+            transform: 'translateX(2px)'
+          },
+          '30%, 50%, 70%': {
+            transform: 'translateX(-2px)'
+          },
+          '40%, 60%': {
+            transform: 'translateX(1px)'
+          }
+        },
         fog: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(100%)' }
@@ -83,6 +97,7 @@ export default <Config>{
         }
       },
       animation: {
+        shake: 'shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
         fog: 'fog 75s linear infinite',
         fog2: 'fog2 75s linear infinite'
       },

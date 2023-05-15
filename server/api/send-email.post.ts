@@ -2,14 +2,14 @@ import { createTransport } from 'nodemailer'
 import { EmailBodyProps } from '~/types/contact.types'
 
 export default defineEventHandler(async (event) => {
-  const { to, from, subject, text } = await useBody<EmailBodyProps>(event)
+  const { to, from, subject, text } = await readBody<EmailBodyProps>(event)
 
   const transporter = createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     auth: {
       user: 'snoohd@gmail.com',
-      pass: 'ceafurqyqraksuax'
+      pass: 'effsdirpcbeaooic'
     }
   })
 
@@ -22,10 +22,11 @@ export default defineEventHandler(async (event) => {
     await transporter.sendMail({
       to,
       from,
-      subject: 'Message from portfolio 2022 form',
+      subject: 'Message from Portfolio',
       html
     })
   } catch (error: any) {
+    console.error(error)
     return sendError(event, error)
   }
 

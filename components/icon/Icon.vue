@@ -12,7 +12,10 @@ const icons = {
   Linkedin: resolveComponent('IconLinkedin'),
   Codepen: resolveComponent('IconCodepen'),
   Codesandbox: resolveComponent('IconCodesandbox'),
-  CheckMark: resolveComponent('IconCheckMark')
+  CheckMark: resolveComponent('IconCheckMark'),
+  Check: resolveComponent('IconCheck'),
+  Warning: resolveComponent('IconWarning'),
+  ExplanationMark: resolveComponent('IconExplanationMark')
 }
 
 defineProps({

@@ -100,7 +100,7 @@ useDocumentEvent('scroll', handleScrollEvent)
         -->
         <div
           :class="`
-            fixed px-[20px] bottom-0 h-[15vh] max-h-[120px] lg:max-h-[140px] min-h-[100px] w-full
+            fixed px-[20px] lg:px-[30px] bottom-0 h-[15vh] max-h-[120px] lg:max-h-[140px] min-h-[100px] w-full
             transition-[all] duration-300 max-w-[1280px] left-1/2 translate-x-[-50%] z-[1]
             ${fadeInClasses}
           `"

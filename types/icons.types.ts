@@ -10,3 +10,6 @@ export type IconType =
   | 'ArrowDown'
   | 'ArrowUp'
   | 'CheckMark'
+  | 'Check'
+  | 'Warning'
+  | 'ExplanationMark'

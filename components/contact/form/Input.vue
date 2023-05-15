@@ -1,40 +1,82 @@
 <script lang="ts" setup>
-const messageRef = ref<HTMLSpanElement[]>([])
+import { getNode, FormKitNode, FormKitMessageProps } from '@formkit/core'
 
-const elementHeight = useState<number[]>('contact-input-message-height', () => [])
-watch(messageRef, (messageRefValue) => {
-  messageRefValue.forEach((value, index) => {
-    const element = value.querySelector('span') as HTMLSpanElement
-    elementHeight.value[index] = element.getBoundingClientRect().height
+interface MessageContextProps {
+  classes: {
+    messages: string
+  }
+  messages: FormKitMessageProps
+}
+
+const props = defineProps({
+  name: {
+    required: true,
+    type: String
+  }
+})
+
+const errorMessage = useState(`input-error-message-${props.name}`, () => '')
+onMounted(() => {
+  const node = getNode(props.name) as FormKitNode
+  node.on('message-added', ({ origin }) => {
+    const messages = origin.context?.messages
+    if (!messages || !Object.values(messages).length) return
+
+    const message = Object.values(messages)[0].value as string
+    errorMessage.value = message
   })
 })
 </script>
 
 <template>
-  <FormKit v-bind="$attrs">
-    <template #messages="context">
-      <div :class="context.classes.messages">
-        <transition-group
-          enter-from-class="!h-[0px] opacity-[0]"
-          enter-to-class="opacity-[1]"
-          leave-from-class="opacity-[1]"
-          leave-to-class="!h-[0px] opacity-[0]"
+  <FormKit
+    v-bind="$attrs"
+    :id="props.name"
+    :name="props.name"
+    class="flex"
+    :validation-messages="{
+      required: 'This field is required',
+      email: 'Please enter a valid Email'
+    }"
+  >
+    <template #messages="context: MessageContextProps">
+      <div
+        :class="`
+          duration-300 transition-opacity
+          absolute right-[6px] bottom-[8px]
+          ${Object.values(context.messages).length ? 'opacity-100' : 'opacity-0'}
+        `"
+      >
+        <Icon
+          icon="Warning"
+          :class="`
+            ${errorMessage ? 'animate-shake' : ''}
+            flex items-center justify-center text-red-700 text-[18px]
+            rounded-full bg-red-900
+          `"
+        />
+        <div
+          :class="`
+            absolute bottom-full bg-white rounded-md mb-[9px] right-0
+            transition-[opacity,_transform] duration-300 px-[4px]
+            ${
+              Object.values(context.messages).length
+                ? 'translate-y-[-5px] opacity-100'
+                : 'translate-y-[5px] opacity-0'
+            }
+            ${context.classes.messages}
+          `"
         >
           <div
-            v-for="(message, key, index) in (context.messages as Record<string, any>)"
-            ref="messageRef"
-            :key="`form-input-${$attrs.name}-${key}`"
             :class="`
-              ${context.classes.message}
-              transition-[opacity,_height] duration-300
+              absolute right-[1.5px] top-full translate-y-[-2px]
+              border-[9px] border-t-white border-r-transparent border-l-transparent border-b-0
             `"
-            :style="{
-              height: `${elementHeight[index]}px`
-            }"
-          >
-            <span class="text-red">{{ message.value }}</span>
-          </div>
-        </transition-group>
+          />
+          <span v-if="errorMessage" class="whitespace-nowrap text-[14px]">
+            {{ errorMessage }}
+          </span>
+        </div>
       </div>
     </template>
   </FormKit>

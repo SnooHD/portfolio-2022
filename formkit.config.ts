@@ -5,10 +5,11 @@ export default {
     validationVisibility: 'submit',
     classes: generateClasses({
       global: {
-        form: 'space-y-[10px] md:space-y-[12px] h-full flex flex-col',
+        outer: 'relative',
+        form: 'space-y-[10px] md:space-y-[12px] h-full flex flex-col items-start',
         inner: 'flex-grow max-w-[300px]',
         input: `
-          pl-[10px] bg-black/[.15] rounded-md border-[1px] border-white/0
+          pl-[10px] bg-black/[.15] rounded-md border-[1px] border-white/0 pr-[30px]
           focus-visible:outline-none w-full py-[4px] md:py-[8px] transition-[border,_color] duration-300
           autofill:!text-fill-color-[#fff] !caret-white focus:border-white/[.15] focus:text-white text-white/[.5] 
           placeholder:text-white/[.5] placeholder:transition-[color] placeholder:duration-300 focus:placeholder:text-white/[.8]
@@ -18,8 +19,8 @@ export default {
       },
       textarea: {
         inner: '!max-w-full',
-        outer: 'flex-grow',
-        wrapper: 'h-full',
+        outer: 'flex-grow w-full',
+        wrapper: 'h-full w-full',
         input: 'h-full resize-none'
       }
     })

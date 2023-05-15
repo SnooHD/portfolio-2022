@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { submitForm } from '@formkit/core'
-
 const { animationState } = useAnimationScroller([
   {
     fromValue: 1,
@@ -54,7 +52,7 @@ const { animationState } = useAnimationScroller([
 ])
 
 const { currentMenuIndex } = useMenu()
-const { scrollToSection, scrollPosition } = useScroller()
+const { scrollPosition } = useScroller()
 const { stringToHash, scrollToHash } = useHash()
 const { activeState: activeMenuState } = useMenuOverlay('work-item')
 const workMenuIsOpen = () => activeMenuState.value === 'work-item'
@@ -64,36 +62,12 @@ const openShowCaseMenu = () => {
   menuState.value = !menuState.value
 }
 
-const onSubmitForm = () => {
-  submitForm('contact-form')
-}
+const { isSubmitting, submit, submitSuccess, submitError } = useFormSubmit()
 
 const getNextSectionHash = () =>
   scrollPosition.value >= 3
     ? stringToHash(sections[0])
     : stringToHash(sections[currentMenuIndex.value + 1])
-
-/**
- * Depending on the active state of the button, different actions need to be triggered
- * To make sure the whole button is clickable, we will handle the cases from the buttons onclick event
- * An `id` has been added to the text element to help us differentiate between them
- */
-const onButtonClick = (e: MouseEvent) => {
-  const currentTarget = e.currentTarget as HTMLButtonElement
-  const actionTarget = currentTarget.querySelector('[id]')
-
-  switch (actionTarget?.id) {
-    case 'show-case':
-      openShowCaseMenu()
-      break
-    case 'submit-form':
-      onSubmitForm()
-      break
-    case 'view-my-work':
-      scrollToSection('my-work')
-      break
-  }
-}
 </script>
 
 <template>
@@ -126,7 +100,6 @@ const onButtonClick = (e: MouseEvent) => {
             ml-auto relative shrink-0 w-[154px] h-[36px]
             lg:w-[180px] lg:h-[50px]
           `"
-          @click.stop="onButtonClick"
         >
           <VisibilityWrapper
             id="show-case"
@@ -140,6 +113,7 @@ const onButtonClick = (e: MouseEvent) => {
               opacity: animationState['opacity-out-showcase'],
               transform: `translateY(${animationState['translate-y-out-showcase']}px)`
             }"
+            @click.stop="() => openShowCaseMenu()"
           >
             <span :aria-expanded="workMenuIsOpen()" aria-controls="work-item">
               <span
@@ -173,8 +147,59 @@ const onButtonClick = (e: MouseEvent) => {
               opacity: animationState['opacity-in-submit'],
               transform: `translateY(${animationState['translate-y-submit']}px)`
             }"
+            @click.stop="() => submit()"
           >
-            <span>Submit</span>
+            <span
+              :class="`
+                transition-opacity duration-300 absolute
+                ${!isSubmitting && !submitSuccess && !submitError ? 'opacity-100' : 'opacity-0'}
+              `"
+            >
+              Send message
+            </span>
+            <div
+              :class="`
+                transition-opacity duration-100 absolute flex items-center
+                ${isSubmitting ? 'opacity-100' : 'opacity-0'}
+              `"
+            >
+              <span>Sending</span>
+              <div
+                :class="`
+                  animate-spin
+                  ml-[.5em] w-[1em] h-[1em] rounded-full border-[2px] border-white/30 border-t-white
+                `"
+              />
+            </div>
+            <div
+              :class="`
+                transition-opacity duration-100 absolute
+                ${submitError ? 'opacity-100' : 'opacity-0'}
+              `"
+            >
+              <span>Error</span>
+              <Icon
+                icon="Warning"
+                :class="`
+                  text-red-600
+                  ml-[.5em] text-[16px] translate-y-[2px]
+                `"
+              />
+            </div>
+            <div
+              :class="`
+                transition-opacity duration-100 absolute
+                ${submitSuccess ? 'opacity-100' : 'opacity-0'}
+              `"
+            >
+              <span>Message sent</span>
+              <Icon
+                icon="Check"
+                :class="`
+                  ml-[.5em] text-[14px] translate-y-[1px]
+                `"
+              />
+            </div>
           </VisibilityWrapper>
         </Button>
       </VisibilityWrapper>

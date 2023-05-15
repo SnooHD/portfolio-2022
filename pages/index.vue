@@ -37,7 +37,7 @@ const { currentMenuIndex } = useMenu()
       <Work />
     </VisibilityWrapper>
     <VisibilityWrapper
-      id="contact-form"
+      id="contact-form-wrapper"
       :visible="3"
       :class="`
         absolute left-0 top-0
