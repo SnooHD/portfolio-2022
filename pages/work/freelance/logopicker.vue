@@ -10,6 +10,10 @@ spacingSize.value = 'md'
 
 const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
 const { getImageSrcSet } = useImages()
+
+useHead({
+  title: 'Mike de Snoo | Logopicker'
+})
 </script>
 
 <template>

@@ -4,6 +4,10 @@ definePageMeta({
 })
 
 const { currentMenuIndex } = useMenu()
+
+useHead({
+  title: 'Mike de Snoo | Portfolio'
+})
 </script>
 
 <template>

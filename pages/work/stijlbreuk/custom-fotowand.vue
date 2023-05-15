@@ -10,6 +10,10 @@ spacingSize.value = 'md'
 
 const { getImageSrcSet } = useImages()
 const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
+
+useHead({
+  title: 'Mike de Snoo | Custom Fotowand'
+})
 </script>
 
 <template>

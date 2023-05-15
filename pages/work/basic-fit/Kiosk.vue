@@ -9,6 +9,10 @@ definePageMeta({
 const { getImageSrcSet } = useImages()
 const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
 const { getSpacing } = useShowcaseClasses()
+
+useHead({
+  title: 'Mike de Snoo | Basic-Fit'
+})
 </script>
 
 <template>

@@ -7,6 +7,10 @@ definePageMeta({
 
 const { getImageSrcSet } = useImages()
 const { pictureRef, onImageLoad, isImageLoaded } = useImagePreloader()
+
+useHead({
+  title: 'Mike de Snoo | Basic-Fit'
+})
 </script>
 
 <template>
