@@ -172,6 +172,6 @@ useHead({
         </template>
       </ShowcaseSection>
     </div>
-    <ShowcaseFooter company="freelance" link="https://nativeway-q8szdvug9-snoo.vercel.app/" />
+    <ShowcaseFooter company="freelance" link="https://nativeway-git-master-snoo.vercel.app/" />
   </div>
 </template>
