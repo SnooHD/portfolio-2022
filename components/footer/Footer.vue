@@ -118,7 +118,7 @@ const getNextSectionHash = () =>
           >
             <span
               :aria-expanded="workMenuIsOpen()"
-              :aria-controls="activeState === 'work-item' ? 'work-item' : ''"
+              :aria-controls="activeState === 'work-item' ? 'work-item' : undefined"
             >
               <span
                 :class="`
