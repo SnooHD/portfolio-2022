@@ -117,7 +117,7 @@ const getNextSectionHash = () =>
             @click.stop="() => openShowCaseMenu()"
           >
             <span
-              :aria-expanded="workMenuIsOpen()"
+              :aria-expanded="activeState === 'work-item' ? workMenuIsOpen() : undefined"
               :aria-controls="activeState === 'work-item' ? 'work-item' : undefined"
             >
               <span
