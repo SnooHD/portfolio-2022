@@ -57,6 +57,7 @@ const { stringToHash, scrollToHash } = useHash()
 const { activeState: activeMenuState } = useMenuOverlay('work-item')
 const workMenuIsOpen = () => activeMenuState.value === 'work-item'
 
+const { activeState } = useMenuOverlay('work-item')
 const openShowCaseMenu = () => {
   const { menuState } = useMenuOverlay('work-item')
   menuState.value = !menuState.value
@@ -115,7 +116,10 @@ const getNextSectionHash = () =>
             }"
             @click.stop="() => openShowCaseMenu()"
           >
-            <span :aria-expanded="workMenuIsOpen()" aria-controls="work-item">
+            <span
+              :aria-expanded="workMenuIsOpen()"
+              :aria-controls="activeState === 'work-item' ? 'work-item' : ''"
+            >
               <span
                 :class="`
                   transition-opacity duration-200

@@ -51,6 +51,8 @@ watch(loadedImages, () => {
     src="/images/self-portrait/portrait.png"
     preload
     sizes="lg:100vw xl:820px"
+    width="400"
+    height="auto"
     :style="{
       shapeMargin: '25px',
       shapeOutside: shapeOutsideSrc && `url(${shapeOutsideSrc})`,

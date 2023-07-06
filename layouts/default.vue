@@ -65,6 +65,12 @@ const { scrollSectionHeight, handleScrollEvent } = useScroller()
 onMounted(() => scrollToHash(location.hash as HashSectionType, 'auto'))
 useWindowEvent('hashchange', () => scrollToHash())
 useDocumentEvent('scroll', handleScrollEvent)
+
+useHead({
+  htmlAttrs: {
+    lang: 'en'
+  }
+})
 </script>
 
 <template>

@@ -12,7 +12,14 @@ defineProps({
     <template #item>
       <div class="flex justify-center">
         <div class="w-full md:w-2/3 space-y-[15px]">
-          <NuxtImg class="w-1/2 xs:w-1/3" src="/images/freelance/logo.svg" preset="svg" />
+          <NuxtImg
+            class="w-1/2 xs:w-1/3"
+            src="/images/freelance/logo.svg"
+            alt="logo freelance"
+            preset="svg"
+            width="400"
+            height="auto"
+          />
           <Text class="shadow-white/60 text-shadow-[sm]">
             Working across various industries, I strive to improve user experiences by developing
             seamless applications for web and mobile platforms. I deliver high-quality work that

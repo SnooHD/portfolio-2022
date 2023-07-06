@@ -46,6 +46,7 @@ useHead({
         <template #image>
           <NuxtImg
             ref="pictureRef"
+            alt="basic-fit header image"
             :src="KioskImage.kiosk"
             :srcset="getImageSrcSet(KioskImage.kiosk, [{ width: 400 }])"
             preset="image"
@@ -74,6 +75,7 @@ useHead({
             <ShowcaseImage>
               <NuxtImg
                 preset="image"
+                alt="New branding design"
                 :src="KioskImage.overview"
                 :srcset="getImageSrcSet(KioskImage.overview, [{ width: 1200 }])"
                 class="w-full"
@@ -88,6 +90,7 @@ useHead({
               <ShowcaseImage>
                 <NuxtImg
                   preset="image"
+                  alt="New branding design"
                   :src="KioskImage.details"
                   :srcset="getImageSrcSet(KioskImage.details, [{ width: 600 }])"
                   class="w-full"
@@ -96,6 +99,7 @@ useHead({
               <ShowcaseImage>
                 <NuxtImg
                   preset="image"
+                  alt="New branding design"
                   :src="KioskImage.membership"
                   :srcset="getImageSrcSet(KioskImage.membership, [{ width: 600 }])"
                   class="w-full"
@@ -123,6 +127,7 @@ useHead({
           <ShowcaseImage>
             <NuxtImg
               preset="image"
+              alt="Offline mode preview"
               :src="KioskImage.offline"
               :srcset="getImageSrcSet(KioskImage.offline, [{ width: 600 }])"
               class="w-full"
@@ -143,6 +148,7 @@ useHead({
           <ShowcaseImage>
             <NuxtImg
               preset="image"
+              alt="Hardware devices preview"
               :src="KioskImage.payment"
               :srcset="getImageSrcSet(KioskImage.payment, [{ width: 1200 }])"
               class="w-full"
@@ -166,6 +172,7 @@ useHead({
             <ShowcaseImage>
               <NuxtImg
                 preset="image"
+                alt="scan member card"
                 :src="KioskImage.scanCard"
                 :srcset="getImageSrcSet(KioskImage.scanCard, [{ width: 600 }])"
                 class="w-full"
@@ -174,6 +181,7 @@ useHead({
             <ShowcaseImage>
               <NuxtImg
                 preset="image"
+                alt="scan member card error"
                 :src="KioskImage.scanError"
                 :srcset="getImageSrcSet(KioskImage.scanError, [{ width: 600 }])"
                 class="w-full"

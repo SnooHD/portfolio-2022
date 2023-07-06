@@ -96,6 +96,8 @@ onMounted(() => {
       <NuxtImg
         src="/images/fog.png"
         class="absolute top-0 left-0 z-10 w-full object-contain min-w-[1920px] animate-fog"
+        alt="fog background"
+        aria-hidden="true"
         preset="image"
         :style="{
           animationPlayState: scrollPosition >= 2 ? 'paused' : 'running'
@@ -104,6 +106,8 @@ onMounted(() => {
       <NuxtImg
         src="/images/fog.png"
         class="absolute top-0 left-0 z-10 w-full object-contain min-w-[1920px] animate-fog2"
+        aria-hidden="true"
+        alt="fog background"
         preset="image"
         :style="{
           animationPlayState: scrollPosition >= 2 ? 'paused' : 'running'

@@ -2,6 +2,7 @@
   font-family: 'Atyp Display';
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/atyp-display/atyp-display-700-normal.woff2') format('woff2');
 }
 
@@ -9,6 +10,7 @@
   font-family: 'Atyp Text';
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/atyp-text/atyp-text-400-normal.woff2') format('woff2');
 }
 
@@ -16,6 +18,7 @@
   font-family: 'Public Sans';
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/public-sans/public-sans-300-normal.woff2') format('woff2');
 }
 
@@ -23,6 +26,7 @@
   font-family: 'Public Sans';
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/public-sans/public-sans-400-normal.woff2') format('woff2');
 }
 
@@ -30,6 +34,7 @@
   font-family: 'Public Sans';
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/public-sans/public-sans-500-normal.woff2') format('woff2');
 }
 
@@ -37,6 +42,7 @@
   font-family: 'Heading Pro';
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/heading-pro/heading-pro-400-normal.woff2') format('woff2');
 }
 
@@ -44,6 +50,7 @@
   font-family: 'Heading Pro';
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/heading-pro/heading-pro-900-normal.woff2') format('woff2');
 }
 
@@ -51,5 +58,6 @@
   font-family: 'Manrope';
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
   src: url('/assets/fonts/manrope/manrope-800-normal.woff2') format('woff2');
 }

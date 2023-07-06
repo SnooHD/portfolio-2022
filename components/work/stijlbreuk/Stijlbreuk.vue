@@ -12,7 +12,14 @@ defineProps({
     <template #item>
       <div class="flex justify-center">
         <div class="w-full md:w-2/3 space-y-[15px]">
-          <NuxtImg class="w-1/2 xs:w-1/3" src="/images/stijlbreuk/logo.svg" preset="svg" />
+          <NuxtImg
+            class="w-1/2 xs:w-1/3"
+            src="/images/stijlbreuk/logo.svg"
+            alt="logo stijlbreuk"
+            width="300"
+            height="auto"
+            preset="svg"
+          />
           <Text class="shadow-white/60 text-shadow-[sm]">
             Stijlbreuk is an innovative UX agency that creates designs with a wow effect. With a
             talented team and cutting-edge technology, they aim to deliver exceptional user

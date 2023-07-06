@@ -25,6 +25,8 @@ defineProps({
         <NuxtImg
           :src="image"
           :srcset="getImageSrcSet(image, [{ width: 400 }])"
+          width="400"
+          height="auto"
           preset="image"
           :class="`
             w-full max-w-[400px] mt-[10px] transition-[filter,_transform] duration-400

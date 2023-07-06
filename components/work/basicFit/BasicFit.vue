@@ -12,7 +12,14 @@ defineProps({
     <template #item>
       <div class="flex justify-center">
         <div class="w-full md:w-2/3 space-y-[15px]">
-          <NuxtImg class="w-1/2 xs:w-1/3" src="/images/basic-fit/logo.svg" preset="svg" />
+          <NuxtImg
+            class="w-1/2 xs:w-1/3"
+            alt="logo basic-fit"
+            src="/images/basic-fit/logo.svg"
+            preset="svg"
+            width="400"
+            height="auto"
+          />
           <Text class="shadow-white/60 text-shadow-[sm]">
             As a developer for Basic-Fit, I get to work on various products and create innovative
             solutions to improve user experiences. This includes developing for multiple platforms

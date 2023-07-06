@@ -33,6 +33,12 @@ useAsyncData(
 
 const { handleScrollEvent } = useScroller()
 useDocumentEvent('scroll', handleScrollEvent)
+
+useHead({
+  htmlAttrs: {
+    lang: 'en'
+  }
+})
 </script>
 
 <template>
