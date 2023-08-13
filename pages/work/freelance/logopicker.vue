@@ -91,7 +91,7 @@ useHead({
           </ShowcaseImage>
         </template>
       </ShowcaseSection>
-      <ShowcaseSection>
+      <ShowcaseSection class="mb-[100px]">
         <template #title>Development</template>
         <template #content>
           <ShowcaseParagraph>

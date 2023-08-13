@@ -99,7 +99,7 @@ useHead({
           </ShowcaseImage>
         </template>
       </ShowcaseSection>
-      <ShowcaseSection>
+      <ShowcaseSection class="mb-[100px]">
         <template #title>Download report</template>
         <template #content>
           <ShowcaseParagraph>

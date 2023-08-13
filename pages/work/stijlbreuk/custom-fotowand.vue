@@ -115,7 +115,7 @@ useHead({
           </div>
         </template>
       </ShowcaseSection>
-      <ShowcaseSection>
+      <ShowcaseSection class="mb-[100px]">
         <template #title>Integration</template>
         <template #content>
           <ShowcaseParagraph>
