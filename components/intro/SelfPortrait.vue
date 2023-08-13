@@ -64,7 +64,7 @@ watch(loadedImages, () => {
     :class="`
       mb-0 h-auto float-right object-contain object-bottom transition-[transform, _opacity] duration-300
       mt-[20px] lg:mt-[40px] w-[400px] scale-[1.4] origin-top
-      mr-[-50%] xs:mr-[-35%] md:mr-[-20%] lg:mr-[0]
+      mr-[-60%] xs:mr-[-35%] md:mr-[-20%] lg:mr-[0]
       ${animationState['scale'] < 1.4 && animationState['scale'] > 1 ? '!transition-none' : ''}
       ${!isImageLoaded('portrait') ? 'translate-x-[10%]' : ''}
     `"

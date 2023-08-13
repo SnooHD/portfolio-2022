@@ -31,19 +31,17 @@ const { animationState } = useAnimationScroller([
       opacity: scrollPosition < 1 ? animationState['opacity-in'] : animationState['opacity-out']
     }"
   >
-    <div class="w-full py-[10%] xs:py-[20%] sm:py-[25%] md:py-[33%] xl:py-[24%]">
+    <div class="w-full pb-[10%] xs:py-[20%] sm:py-[25%] md:py-[33%] xl:py-[24%]">
       <Paragraph>
-        I'm a web developer from the Netherlands with 12 years of experience in building websites
-        that combine stunning visuals with top-notch user experience. One of my favorite parts of
-        web development is animation, as it has the power to elevate a website from good to
-        exceptional.
+        I'm a web developer from the Netherlands with over 12 years of experience. One of my
+        favorite parts of web development is animation, as it has the power to elevate a website
+        from good to exceptional.
       </Paragraph>
       <br />
       <Paragraph>
-        I aim to bridge the gap between design and development. My aim is to provide a seamless user
-        experience, ensuring a perfect blend of creativity and functionality. I work with a modern
-        stack that includes Vue and React. I pay close attention to the code I write, ensuring that
-        it is clean, efficient, and maintainable.
+        I aim to bridge the gap between design and development, ensuring a perfect blend of
+        creativity and functionality. I work with a modern stack that includes Vue and React. I pay
+        close attention to the code I write, ensuring that it is clean, efficient, and maintainable.
       </Paragraph>
     </div>
   </div>
