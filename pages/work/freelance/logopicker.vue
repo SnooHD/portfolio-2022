@@ -39,9 +39,7 @@ useHead({
           <span class="text-anthracite inline-block lg:mt-[40px]">Logopicker</span>
         </template>
         <template #role>
-          <span class="text-anthracite inline-block lg:mb-[40px]">
-            Role: Developer & co-designer
-          </span>
+          <span class="text-anthracite inline-block lg:mb-[40px]">Personal project</span>
         </template>
       </ShowcaseHeader>
       <ShowcaseSection>
