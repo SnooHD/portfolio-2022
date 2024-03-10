@@ -48,10 +48,8 @@ useHead({
         <template #title>Intro</template>
         <template #content>
           <ShowcaseParagraph>
-            Logopicker is a personal project that Me and my wife have been working for quite some
-            time. The project was brought into life with the idea to give interpreneurs the power to
-            design their own logo. This project is still ongoing, and became a fun learning
-            experience.
+            This project was brought into life with the idea to give interpreneurs the power to
+            design their own logo. It became a fun learning experience.
           </ShowcaseParagraph>
         </template>
       </ShowcaseSection>
