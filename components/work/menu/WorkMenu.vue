@@ -19,7 +19,7 @@ const { transitionState } = useScrollTransition({
   <nav role="navigation" :aria-label="`${workItems[state]} showcase menu`">
     <MenuOverlay
       id="work-item"
-      class="origin-top-left top-[-200px] left-[-300px]"
+      class="origin-top-left top-[-200px] left-[-300px] w-full h-full"
       type="work-item"
       size="lg"
       :default-menu-state="defaultCarouselMenuState"
